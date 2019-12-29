@@ -63,13 +63,17 @@ class PH_Router {
     protected function setUriSegments() {
         $split = explode('/', $this->uri);
 
-        if($split[0] == "") {
-            array_shift($split);
-        }
-
-        if($split[count($split) - 1] == "") {
-            array_pop($split);
-        }
+        if(count($split) > 0) {
+            if($split[0] == "") {
+                array_shift($split);
+            }
+    
+            if(isset($split[count($split)  - 1])) {
+                if($split[count($split) - 1] == "") {
+                    array_pop($split);
+                }
+            }
+        } 
 
         $this->uri_segments = $split;
     }
