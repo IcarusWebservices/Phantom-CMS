@@ -29,6 +29,8 @@ class Phantom {
      */
     public function build($request) {
         
+        global $project_runner;
+
         $uri = $request->uri;
         $base_uri = $this->config->base_uri;
 
@@ -42,14 +44,22 @@ class Phantom {
 
         $root_project = $this->config->root_project;
 
-        $output = null;
+        $project_to_run = null;
 
         if($this->config->only_root_project) {
-            $output = $this->runRootProject($project_runner, $root_project, $router);
+            if($project_runner->projectExists($root_project)) {
+                $project_to_run = $root_project;
+            } else {
+                $project_to_run = null;
+            }
         } else {
 
             if(count($router->uri_segments) == 0) {
-                $output = $this->runRootProject($project_runner, $root_project, $router);
+                if($project_runner->projectExists($root_project)) {
+                    $project_to_run = $root_project;
+                } else {
+                    $project_to_run = null;
+                }
             } else {
 
                 $first = $router->uri_segments[0];
@@ -58,16 +68,20 @@ class Phantom {
 
                     array_shift($router->uri_segments);
 
-                    $output = $project_runner->runProject($first, $router);
+                    $project_to_run = $first;
                 } else {
-                    $output = $this->runRootProject($project_runner, $root_project, $router);
+                    if($project_runner->projectExists($root_project)) {
+                        $project_to_run = $root_project;
+                    } else {
+                        $project_to_run = null;
+                    }
                 }
 
             }
 
         }
 
-        return $output;
+        return $project_runner->runProject($project_to_run, $router);
 
     }
     

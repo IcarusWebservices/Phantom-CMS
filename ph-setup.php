@@ -11,11 +11,20 @@ $__setup__ = 1;
 
 require_once PH_ROOT . 'ph-loader.php';
 
-ph_autoload(PH_CORE . "/");
+require_once PH_CORE . 'class-events.php';
+require_once PH_CORE . 'ph-events.php';
+require_once PH_CORE . 'ph-events-constants.php';
+
+$events = new PH_Events;
+
+ph_autoload(PH_CORE . "/", [PH_CORE . 'class-events.php', PH_CORE . 'ph-events.php', PH_CORE . 'ph-events-constants.php']);
 
 require_once PH_ROOT . 'ph-config.php';
 
 $registry = new PH_Registry;
-$events = new PH_Events;
+
+$project_runner = new PH_Project_Runner;
+
+$events->call_event(EVENT_REGISTRY_SETUP);
 
 unset($__setup__);

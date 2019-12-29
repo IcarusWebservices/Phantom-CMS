@@ -46,7 +46,15 @@ function ph_get_registered_item($namespace, $category, $name) {
  * @return void
  */
 function ph_register($namespace, $category, $name, $value) {
-    global $registry;
 
-    $registry->addItem($namespace, $category, $name, $value);
+    await(EVENT_REGISTRY_SETUP, function($data) {
+        global $registry;
+
+        $registry->addItem($data["namespace"], $data["category"], $data["name"], $data["value"]);
+    }, [
+        "namespace" => $namespace,
+        "category" => $category,
+        "name" => $name,
+        "value" => $value
+    ]);
 }

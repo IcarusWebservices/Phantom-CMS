@@ -29,22 +29,32 @@ class PH_Events {
      * 
      * @param string    $event      The name of the event.
      * @param callback  $function   The function to add.
+     * @param array     $data       The data to be passed back to the function when calling.
      * 
      * @return void
      */
-    public function await($event, $function) {
+    public function await($event, $function, $data = []) {
         
         if(in_array($event, $this->called_events)){
-            $function();
+            $function($data);
         } else {
             if(isset($this->packets[$event])) {
                 if(is_array($this->packets[$event])) {
-                    array_push($this->packets[$event], $function);
+                    array_push($this->packets[$event], [
+                        "function" => $function,
+                        "data" => $data
+                    ]);
                 } else {
-                    $this->packets[$event] = [$function];
+                    $this->packets[$event] = [[
+                        "function" => $function,
+                        "data" => $data
+                    ]];
                 }
             } else {
-                $this->packets[$event] = [$function];
+                $this->packets[$event] = [[
+                    "function" => $function,
+                    "data" => $data
+                ]];
             }
         }
 
@@ -60,11 +70,12 @@ class PH_Events {
     public function call_event($event_name) {
         if(isset($this->packets[$event_name]) && is_array($this->packets[$event_name])) {
             foreach ($this->packets[$event_name] as $event) {
-                if(is_callable($event)) {
-                    $event();
+                if(is_callable($event["function"])) {
+                    $event["function"]($event["data"]);
                 }
             }
         }
+        array_push($this->called_events, $event_name);
     }
 
 }

@@ -84,7 +84,7 @@ class PH_Registry {
                 $category => []
             ];
         } else {
-            if(!isset($this->registry[$namespace[$category]])) {
+            if(!isset($this->registry[$namespace][$category])) {
                 $this->registry[$namespace][$category] = [];
             }
         }

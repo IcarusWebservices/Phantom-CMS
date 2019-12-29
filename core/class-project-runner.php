@@ -9,6 +9,11 @@
 class PH_Project_Runner {
 
     /**
+     * The name of the project that the project runner is currently running.
+     */
+    public $running_project = null;
+
+    /**
      * Runs a project.
      * 
      * Returns 404 if the project was not found.
@@ -21,8 +26,14 @@ class PH_Project_Runner {
 
         // Now load & run the project
 
+        $this->running_project = $project_name;
+
         $project_dir        = PH_PROJECTS . $project_name . '/';
         $controllers_dir    = $project_dir . 'controllers/';
+        $templates_dir      = $project_dir . 'templates/';
+
+        ph_autoload($controllers_dir);
+        ph_autoload($templates_dir);
 
         return 200;
     }
