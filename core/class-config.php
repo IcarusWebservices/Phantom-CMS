@@ -28,6 +28,15 @@ class PH_Config {
 
     /**
      * (Value)
+     * The base uri to be removed from the uri.
+     * If Phantom is located within a subdirectory, this value should be the path to this directory.
+     * If Phantom is located at the root, this value should be null
+     * @since 1.0.0
+     */
+    public $base_uri = null;
+
+    /**
+     * (Value)
      * The server-name of the database.
      * In most cases, this is 'localhost'.
      * @since 1.0.0

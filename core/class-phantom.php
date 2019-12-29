@@ -18,13 +18,17 @@ class Phantom {
      * 
      * @param PH_Config $config The configuration object
      */
-    public function __construct($config)
-    {
-        
+    public function __construct($config) {
+        $this->config = $config;
     }
 
-    public function bootstrap() {
-
+    /**
+     * Builds the front-end application.
+     * 
+     * @param PH_Request $request The request to handle routing.
+     */
+    public function build($request) {
+        
     } 
 
 }
