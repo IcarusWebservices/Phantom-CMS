@@ -36,7 +36,37 @@ class PH_Registry {
      * @return void
      */
     public function addItem($namespace, $category, $name, $value) {
+        $this->prepareCategory($namespace, $category);
 
+        $this->registry[$namespace][$category][$name] = $value;
+    }
+
+    /**
+     * Gets an item from the registry
+     * 
+     * @param string $namespace The item's namespace
+     * @param string $category  The item's category
+     * @param string $name      The item's name
+     * 
+     * @return mixed|null The item OR null if the item doesn't exist
+     */
+    public function getItem($namespace, $category, $name) {
+        if($this->itemExists($namespace, $category, $name)) {
+            return $this->registry[$namespace][$category][$name];
+        }
+    }
+
+    /**
+     * Checks whether an item exists
+     * 
+     * @param string $namespace The item's namespace
+     * @param string $category  The item's category
+     * @param string $name      The item's name
+     * 
+     * @return bool
+     */
+    public function itemExists($namespace, $category, $name) {
+        return isset($this->registry[$namespace][$category][$name]);
     }
 
     /**
@@ -47,8 +77,18 @@ class PH_Registry {
      * @param string $namespace The namespace to check.
      * @param string $category  The category to check.
      */
-    protected function prepareCategory() {
-        
+    protected function prepareCategory($namespace, $category) {
+
+        if(!isset($this->registry[$namespace])) {
+            $this->registry[$namespace] = [
+                $category => []
+            ];
+        } else {
+            if(!isset($this->registry[$namespace[$category]])) {
+                $this->registry[$namespace][$category] = [];
+            }
+        }
+
     }
 
 }

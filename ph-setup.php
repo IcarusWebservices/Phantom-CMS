@@ -15,4 +15,7 @@ ph_autoload(PH_CORE . "/");
 
 require_once PH_ROOT . 'ph-config.php';
 
+$registry = new PH_Registry;
+$events = new PH_Events;
+
 unset($__setup__);

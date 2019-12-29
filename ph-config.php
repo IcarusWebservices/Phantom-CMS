@@ -4,7 +4,7 @@
 $config = new PH_Config();
 
 // The root project
-$config->root_project = "main";
+$config->root_project = "example";
 // Whether there should only be the root project
 $config->only_root_project = true;
 // The server name of the database
