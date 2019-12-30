@@ -18,4 +18,13 @@ abstract class PH_Controller {
      */
     abstract function index( $parameters, $router );
 
+    /**
+     * The load class.
+     * 
+     * Will be supplied by the project runner
+     * 
+     * @since 1.0.0
+     */
+    public $loader = null;
+
 }

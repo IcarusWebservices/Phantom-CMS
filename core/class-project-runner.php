@@ -26,6 +26,8 @@ class PH_Project_Runner {
 
         // Now load & run the project
 
+        $response = new PH_ResponseCode(501, "Internal Phantom error...");
+
         $this->running_project = $project_name;
 
         $project_dir        = PH_PROJECTS . $project_name . '/';
@@ -65,13 +67,41 @@ class PH_Project_Runner {
 
             if($has_found_route) {
                 
+                // The project has been setup correctly!
+                // The project will be setup under here:
+                $loader = new PH_Loader;
+
                 $spl = explode('/', $controller_selected);
 
                 $c = $spl[0];
                 $m = $spl[1];
 
+                $cont = $loader->getController($c);
+
+                if($cont) {
+
+                    if(method_exists($cont, $m)) {
+
+                        return $cont->$m;
+
+                    } else {
+
+                        if(method_exists($cont, "index")) {
+
+                            return $cont->index();
+
+                        } else {
+                            # TODO: Add error
+                        }
+
+                    }
+
+                } else {
+                    #TODO: Add error
+                }
+
             } else {
-                
+                #TODO: Add error
             }
 
         } else {
@@ -92,6 +122,14 @@ class PH_Project_Runner {
     
         return is_dir(PH_PROJECTS . $project_name);
     
+    }
+
+    /**
+     * If a project responds with code 404,
+     * The 404 template must be called.
+     */
+    protected function get404() {
+
     }
 
 }
