@@ -78,4 +78,66 @@ class PH_Router {
         $this->uri_segments = $split;
     }
 
+    /**
+     * This method compares a URI pattern to the actual URI.
+     * 
+     * The pattern is according to the IcarusURIPattern specification
+     * 
+     * @since 1.0.0
+     */
+    public function comparePattern($pattern) {
+
+        $pattern_segments = explode('/', $pattern);
+
+        if(count($pattern_segments) > 0) {
+            if($pattern_segments[0] == "") {
+                array_shift($pattern_segments);
+            }
+
+            if(isset($pattern_segments[count($pattern_segments) - 1])) {
+                if($pattern_segments[count($pattern_segments) - 1] == "") {
+                    array_pop($pattern_segments);
+                }
+            }
+        }
+
+        $pl = count($pattern_segments);
+        $ul = count($this->uri_segments);
+
+        $isGoing = true;
+        $parameters = [];
+
+        if($pl == $ul) {
+
+            for ($i=0; $i < $pl; $i++) { 
+                if($isGoing) {
+                    $pseg = $pattern_segments[$i];
+                    $useg = $this->uri_segments[$i];
+    
+                    if(substr($pseg, 0, 1) == ":") {
+                        
+                        $parname = substr($pseg, 1);
+                        $value = $useg;
+
+                        $parameters[$parname] = $value;
+
+                    } else {
+                        if($pseg != $useg) {
+                            $isGoing = false;
+                        }
+                    }
+                } 
+            }
+
+        } else {
+            $isGoing = false;
+        }
+
+        return [
+            "compares" => $isGoing,
+            "parameters" => $parameters
+        ];
+
+    }
+
 }

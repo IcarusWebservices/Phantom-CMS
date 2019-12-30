@@ -20,7 +20,7 @@ function ph_default_code_generator($code, $code_description) {
 <body>
     <small>Phantom version <?= PH_VERSION ?></small>
     <hr>
-    <h1>An error has occured: <?= $code ?></h1>
+    <h1>Phantom responded with code <?= $code ?></h1>
     <p><?= $code_description ?></p>
 </body>
 </html>

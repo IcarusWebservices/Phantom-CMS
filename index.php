@@ -24,7 +24,11 @@ $request = new PH_Request;
 
 $response = $phantom->build( new PH_Request );
 
-echo $response;
+if($response instanceof PH_ResponseCode) {
+    ph_default_code_generator($response->code, $response->description);
+} else if(is_string($response)) {
+    echo $response;
+}
 
 // if(!$response) {
 //     ph_default_code_generator(404, "The requested document was not found on this server...");
