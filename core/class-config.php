@@ -76,4 +76,13 @@ class PH_Config {
         $this->database_password = $password;
     }
 
+    /**
+     * Returns the password of the database
+     * 
+     * @return string
+     */
+    public function getDatabasePassword() {
+        return $this->database_password;
+    }
+
 }

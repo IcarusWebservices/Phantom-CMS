@@ -52,9 +52,9 @@ class PH_Loader {
      * @return object|null
      */
     public function getController($controller_name) {
-        if(ph_registered("@this", "templates", $controller_name)) {
+        if(ph_registered("@this", "controllers", $controller_name)) {
 
-            $controller_class = ph_get_registered_item("@this", "templates", $controller_name);
+            $controller_class = ph_get_registered_item("@this", "controllers", $controller_name);
 
             if(class_exists($controller_class)) {
 

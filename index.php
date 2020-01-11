@@ -24,10 +24,12 @@ $request = new PH_Request;
 
 $response = $phantom->build( new PH_Request );
 
+// var_dump($registry);
+
 if($response instanceof PH_ResponseCode) {
     ph_default_code_generator($response->code, $response->description);
-} else if(is_string($response)) {
-    echo $response;
+} else if($response instanceof PH_Template) {
+    ph_document_generator($response);
 }
 
 // if(!$response) {

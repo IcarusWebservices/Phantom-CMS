@@ -33,10 +33,12 @@ class PH_Project_Runner {
         $project_dir        = PH_PROJECTS . $project_name . '/';
         $controllers_dir    = $project_dir . 'controllers/';
         $templates_dir      = $project_dir . 'templates/';
+        $data_types_dir     = $project_dir . 'data-types/';
         $routes_file        = $project_dir . 'routes.php';
 
         ph_autoload($controllers_dir);
         ph_autoload($templates_dir);
+        ph_autoload($data_types_dir);
 
         if(!file_exists($routes_file)) {
             return new PH_ResponseCode(501, "The selected project has no routes.php file");
@@ -80,33 +82,50 @@ class PH_Project_Runner {
 
                 if($cont) {
 
+                    $cont->loader = $loader;
+
                     if(method_exists($cont, $m)) {
 
-                        return $cont->$m;
+                        $response = $cont->$m($parameters, $router);
 
                     } else {
 
                         if(method_exists($cont, "index")) {
 
-                            return $cont->index();
+                            $response = $cont->index($parameters, $router);
 
                         } else {
-                            # TODO: Add error
+                            $response = new PH_ResponseCode(404, "Controller (". $c .") is invalid (index method does not exist...)");
                         }
 
                     }
 
                 } else {
-                    #TODO: Add error
+                    return ph_response(407, "Controller (". $c . ") was not found.");
                 }
 
             } else {
-                #TODO: Add error
+                
+                $template = ph_get_registered_item("@this", "magic_templates", "Error404");
+
+                if($template) {
+                    if(class_exists($template)) {
+                        $t_instance = new $template;
+                        return $t_instance;
+                    } else {
+                        $response = ph_response(404, "");
+                    }
+                } else {
+                    $response = ph_response(404, "");
+                }
+
             }
 
         } else {
-            return new PH_ResponseCode(501, "The $routes parameter is not an array!");
+            $response = new PH_ResponseCode(501, "The $routes parameter is not an array!");
         }
+
+        return $response;
 
         
     }

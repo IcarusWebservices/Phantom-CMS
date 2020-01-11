@@ -22,3 +22,13 @@ function ph_check_class_inherits($class_name, $inherit_class) {
     }
 
 }
+
+/**
+ * Quickly returns a response code
+ * 
+ * @param int $code The response code
+ * @param string $msg The message to accompany the code
+ */
+function ph_response($code, $msg) {
+    return new PH_ResponseCode($code, $msg);
+}

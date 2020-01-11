@@ -27,4 +27,7 @@ $project_runner = new PH_Project_Runner;
 
 $events->call_event(EVENT_REGISTRY_SETUP);
 
+$database = new PH_DB($config->database_server_name, $config->database_username, $config->getDatabasePassword(), $config->database_database);
+
 unset($__setup__);
+

@@ -9,9 +9,16 @@ class Example_HomepageTemplate extends PH_Template {
     public function renderBody($input_data)
     {
         ?>
-        <h1>What a beautiful homepage, isn't it mister <?= $input_data["name"] ?></h1>
+
+<h1>My blog</h1>
+
+<h3>Featured post:</h3>
+<?php var_dump($input_data) ?>
+
         <?php
     }
+
+    public $title = "Home";
 
 }
 
