@@ -22,4 +22,20 @@ class PH_Query {
         }
     }
 
+    public static function get_user_by_username($username) {
+        global $database;
+
+        $result = $database->query("SELECT * FROM `users` WHERE `username` = ?", [["s", $username]]);
+
+        if($result) {
+            $r = $result[0];
+
+            $user = new PH_User($r["id"], $r["username"], $r["password_hash"]);
+
+            return $user;
+        } else {
+            return false;
+        }
+    }
+
 }

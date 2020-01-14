@@ -1,4 +1,5 @@
 <?php
+session_start();
 /**
  * Phantom CMS
  * Created by Icarus Webservices
@@ -9,12 +10,6 @@ define("PH_VERSION", "1.0.0");
 
 // The root directory of the application
 define("PH_ROOT", dirname(__FILE__) . '/');
-
-// The core directory of the application
-define("PH_CORE", PH_ROOT . 'core/');
-
-// The projects directory
-define("PH_PROJECTS", PH_ROOT . 'projects/');
 
 require_once PH_ROOT . 'ph-setup.php';
 

@@ -33,3 +33,28 @@ function ph_autoload($directory, $exclude_paths = []) {
      }
      
 }
+
+function ph_createdirtree($directory) {
+
+     $result_array = [
+          "__FILES__" => []
+     ];
+
+     foreach (glob($directory . '*') as $path) {
+
+          if(is_dir($path)) {
+
+               $r = ph_createdirtree($path . "/");
+
+               $result_array[$path] = $r;
+
+          } else {
+
+              array_push($result_array["__FILES__"], $path);
+
+          }
+
+     }
+
+     return $result_array;
+}
