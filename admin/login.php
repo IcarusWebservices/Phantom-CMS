@@ -1,48 +1,52 @@
 <?php
-    require "setup.php";
+require "setup.php";
 
-    $method = $_SERVER["REQUEST_METHOD"];
+$method = $_SERVER["REQUEST_METHOD"];
 
-    if(ph_qp_set("redirect")) {
+if(ph_qp_set("redirect")) {
 
-        $qp = ph_qp_get("redirect");
+    $qp = ph_qp_get("redirect");
 
-        if(substr($qp, 0, 1) == "/") $qp = substr($qp, 1);
+    if(substr($qp, 0, 1) == "/") $qp = substr($qp, 1);
 
-        $redirect_point = ph_uri_resolve($qp);
-    } else {
-        $redirect_point = ph_uri_resolve("admin/");
-    }
+    $redirect_point = ph_uri_resolve($qp);
+} else {
+    $redirect_point = ph_uri_resolve("admin/");
+}
 
-    if($method == "POST") {
-        $s = false;
+if(session()->is_logged_in) {
+    ph_redirect($redirect_point);
+}
 
-        if(ph_fp_set(["username", "password"])) {
-            $username = ph_fp_get("username");
-            $password = ph_fp_get("password");
+if($method == "POST") {
+    $s = false;
 
-            $user = session()->authorizeUserByPassword($username, $password);
+    if(ph_fp_set(["username", "password"])) {
+        $username = ph_fp_get("username");
+        $password = ph_fp_get("password");
 
-            if($user) {
-                var_dump($user);
-                session()->setUser($user, $password);
-                $s = true;
-            } else {
-                $s = false;
-            }
+        $user = session()->authorizeUserByPassword($username, $password);
 
+        if($user) {
+            var_dump($user);
+            session()->setUser($user, $password);
+            $s = true;
         } else {
             $s = false;
         }
 
-        if($s) {
-            ph_redirect($redirect_point);
-        } else {
-            ph_redirect("login.php?e=1&redirect=" . $redirect_point);
-        }
     } else {
-
+        $s = false;
     }
+
+    if($s) {
+        ph_redirect($redirect_point);
+    } else {
+        ph_redirect("login.php?e=1&redirect=" . $redirect_point);
+    }
+} else {
+
+}
 
 ?>
 <!DOCTYPE html>

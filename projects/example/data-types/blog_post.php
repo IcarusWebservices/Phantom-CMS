@@ -14,4 +14,7 @@ class Example_BlogPostDataType extends PH_Data_Type {
 
 }
 
-ph_register("@this", "datatypes", "blogpost", "Example_BlogPostDataType");
+ph_register("@this", "datatypes", "blogpost", [
+    "class" => "Example_BlogPostDataType",
+    "displayTitle" => "Blog Posts"
+]);

@@ -50,6 +50,7 @@ class PH_Record {
         $c_class_name = ph_get_registered_item("@this", "datatypes", $this->data_type_name);
 
         if($c_class_name) {
+            $c_class_name = $c_class_name["class"];
             if(class_exists($c_class_name) && ph_check_class_inherits($c_class_name, "PH_Data_Type")) {
 
                 $controller = new $c_class_name;

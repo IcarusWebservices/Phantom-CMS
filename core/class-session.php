@@ -92,6 +92,19 @@ class PH_Session {
     }
 
     /**
+     * Unsets a session variable
+     * 
+     * @param string $name The name of the variable to unset
+     * 
+     * @since 1.0.0
+     */
+    public function unset($name) {
+        if($this->isset($name)) {
+            unset($_SESSION[$name]);
+        }
+    }
+
+    /**
      * Sets the logged in user.
      * 
      * Also switches the session mode from Guest to LoggedIn
@@ -107,6 +120,18 @@ class PH_Session {
 
         $this->set("username", $user->username);
         $this->set("password", $true_password);
+    }
+
+    /**
+     * Unsets the logged-in user
+     * 
+     * (So it basically logs out the user)
+     * 
+     * @since 1.0.0
+     */
+    public function unsetUser() {
+        $this->unset("username");
+        $this->unset("password");
     }
 
 }

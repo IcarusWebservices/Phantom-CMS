@@ -58,3 +58,18 @@ function ph_register($namespace, $category, $name, $value) {
         "value" => $value
     ]);
 }
+
+/**
+ * Returns all the items within an category
+ * 
+ * @param string $namespace The namespace to get the category from
+ * @param string $category  The name of the category
+ * 
+ * @since 1.0.0
+ * 
+ * @return array|null
+ */
+function ph_registry_get_category($namespace, $category) {
+    global $registry;
+    return $registry->getCategory($namespace, $category);
+}

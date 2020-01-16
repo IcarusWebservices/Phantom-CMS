@@ -91,4 +91,22 @@ class PH_Registry {
 
     }
 
+    /**
+     * Returns all the items within an category
+     * 
+     * @param string $namespace The namespace to get the category from
+     * @param string $category  The name of the category
+     * 
+     * @since 1.0.0
+     * 
+     * @return array|null
+     */
+    public function getCategory($namespace, $category) {
+        if(isset($this->registry[$namespace][$category])) {
+            return $this->registry[$namespace][$category];
+        } else {
+            return null;
+        }
+    }
+
 }
