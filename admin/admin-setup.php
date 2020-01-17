@@ -18,7 +18,22 @@ ph_admin_project_loader($project);
 
 $datatypes = ph_registry_get_category("@this", "datatypes");
 
+$menu_items = [];
+
+foreach ($datatypes as $key => $value) {
+    $menu_items[$key] = [
+        "display" => $value["displayTitle"],
+        "url_to" => "data-type-overview.php?datatype=" . $key
+    ];
+}
+
 $menu = [
-    "Dashboard",
-    "Data Types" => $datatypes
+    "item:dashboard" => [
+        "display" => "Dashboard",
+        "url_to" => "index.php"
+    ],
+    "collection:datatypes" => [
+        "display" => "Data",
+        "items" => $menu_items
+    ]
 ];

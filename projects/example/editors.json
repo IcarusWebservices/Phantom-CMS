@@ -1,0 +1,13 @@
+{
+    "datatypes": {
+        "blogpost": {
+            "primary": [
+                {
+                    "editorName": "test-editor",
+                    "exportID": "blogpost-content",
+                    "heading": "Content"
+                }
+            ]
+        }
+    }
+}

@@ -18,4 +18,12 @@ function ph_admin_project_loader($project_name) {
     ph_autoload($project . 'templates/');
 
     require $project . 'routes.php';
+
+    $editors_json = file_get_contents($project . 'editors.json');
+
+    $editors = json_decode($editors_json);
+
+    return [
+        "editors" => $editors
+    ];
 }

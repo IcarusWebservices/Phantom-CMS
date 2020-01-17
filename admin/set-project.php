@@ -14,12 +14,14 @@ if(ph_qp_set("redirect")) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Select a project</title>
-
+    <title>Select a project - Phantom CMS</title>
+    <link rel="stylesheet" type="text/css" href="<?= ph_uri_resolve("admin/css/set-profile.css") ?>">
     <script src="<?= ph_uri_resolve("admin/js/Ajax.js") ?>"></script>
     <script src="<?= ph_uri_resolve("admin/js/Api.js") ?>"></script>
+    <script src="<?= ph_uri_resolve("admin/js/build/build.js") ?>"></script>
 </head>
 <body>
+    <h1>Select a project</h1>
     <ul>
         <?php
         $dirs_glob = glob(PH_PROJECTS . '*');
@@ -29,16 +31,20 @@ if(ph_qp_set("redirect")) {
                 $proj = substr($result, strlen(PH_PROJECTS));
                 ?>
                 <li>
-                    <a href="#" class="select-project" data-set-project-to="<?= $proj ?>"><?= $proj ?></a>
-                    
+                    <a href="#" class="select-project project-item" data-set-project-to="<?= $proj ?>"><?= $proj ?></a>
                 </li>
                 <?php
             }
         }
         ?>
     </ul>
+    <a class="logout" href="<?= ph_uri_resolve("admin/logout.php"); ?>">Log out</a>
     <script>
     
+    ph.AjaxRequest({
+        uri: 'api/projects/set-working-project'
+    });
+
     var ApiInstance = new Api();
 
     document.querySelectorAll('.select-project').forEach(element => {
