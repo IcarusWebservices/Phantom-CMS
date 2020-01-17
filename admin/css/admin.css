@@ -44,3 +44,7 @@ a {
     border-bottom: 1px solid black;
     display: block;
 }
+
+phantom-data {
+    display: none;
+}

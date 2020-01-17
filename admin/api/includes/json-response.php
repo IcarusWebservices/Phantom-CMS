@@ -25,6 +25,10 @@ class PH_JSON_Response {
 
         header("Content-Type: application/json");
 
+        if($this->response_data["error"]) {
+            http_response_code(400);
+        }
+
         echo json_encode($this->response_data);
     }
 

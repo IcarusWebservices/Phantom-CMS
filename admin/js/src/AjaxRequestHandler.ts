@@ -18,6 +18,35 @@ const PhantomAjaxRequest = class {
             const requestData = l.requestData;
 
             let rq = new XMLHttpRequest();
+
+            rq.onreadystatechange = function() {
+                if(this.readyState == 4) {
+                    let result = rq.responseText;
+                    if(this.status == 200) {
+                        resolve({
+                            response: result
+                        });
+                    } else {
+                        reject({
+                            response: result
+                        });
+                    }
+                    
+                }
+            }
+
+            let uri = requestData["uri"];
+            let method = requestData["method"];
+
+            rq.open(method, uri);
+
+            if(requestData["body"]) {
+                rq.send(requestData["body"]);
+            } else {
+                rq.send();
+            }
+
+            
         });
         
     }

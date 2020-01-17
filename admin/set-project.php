@@ -41,25 +41,12 @@ if(ph_qp_set("redirect")) {
     <a class="logout" href="<?= ph_uri_resolve("admin/logout.php"); ?>">Log out</a>
     <script>
     
-    ph.AjaxRequest({
-        uri: 'api/projects/set-working-project'
-    });
-
-    var ApiInstance = new Api();
-
-    document.querySelectorAll('.select-project').forEach(element => {
-        element.addEventListener('click', (e) => {
-            var element = e.target;
-
-            var project = element.dataset.setProjectTo;
-
-            ApiInstance.projectSetWorkingDirectory(project, (r) => {
-                console.log("Yellow!");
-                if(!r.error) {
-                    window.open("<?= $redirect_to ?>", "_self");
-                }
-            });
-        })
+    ph._(".select-project").on("click", (e) => {
+        var element = e.target;
+        var project = element.dataset.setProjectTo;
+        ph.Api.setCurrentWorkingProject(project).then(() => {
+            window.open("<?= $redirect_to ?>", "_self");
+        }).catch( () => console.error("Could not change project to " + project) );
     })
     
     </script>
