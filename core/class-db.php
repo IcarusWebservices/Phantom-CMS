@@ -50,14 +50,44 @@ class PH_DB {
     public function query($query, $binds = []) {
         $stmt = $this->db->prepare($query);
 
+        $types = "";
+
+        // Extremely hacky approach...
+        // NEEDS TO BE REDONE
+        $values = [];
+        $valuesParamNames = "";
+
+        $index = 0;
+
         foreach($binds as $bind) {
             $type = $bind[0];
-            $value = $bind[1];
+            $types .= $type;
 
-            $stmt->bind_param($type, $value);
+            $value = $bind[1];
+            
+            array_push($values, $value);
+            $valuesParamNames .= '$values['. $index .'],';
+            $index++;
         }
 
+        $valuesParamNames = substr($valuesParamNames, 0, strlen($valuesParamNames) - 1);
+
+        // Complete hack approach, do fix
+        $code = '$stmt->bind_param("'. $types .'", '. $valuesParamNames .');';
+
+        // echo "====================== BUG FIXING ====================== <br>";
+        // echo "Original Query: " . $query . " <br>";
+        // echo "Code to evaluate: " . $code;
+        // echo "Values:<br>";
+        // var_dump($values);
+        // echo "<br>";
+        // echo "======================================================== <br>";
+        
+        eval($code);
+
         $stmt->execute();
+
+        // var_dump($stmt->get_result());
 
         $arr = $stmt->get_result()->fetch_all(MYSQLI_ASSOC);
 

@@ -22,6 +22,26 @@ class PH_Query {
         }
     }
 
+    public static function get_record_listing_by_datatype($project, $datatype) {
+        global $database;
+
+        $result = $database->query("SELECT * FROM records WHERE data_type = ? AND project = ? ", [["s", $datatype], ["s", $project]]);
+
+        if($result) {
+
+            $arr = [];
+
+            foreach ($result as $r) {
+                $record = new PH_Record( $r["id"], $r["data_type"], $r["slug"] or null, $r["content"], $r["created_at"], $r["updated_at"] or null, $r["created_by_user"] or null , $r["title"]);
+                array_push($arr, $record);
+            }
+
+            return $arr;
+        } else {
+            return false;
+        }
+    }
+
     public static function get_user_by_username($username) {
         global $database;
 

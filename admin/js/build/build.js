@@ -85,6 +85,14 @@ const ph = {
                     body: formBody
                 }).then(() => resolve()).catch(() => reject());
             });
+        },
+        getRecordsList: function (projectName, dataType) {
+            return new Promise((resolve, reject) => {
+                ph.AjaxRequest({
+                    uri: ph.Constants.API_BASE_URI + `records/${projectName}/${dataType}/list`,
+                    method: 'GET'
+                }).then((response) => resolve(JSON.parse(response["response"]))).catch((response) => resolve(response));
+            });
         }
     },
     Constants: {
@@ -109,7 +117,6 @@ class PhantomSelection {
         this.behaviourClasses = [];
         let l = this;
         selection.forEach(element => {
-            console.log(l);
             l.selection.push(new PhantomElementWrapper(element));
         });
         return this;
@@ -138,10 +145,20 @@ class PhantomTableBehaviour {
     }
     handleTable(tableElement) {
         let allSelector = tableElement._('[type="checkbox"][data-behaviour="tableCheckboxSelectAll"]');
-        return {
-            allSelector: allSelector,
-            element: tableElement
-        };
+        this.reIndexTableRows(tableElement);
+        return {};
+    }
+    reIndexTableRows(tableElement) {
+        const body = tableElement._("tbody");
+        const rows = body.Arr()[0]._("tr").Arr();
+        const l = this;
+        rows.forEach((row, index) => {
+            let cbox = row._('[type="checkbox"][data-behaviour="tableCheckboxSelectRow"]');
+            if (cbox.Arr().length > 0) {
+                let checkbox = cbox.Arr()[0];
+                checkbox.element["dataset"]["tableIndex"] = index;
+            }
+        });
     }
 }
 //# sourceMappingURL=build.js.map

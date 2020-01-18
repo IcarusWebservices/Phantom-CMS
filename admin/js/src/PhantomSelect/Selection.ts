@@ -7,7 +7,7 @@ class PhantomSelection {
         // this.selection = [];
         let l = this;
         selection.forEach(element => {
-            console.log(l);
+            // console.log(l);
             l.selection.push( new PhantomElementWrapper(element) );
         })
         return this;

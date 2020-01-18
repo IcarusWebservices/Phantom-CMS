@@ -36,8 +36,11 @@ class PH_Record {
     // The ID of the user that created the record (Can be null if the record was not specifically created by an user)
     public $created_by_user;
 
+    // The title of the record
+    public $title;
+
     // The constructor method
-    public function __construct($id, $data_type, $slug = null, $content, $created_at, $updated_at = null, $created_by_user = null)
+    public function __construct($id, $data_type, $slug = null, $content, $created_at, $updated_at = null, $created_by_user = null, $title = null)
     {
         $this->id = $id;
         $this->data_type_name = $data_type;
@@ -46,6 +49,7 @@ class PH_Record {
         $this->created_at = $created_at;
         $this->updated_at = $updated_at;
         $this->created_by_user = $created_by_user;
+        $this->title = $title;
 
         $c_class_name = ph_get_registered_item("@this", "datatypes", $this->data_type_name);
 

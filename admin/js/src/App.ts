@@ -27,6 +27,18 @@ const ph = {
                 }).then( () => resolve() ).catch( () => reject() )
             })
 
+        },
+        getRecordsList: function(projectName:string, dataType:string) {
+
+            return new Promise((resolve, reject) => {
+
+                ph.AjaxRequest({
+                    uri: ph.Constants.API_BASE_URI + `records/${projectName}/${dataType}/list`,
+                    method: 'GET'
+                }).then( (response) => resolve(JSON.parse(response["response"])) ).catch( (response) => resolve(response) )
+
+            })
+
         }
 
     },
