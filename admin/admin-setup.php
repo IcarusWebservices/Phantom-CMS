@@ -14,7 +14,7 @@ if(session()->isset("working-project")) {
 
 ph_autoload(PH_ROOT . 'admin/includes/');
 
-ph_admin_project_loader($project);
+$projectVars = ph_admin_project_loader($project);
 
 $datatypes = ph_registry_get_category("@this", "datatypes");
 

@@ -14,7 +14,7 @@ class PH_Query {
         if($result) {
             $r = $result[0];
 
-            $record = new PH_Record( $r["id"], $r["data_type"], $r["slug"] or null, $r["content"], $r["created_at"], $r["updated_at"] or null, $r["created_by_user"] or null );
+            $record = new PH_Record( $r["id"], $r["data_type"], $r["slug"] or null, $r["content"], $r["created_at"], $r["updated_at"] or null, $r["created_by_user"] or null, $r["title"]);
         
             return $record;
         } else {

@@ -36,7 +36,6 @@ ph_admin_template($dt_name, $menu, function() {
         </tr>
     </thead>
     <tbody>
-        
     </tbody>
 </table>
 
@@ -62,12 +61,18 @@ ph_admin_template($dt_name, $menu, function() {
             checkBox.type = "checkbox";
             checkBox.dataset.behaviour = "tableCheckboxSelectRow";
 
+            let clickElement = document.createElement("a");
+            clickElement.setAttribute("href", `record.php?id=${record.id}&action=edit`);
+            clickElement.classList.add("link");
+            clickElement.text = record.title;
+
+
             let cols = [{
                 element: 'td',
                 child: checkBox
             }, {
                 element: 'td',
-                child: document.createTextNode(record.title)
+                child: clickElement
             }, {
                 element: 'td',
                 child: document.createTextNode(record.created_at)

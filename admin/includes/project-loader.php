@@ -19,9 +19,7 @@ function ph_admin_project_loader($project_name) {
 
     require $project . 'routes.php';
 
-    $editors_json = file_get_contents($project . 'editors.json');
-
-    $editors = json_decode($editors_json);
+    $editors = new PH_JSON($project . 'editors.json');
 
     return [
         "editors" => $editors
