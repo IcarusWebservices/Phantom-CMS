@@ -50,6 +50,8 @@ class PH_DB {
     public function query($query, $binds = []) {
         $stmt = $this->db->prepare($query);
 
+        var_dump($stmt);
+
         $types = "";
 
         // Extremely hacky approach...
