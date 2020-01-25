@@ -99,7 +99,7 @@ class PH_DB {
                 return $arr;
             }
         } else {
-            return false;
+            die("MYSQL Error: " . $this->db->error);
         }
 
         
