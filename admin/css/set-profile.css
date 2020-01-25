@@ -28,7 +28,7 @@ header img { height: 2.5rem; }
 	transform: translate(-50%, -50%);
 }
 
-.projects { margin: 3rem; }
+.projects { margin-top: 2rem; margin-bottom: 3rem; }
 .project-item {
 	display: inline-block;
 	width: 200px;
