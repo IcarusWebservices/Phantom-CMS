@@ -87,17 +87,23 @@ class PH_DB {
             eval($code);
     
             $stmt->execute();
-    
+
             // var_dump($stmt->get_result());
-    
-            $arr = $stmt->get_result()->fetch_all(MYSQLI_ASSOC);
-    
-            if(!$arr) {
-                return false;
+            $r = $stmt->get_result();
+
+            if(!is_bool($r)) {
+                $arr = $r->fetch_all(MYSQLI_ASSOC);
+
+                if(!$arr) {
+                    return false;
+                } else {
+                    $stmt->close();
+                    return $arr;
+                }
             } else {
-                $stmt->close();
-                return $arr;
+                return $r;
             }
+            
         } else {
             die("MYSQL Error: " . $this->db->error);
         }

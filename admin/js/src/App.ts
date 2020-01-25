@@ -46,6 +46,8 @@ const ph = {
 
                 let formBody = new FormData;
 
+                formBody.append('exportData', JSON.stringify(editorData));
+
                 ph.AjaxRequest({
                     uri: ph.Constants.API_BASE_URI + `records/update/${id}`,
                     method: 'POST',

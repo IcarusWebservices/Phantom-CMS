@@ -42,7 +42,7 @@ if($method == "POST") {
     if($s) {
         ph_redirect($redirect_point);
     } else {
-        ph_redirect("login.php?e=1&redirect=" . $redirect_point);
+        ph_redirect("admin/login.php?e=1&redirect=" . $redirect_point);
     }
 } else {
 
