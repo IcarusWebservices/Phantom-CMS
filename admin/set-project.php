@@ -21,8 +21,11 @@ if(ph_qp_set("redirect")) {
     <script src="<?= ph_uri_resolve("admin/js/build/build.js") ?>"></script>
 </head>
 <body>
+    <header>
+        <img src="<?= ph_uri_resolve("admin/img/ph-logo-dark.png") ?>" alt="Phantom Logo">
+    </header>
     <h1>Select a project</h1>
-    <ul>
+    <ul class="projects">
         <?php
         $dirs_glob = glob(PH_PROJECTS . '*');
     
