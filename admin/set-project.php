@@ -24,24 +24,26 @@ if(ph_qp_set("redirect")) {
     <header>
         <img src="<?= ph_uri_resolve("admin/img/ph-icon-dark.png") ?>" alt="Phantom Logo">
     </header>
-    <h1>Select a project</h1>
-    <ul class="projects">
-        <?php
-        $dirs_glob = glob(PH_PROJECTS . '*');
-    
-        foreach ($dirs_glob as $result) {
-            if(is_dir($result)) {
-                $proj = substr($result, strlen(PH_PROJECTS));
-                ?>
-                <li>
-                    <a href="#" class="select-project project-item" data-set-project-to="<?= $proj ?>"><?= $proj ?></a>
-                </li>
-                <?php
+    <div class="container">
+        <h1>Select a project</h1>
+        <ul class="projects">
+            <?php
+            $dirs_glob = glob(PH_PROJECTS . '*');
+
+            foreach ($dirs_glob as $result) {
+                if(is_dir($result)) {
+                    $proj = substr($result, strlen(PH_PROJECTS));
+                    ?>
+                    <li>
+                        <a href="#" class="select-project project-item" data-set-project-to="<?= $proj ?>"><?= $proj ?></a>
+                    </li>
+                    <?php
+                }
             }
-        }
-        ?>
-    </ul>
-    <a class="logout" href="<?= ph_uri_resolve("admin/logout.php"); ?>">Log out</a>
+            ?>
+        </ul>
+        <a class="logout" href="<?= ph_uri_resolve("admin/logout.php"); ?>">Log out</a>
+    </div>
     <script>
     
     ph._(".select-project").on("click", (e) => {
