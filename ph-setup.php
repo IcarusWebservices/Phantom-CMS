@@ -22,7 +22,8 @@ require_once PH_CORE . 'ph-constants.php';
 
 $events = new PH_Events;
 
-ph_autoload(PH_CORE . "/", [PH_CORE . 'class-events.php', PH_CORE . 'ph-events.php', PH_CORE . 'ph-events-constants.php']);
+ph_autoload(PH_CORE . "/", [PH_CORE . 'class-events.php', PH_CORE . 'ph-events.php', PH_CORE . 'ph-events-constants.php', PH_CORE . '/editor-fields']);
+ph_autoload(PH_CORE . 'editor-fields/');
 
 require_once PH_ROOT . 'ph-config.php';
 

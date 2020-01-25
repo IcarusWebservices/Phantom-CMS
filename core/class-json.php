@@ -63,4 +63,13 @@ class PH_JSON {
         return $going;
     }
 
+    /**
+     * Gets an item from the json object
+     * 
+     * @since 1.0.0
+     */
+    public function get() {
+        return $this->array;
+    }
+
 }

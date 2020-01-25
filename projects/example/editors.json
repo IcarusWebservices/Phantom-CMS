@@ -6,6 +6,11 @@
                     "editorName": "test-editor",
                     "exportID": "blogpost-content",
                     "heading": "Content"
+                },
+                {
+                    "editorName": "test-editor",
+                    "exportID": "description",
+                    "heading": "Meta description"
                 }
             ]
         }

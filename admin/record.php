@@ -44,12 +44,29 @@ if(ph_qp_set("action")) {
 $editors = $projectVars["editors"];
 
 $res = $editors->checkSet("datatypes", $datatype, "primary");
-var_dump($res);
+
+$primary_fields = $editors->get()->datatypes->$datatype->primary;
 
 ph_admin_template("Record", $menu, function() {
-global $edit_mode_record;
+global $edit_mode_record, $primary_fields;
 ?>
 <h1><?= $edit_mode_record->title; ?></h1>
+<div id="primary">
+    <?php
+
+foreach ($primary_fields as $field) {
+    // var_dump($field);
+    ?>
+    <h2><?= $field->heading ?></h2>
+    <?php
+    ph_admin_get_editor_field($field->editorName, $field->exportID);
+}
+    ?>
+</div>
+<button id="save">Save</button>
+
+<script src="<?= ph_uri_resolve("admin/js/build/build.js") ?>"></script>
+<script src="<?= ph_uri_resolve("admin/js/recordeditor.js") ?>"></script>
 <?php
-})
+}, "collection:datatypes", $datatype)
 ?>

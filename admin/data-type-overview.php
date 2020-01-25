@@ -19,7 +19,7 @@ if(!$dt_retr) {
 $dt_name = $dt_retr["displayTitle"];
 
 ph_admin_template($dt_name, $menu, function() {
-    global $dt_name, $dt_id;
+    global $dt_name, $dt_id, $project;
 ?>
 <phantom-data>
     <variable name="data-type-id"><?= $dt_id ?></variable>
@@ -36,70 +36,22 @@ ph_admin_template($dt_name, $menu, function() {
         </tr>
     </thead>
     <tbody>
+    <?php
+        $records = PH_Query::get_record_listing_by_datatype($project, $dt_id);
+
+        foreach ($records as $record) {
+            $time = new DateTime($record->created_at);
+            ?>
+            <tr>
+                <th><input type="checkbox" data-behaviour="tableCheckboxSelectThisRow"></th>
+                <th><a class="link" href="<?= ph_uri_resolve("admin/record.php?action=edit&id=" . $record->id) ?>"><?= $record->title ?></a></th>
+                <th><?= $time->format("l d F Y") . " at " . $time->format("g:i a") ?></th>
+            </tr>
+            <?php
+        }
+    ?>
     </tbody>
 </table>
-
-<script src="<?= ph_uri_resolve("admin/js/build/build.js") ?>"></script>
-<script>
-
-    // let selection = ph._("#entries-table").behaviour(new PhantomTableBehaviour())
-    
-    let recordsTable = ph._("#records-table");
-
-    let body = recordsTable.Arr()[0]._("tbody");
-    let rows = body.Arr()[0]._("tr");
-
-    let records = ph.Api.getRecordsList("example", "blogpost").then((response) => {
-
-        let records = response.data;
-        console.log(response);
-        records.forEach(record => {
-
-            let rowElement = document.createElement("tr");
-
-            let checkBox = document.createElement("input");
-            checkBox.type = "checkbox";
-            checkBox.dataset.behaviour = "tableCheckboxSelectRow";
-
-            let clickElement = document.createElement("a");
-            clickElement.setAttribute("href", `record.php?id=${record.id}&action=edit`);
-            clickElement.classList.add("link");
-            clickElement.text = record.title;
-
-
-            let cols = [{
-                element: 'td',
-                child: checkBox
-            }, {
-                element: 'td',
-                child: clickElement
-            }, {
-                element: 'td',
-                child: document.createTextNode(record.created_at)
-            }];
-
-            cols.forEach(collumn => {
-                let element = document.createElement(collumn.element);
-                let child = collumn.child;
-
-                element.appendChild(child);
-
-                rowElement.appendChild(element);
-            })
-
-            body.Arr()[0].element.appendChild(rowElement);
-        })
-
-        
-    }).catch((response) => {
-        console.log(response);
-    });
-
-    
-
-    
-
-</script>
 <?php
 }, "collection:datatypes", $dt_id);
 

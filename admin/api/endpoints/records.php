@@ -38,12 +38,32 @@ class Api_Endpoint_Records extends PH_Endpoint {
         }
     }
 
+    public function updateRecord($parameters) {
+        if(session()->is_logged_in) {
+
+            $id         = $parameters["id"];
+
+            $previousRecord = PH_Query::get_record_by_id($id);
+
+            $previousRecord->title = "Dit is een geupdate title";
+            $previousRecord->content = "Whoopidiewhoop";
+
+            PH_Query::update_record($previousRecord);
+
+            var_dump($_POST);
+
+        } else {
+            json_response(true, null, "auth:not_logged_in");
+        }
+    }
+
 }
 
 
 ph_register("@api", "endpoints", "records", [
     "class" => "Api_Endpoint_Records",
     "routes" => [
-        "/:project/:dataType/list" => "getRecordListing"
+        "/:project/:dataType/list" => "getRecordListing",
+        "/update/:id" => "updateRecord"
     ]
 ]);

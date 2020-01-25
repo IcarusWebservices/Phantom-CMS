@@ -38,7 +38,7 @@ function ph_admin_template($title, $menu, $content, $current_id = null, $current
 
                     case "collection":
                         ?>
-                        <li class="menu-item <?= $a ?>"><?= $value["display"] ?> ↓</li>
+                        <li class="menu-item <?= $a ?>"><span class="menu-sub-items-title"><?= $value["display"] ?> ↓</span>
                         <ul>
                     
                         <?php
@@ -58,6 +58,7 @@ function ph_admin_template($title, $menu, $content, $current_id = null, $current
                         ?>
 
                         </ul>
+                        </li>
                         <?php
                     break;
 

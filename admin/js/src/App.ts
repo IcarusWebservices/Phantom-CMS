@@ -39,6 +39,21 @@ const ph = {
 
             })
 
+        },
+        updateRecord: function(projectName:string, id:number, editorData:Object) {
+
+            return new Promise((resolve, reject) => {
+
+                let formBody = new FormData;
+
+                ph.AjaxRequest({
+                    uri: ph.Constants.API_BASE_URI + `records/update/${id}`,
+                    method: 'POST',
+                    body: formBody
+                }).then( (response) => resolve(response) ).catch( (response) => reject(response) )
+
+            });
+
         }
 
     },

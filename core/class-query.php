@@ -14,7 +14,7 @@ class PH_Query {
         if($result) {
             $r = $result[0];
 
-            $record = new PH_Record( $r["id"], $r["data_type"], $r["slug"] or null, $r["content"], $r["created_at"], $r["updated_at"] or null, $r["created_by_user"] or null, $r["title"]);
+            $record = new PH_Record( $r["id"], $r["data_type"], $r["slug"] or null, $r["content"], $r["created_at"], $r["updated_at"] or null, $r["created_by_user"] or null , $r["title"], $r["project"] );
         
             return $record;
         } else {
@@ -32,7 +32,7 @@ class PH_Query {
             $arr = [];
 
             foreach ($result as $r) {
-                $record = new PH_Record( $r["id"], $r["data_type"], $r["slug"] or null, $r["content"], $r["created_at"], $r["updated_at"] or null, $r["created_by_user"] or null , $r["title"]);
+                $record = new PH_Record( $r["id"], $r["data_type"], $r["slug"] or null, $r["content"], $r["created_at"], $r["updated_at"] or null, $r["created_by_user"] or null , $r["title"], $r["project"]);
                 array_push($arr, $record);
             }
 
@@ -40,6 +40,16 @@ class PH_Query {
         } else {
             return false;
         }
+    }
+
+    public static function update_record($record) {
+        global $database;
+
+        $query = "UPDATE `records` SET slug = ?, content = ?, updated_at = CURRENT_TIMESTAMP(), title = ? WHERE `id` = ?";
+
+        $r = $database->query($query, [["s", $record->slug], ["s", $record->content], ["s", $record->title], ["i", $record->id]]);
+
+        return $r;
     }
 
     public static function get_user_by_username($username) {

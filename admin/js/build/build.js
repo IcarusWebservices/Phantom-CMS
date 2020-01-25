@@ -93,6 +93,16 @@ const ph = {
                     method: 'GET'
                 }).then((response) => resolve(JSON.parse(response["response"]))).catch((response) => resolve(response));
             });
+        },
+        updateRecord: function (projectName, id, editorData) {
+            return new Promise((resolve, reject) => {
+                let formBody = new FormData;
+                ph.AjaxRequest({
+                    uri: ph.Constants.API_BASE_URI + `records/update/${id}`,
+                    method: 'POST',
+                    body: formBody
+                }).then((response) => resolve(response)).catch((response) => reject(response));
+            });
         }
     },
     Constants: {

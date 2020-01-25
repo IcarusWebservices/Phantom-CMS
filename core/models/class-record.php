@@ -39,8 +39,11 @@ class PH_Record {
     // The title of the record
     public $title;
 
+    // The project of the record
+    public $project;
+
     // The constructor method
-    public function __construct($id, $data_type, $slug = null, $content, $created_at, $updated_at = null, $created_by_user = null, $title = null)
+    public function __construct($id, $data_type, $slug = null, $content, $created_at, $updated_at = null, $created_by_user = null, $title = null, $project = null)
     {
         $this->id = $id;
         $this->data_type_name = $data_type;
@@ -50,6 +53,7 @@ class PH_Record {
         $this->updated_at = $updated_at;
         $this->created_by_user = $created_by_user;
         $this->title = $title;
+        $this->project = $project;
 
         $c_class_name = ph_get_registered_item("@this", "datatypes", $this->data_type_name);
 
