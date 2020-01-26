@@ -64,6 +64,7 @@ if($method == "POST") {
     </div>
     <div class="login-box">
         <form method="POST">
+            <h1>Phantom</h1>
             <div class="field">
                 <label for="username">Username</label>
                 <input type="text" name="username" id="login-username">
