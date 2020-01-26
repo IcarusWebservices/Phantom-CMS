@@ -41,16 +41,21 @@ class Api_Endpoint_Records extends PH_Endpoint {
     public function updateRecord($parameters) {
         if(session()->is_logged_in) {
 
-            $id         = $parameters["id"];
+            if(ph_fp_set("exportData")) {
 
-            $previousRecord = PH_Query::get_record_by_id($id);
+                $ed = ph_fp_get("exportData");
 
-            $previousRecord->title = "Dit is een geupdate title";
-            $previousRecord->content = "Whoopidiewhoop";
+                $json = json_decode($ed);
 
-            PH_Query::update_record($previousRecord);
+                if($json) {
+                    $o = new PH_JSON(null, $ed);
+                } else {
+                    json_response(true, null, "Parameter 'exportData' is not in JSON format");
+                }
 
-            var_dump($_POST);
+            } else {
+                json_response(true, null, "Missing required form parameter 'exportData'");
+            }
 
         } else {
             json_response(true, null, "auth:not_logged_in");

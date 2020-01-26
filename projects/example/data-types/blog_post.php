@@ -6,10 +6,14 @@
  */
 class Example_BlogPostDataType extends PH_Data_Type {
 
-    public function process_content($content) {
+    public function processContent($content) {
         return [
             "content" => $content
         ];
+    }
+
+    public function editorDataToRecord($input) {
+        var_dump($input);
     }
 
 }

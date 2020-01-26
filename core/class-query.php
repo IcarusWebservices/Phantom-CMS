@@ -68,4 +68,39 @@ class PH_Query {
         }
     }
 
+    /**
+     * Returns an array of meta tags of a specific reference ID and project
+     * 
+     * @param string $reference_id The reference ID of the meta tag.
+     * @param string $project      The name of the project.
+     * 
+     * @since 1.0.0
+     * 
+     * @return array|false
+     */
+    public static function get_meta_tags_by_reference($reference_id, $project) {
+        global $database;
+
+        $result = $database->query('SELECT * FROM `meta` WHERE project = ? AND reference_id = ?', [["s", $project], ["s", $reference_id]]);
+
+        if($result) {
+
+            $finalArray = [];
+
+            foreach ($result as $row) {
+                $arr = [
+                    "type" => $row["type"],
+                    "content" => $row["value"]
+                ];
+
+                array_push($finalArray, $arr);
+            }
+
+            return $finalArray;
+
+        } else {
+            return false;
+        }
+    }
+
 }

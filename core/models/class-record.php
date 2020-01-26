@@ -83,7 +83,7 @@ class PH_Record {
             $unparsed_content = $this->unparsed_content;
             $controller = $this->data_type_controller;
 
-            $parsed = $controller->process_content($unparsed_content);
+            $parsed = $controller->processContent($unparsed_content);
 
             $this->parsed_content = $parsed;
         }

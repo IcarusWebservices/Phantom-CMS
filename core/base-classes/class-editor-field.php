@@ -6,7 +6,7 @@
  * 
  * @since 1.0.0
  */
-abstract class PH_Editor_Field {
+abstract class PH_Editor_Field extends PH_BASE {
 
     /**
      * This method must render the editor field

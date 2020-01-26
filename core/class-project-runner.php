@@ -78,7 +78,7 @@ class PH_Project_Runner {
                 $c = $spl[0];
                 $m = $spl[1];
 
-                $cont = $loader->getController($c);
+                $cont = $loader->getController($c, $this->running_project);
 
                 if($cont) {
 

@@ -7,7 +7,7 @@
  * @since 1.0.0
  * @abstract
  */
-abstract class PH_Controller {
+abstract class PH_Controller extends PH_BASE {
 
     /**
      * The index method must always be set.

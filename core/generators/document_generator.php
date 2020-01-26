@@ -7,6 +7,18 @@
  * @since 1.0.0
  */
 function ph_document_generator($template) {
+    global $project_runner;
+
+    $referenceID = $template->reference_id;
+
+    if($referenceID) {
+        $project = $project_runner->running_project;
+
+        $metaTags = PH_Query::get_meta_tags_by_reference($referenceID, $project);
+
+        
+    }
+
     ?>
     <!DOCTYPE html>
     <html lang="en">

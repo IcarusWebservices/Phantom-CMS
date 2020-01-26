@@ -50,7 +50,7 @@ $primary_fields = $editors->get()->datatypes->$datatype->primary;
 ph_admin_template("Record", $menu, function() {
 global $edit_mode_record, $primary_fields;
 ?>
-<h1><?= $edit_mode_record->title; ?></h1>
+<h1>Edit - <?= $edit_mode_record->title; ?></h1>
 <div id="primary">
     <?php
 

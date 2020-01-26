@@ -4,7 +4,7 @@
  * 
  * @since 1.0.0
  */
-abstract class PH_Data_Type {
+abstract class PH_Data_Type extends PH_BASE {
 
     /**
      * Should process the content.
@@ -14,8 +14,19 @@ abstract class PH_Data_Type {
      * 
      * @since 1.0.0
      */
-    public function process_content($content) {
-        return null;
-    }
+    public abstract function processContent($content);
+
+    /**
+     * Takes in the input data from the editor on either a 'new save' or 'edit save'.
+     * 
+     * Should return a PH_Record object. 
+     * 
+     * @param PH_JSON $input The data from the editor
+     * 
+     * @return PH_Record
+     * 
+     * @since 1.0.0
+     */
+    public abstract function editorDataToRecord($input);
 
 }

@@ -7,7 +7,7 @@
  * @since 1.0.0
  * @abstract
  */
-abstract class PH_Template {
+abstract class PH_Template extends PH_BASE {
 
     /**
      * Is called whenever the template is being rendered.
@@ -30,6 +30,26 @@ abstract class PH_Template {
      * This data is transfered to the renderBody method in the form of the first argument
      */
     protected $assigned_data = [];
+
+    /**
+     * The reference ID, for retrieving Meta tags from the database
+     * 
+     * @since 1.0.0
+     */
+    public $reference_id = null;
+
+    /**
+     * Sets the reference ID to a specific value
+     * 
+     * @param string $reference_id The new reference ID
+     * 
+     * @since 1.0.0
+     * 
+     * @return void
+     */
+    public function setReferenceID($reference_id) {
+        $this->reference_id = $reference_id;
+    }
 
     /**
      * The title of the webpage.
