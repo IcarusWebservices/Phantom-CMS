@@ -27,7 +27,7 @@ ph_admin_template($dt_name, $menu, function() {
 
 <h1><?= $dt_name ?></h1>
 
-<table id="records-table">
+<table rules="all" id="records-table">
     <thead>
         <tr>
             <th><input type="checkbox" data-behaviour="tableCheckboxSelectAll"></th>
@@ -43,9 +43,9 @@ ph_admin_template($dt_name, $menu, function() {
             $time = new DateTime($record->created_at);
             ?>
             <tr>
-                <th><input type="checkbox" data-behaviour="tableCheckboxSelectThisRow"></th>
-                <th><a class="link" href="<?= ph_uri_resolve("admin/record.php?action=edit&id=" . $record->id) ?>"><?= $record->title ?></a></th>
-                <th><?= $time->format("l d F Y") . " at " . $time->format("g:i a") ?></th>
+                <td><input type="checkbox" data-behaviour="tableCheckboxSelectThisRow"></td>
+                <td><a class="link" href="<?= ph_uri_resolve("admin/record.php?action=edit&id=" . $record->id) ?>"><?= $record->title ?></a></td>
+                <td><?= $time->format("l d F Y") . " at " . $time->format("g:i a") ?></td>
             </tr>
             <?php
         }
