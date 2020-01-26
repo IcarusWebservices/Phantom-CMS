@@ -39,12 +39,12 @@ header img { height: 2.5rem; }
 	background-color: #eee;
 	color: black;
 	box-sizing: border-box;
-	transition: transform 400ms easeOutCubic;
+	transition: transform 400ms cubic-bezier(0.22, 0.61, 0.36, 1);
 }
 .project-item:not(:last-child) { margin-right: 20px; }
 
 .project-item:hover {
-	transform: scale(1.05);
+	transform: scale(1.03);
 }
 
 .logout {
