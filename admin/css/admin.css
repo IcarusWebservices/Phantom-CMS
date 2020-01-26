@@ -1,28 +1,25 @@
+*, *::before, *::after {
+    margin: 0 auto;
+    padding: 0;
+}
+
+ul { list-style: none; margin: 0; padding: 0; }
+a { text-decoration: none; color: inherit; }
+
 .menu {
+    position: fixed;
     height: 100%;
     width: 200px;
-    position: fixed;
     z-index: 1;
     top: 0;
     left: 0;
     background-color: #111;
     overflow-x: hidden;
-    padding-top: 20px;
+    padding-top: 2rem;
 }
 
 .content {
     margin-left: 200px;
-}
-
-ul {
-    list-style: none;
-    margin: 0;
-    padding: 0;
-}
-
-a {
-    text-decoration: none;
-    color: inherit;
 }
 
 .menu-item {
@@ -38,8 +35,8 @@ a {
     display: inline-block;
 }
 
-.active {
-    background-color: rgb(126, 255, 115) !important;
+.menu-item.active {
+    background-color: rgb(126, 255, 115);
 }
 
 .menu-sub-item {
