@@ -60,7 +60,7 @@ if($method == "POST") {
 </head>
 <body>
     <div class="illustration">
-        <img src="/admin/img/ph-spooked.png" alt="Phantom Logo">
+        <img src="/admin/img/ph-spooked.png" alt="Phantom illustration">
     </div>
     <div class="login-box">
         <form method="POST">
