@@ -59,6 +59,9 @@ if($method == "POST") {
     <title>Authorize</title>
 </head>
 <body>
+    <div class="illustration">
+        <img src="/admin/img/ph-spooked.png" alt="Phantom Logo">
+    </div>
     <div class="login-box">
         <form method="POST">
             <div class="field">
@@ -69,6 +72,7 @@ if($method == "POST") {
                 <label for="password">Password</label>
                 <input type="password" name="password" id="login-password">
             </div>
+            <a href="#" class="forgot-password">Forgot password?</a>
             <input type="submit" value="Login">
         </form>
     </div>
