@@ -22,7 +22,7 @@ if(ph_qp_set("redirect")) {
 </head>
 <body>
     <header>
-        <img src="<?= ph_uri_resolve("admin/img/ph-icon-dark.png") ?>" alt="Phantom Logo">
+        <img src="<?= ph_uri_resolve("admin/img/ph-icon-light.png") ?>" alt="Phantom Logo">
     </header>
     <div class="container">
         <h1>Select a project</h1>
