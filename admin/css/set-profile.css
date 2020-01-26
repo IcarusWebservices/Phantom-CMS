@@ -39,8 +39,13 @@ header img { height: 2.5rem; }
 	background-color: #eee;
 	color: black;
 	box-sizing: border-box;
+	transition: transform 400ms easeOutCubic;
 }
 .project-item:not(:last-child) { margin-right: 20px; }
+
+.project-item:hover {
+	transform: scale(1.05);
+}
 
 .logout {
 	display: inline-block;
