@@ -57,3 +57,16 @@ phantom-data {
     text-decoration: underline;
     color: blue;
 }
+
+table {
+    margin: 0;
+    border: 1px solid #666;
+}
+
+td,th {
+    padding: 15px;
+}
+
+thead {
+    background-color: #eee;
+}
