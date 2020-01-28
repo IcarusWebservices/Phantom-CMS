@@ -80,7 +80,7 @@ input[type=submit] {
 input[type=submit]:hover { background-color: #29cc8d; }
 input[type=submit]:focus { outline: none; }
 
-.forgot-password { font-size: 14px; line-height: 35px; color: #a9a9a9; transition: 200ms ease-in-out; }
+.forgot-password { font-size: 14px; line-height: 35px; color: #a9a9a9; transition: 150ms ease-in-out; }
 .forgot-password:hover { color: #333; }
 
 @media only screen and (max-width: 1200px) {
