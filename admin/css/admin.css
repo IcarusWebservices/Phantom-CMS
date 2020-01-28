@@ -41,11 +41,25 @@ Sidebar
     width: var(--menu-width);
     top: 0;
     left: 0;
-    padding-top: 2rem;
     background-color: var(--menu-background-color);
     color: #aaa;
     overflow-x: hidden;
     z-index: 1;
+    transition: 200ms ease;
+}
+
+/* Menu width logic */
+.menu.hidden { width: 0; }
+.menu.hidden ~ .content { margin-left: 0; }
+
+.menu-burger {
+    display: inline-block;
+    margin: 8px 1rem;
+}
+
+.menu-burger::after {
+    content: '\2630';
+    font-size: 30px;
 }
 
 .menu-item {
@@ -115,6 +129,7 @@ Content
     margin-left: var(--menu-width);
     padding: 2rem;
     box-sizing: border-box;
+    transition: 200ms ease;
 }
 
 table {
