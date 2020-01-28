@@ -82,13 +82,28 @@ function ph_admin_template($title, $menu, $content, $current_id = null, $current
         const sidebarBurger = document.querySelector('.menu-burger');
         const accordionTitles = document.querySelector('.accordion-title');
 	var menuState = 1; // 1 = visible, 0 = hidden
+	    
+	function menuStateWidth() {
+		if (window.innerWidth <= 768) {
+			sidebar.classList.add('hidden');
+			menuState = 0;
+		} else {
+			sidebar.classList.remove('hidden');
+			menuState = 1;
+		}
+	}
+	    
+	menuStateWidth();
+	console.log('%c Intiated menuState = ' + menuState, 'color: green;');
         
         sidebarBurger.onclick = () => {
 	        // sidebar.classList.toggle('hidden'); // Deprecated for this purpose because the class may already exist due to the function menuStateWidth().
 		if (menuState = 1) {
+			console.log('%c Current menuState = ' + menuState, 'color: red;');
 			sidebar.classList.add('hidden');
 			menuState = 0;
 		} else {
+			console.log('%c Current menuState = ' + menuState, 'color: red;');
 			sidebar.classList.remove('hidden');
 			menuState = 1;
 		}
@@ -100,20 +115,7 @@ function ph_admin_template($title, $menu, $content, $current_id = null, $current
             }
         }
 	
-	
-	function menuStateWidth() {
-		if (window.innerWidth <= 768) {
-			sidebar.classList.add('hidden');
-			menuState = 0;
-		} else {
-			sidebar.classList.remove('hidden');
-			menuState = 1;
-		}
-	}
-
-	menuStateWidth();
 	window.onresize = menuStateWidth();
-
     </script>
 </body>
 </html>
