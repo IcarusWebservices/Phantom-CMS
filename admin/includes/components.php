@@ -71,6 +71,9 @@ function ph_admin_template($title, $menu, $content, $current_id = null, $current
         </ul>
     </nav>
     <div class="content">
+	<div class="actionbar">
+		<div class="signout"><i class="fas fa-sign-out-alt"></i>Logout</div>
+	</div>
     <?php
     $content();
     ?>
