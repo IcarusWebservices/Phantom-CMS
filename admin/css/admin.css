@@ -60,18 +60,9 @@ Sidebar
     margin: 8px 1rem;
 }
 
-.menu-burger::after {
-    content: '\2A09';
-    font-size: 30px;
-}
-
-.menu.hidden .menu-burger::after {
-    content: '\2630';
-}
-
-.menu > ul {
-    margin-top: 57px;
-}
+.menu-burger::after { content: '\2A09'; font-size: 30px; }
+.menu.hidden .menu-burger::after { content: '\2630'; }
+.menu > ul { margin-top: 57px; }
 
 .menu-item {
     display: block;
