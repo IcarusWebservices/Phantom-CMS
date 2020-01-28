@@ -77,7 +77,13 @@ function ph_admin_template($title, $menu, $content, $current_id = null, $current
     <script>
         console.log('%c Phantom – Javascript initiated!', 'color: #29cc8d; font-weight: bold;');
 
+        const sidebar = document.querySelector('.menu');
+        const sidebarBurger = document.querySelector('.menu-burger');
         const accordionTitles = document.querySelector('.accordion-title');
+        
+        sidebarBurger.onclick = () => {
+	        sidebar.classList.toggle('hidden');
+        }
 
         accordionTitles.onclick = (event) => {
             if (!event.target.classList.contains('active')) {
