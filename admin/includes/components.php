@@ -91,21 +91,21 @@ function ph_admin_template($title, $menu, $content, $current_id = null, $current
 			sidebar.classList.remove('hidden');
 			menuState = 1;
 		}
+		console.log('%c Resized menuState = ' + menuState, 'color: green;');
 	}
 	    
 	menuStateWidth();
-	console.log('%c Intiated menuState = ' + menuState, 'color: green;');
         
         sidebarBurger.onclick = () => {
 	        // sidebar.classList.toggle('hidden'); // Deprecated for this purpose because the class may already exist due to the function menuStateWidth().
-		if (menuState = 1) {
-			console.log('%c Current menuState = ' + menuState, 'color: red;');
+		if (menuState == 1) {
 			sidebar.classList.add('hidden');
 			menuState = 0;
+			console.log('%c New menuState = ' + menuState, 'color: red;');
 		} else {
-			console.log('%c Current menuState = ' + menuState, 'color: red;');
 			sidebar.classList.remove('hidden');
 			menuState = 1;
+			console.log('%c New menuState = ' + menuState, 'color: red;');
 		}
         }
 
