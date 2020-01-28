@@ -59,7 +59,7 @@ Sidebar
 }
 
 .menu-burger::after {
-    content: '\1F5D9';
+    content: '\2A09';
     font-size: 30px;
 }
 
