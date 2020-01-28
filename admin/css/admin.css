@@ -125,11 +125,27 @@ Sidebar
 
 
 /* ------------------------------
+Actionbar
+------------------------------ */
+.actionbar {
+    height: 4rem;
+    width: calc(100% + 4rem);
+    margin-top: -2rem;
+    margin-left: -2rem;
+    padding: 1rem 2rem;
+    box-sizing: border-box;
+    line-height: 2rem;
+}
+.logout { float: right; }
+.logout-icon { width: 1rem; margin-right: 8px; }
+
+
+/* ------------------------------
 Content
 ------------------------------ */
 .content {
     margin-left: var(--menu-width);
-    margin-top: 27px;
+    /*margin-top: 27px;*/
     padding: 2rem;
     box-sizing: border-box;
     transition: 200ms ease;

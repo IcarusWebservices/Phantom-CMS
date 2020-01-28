@@ -71,6 +71,9 @@ function ph_admin_template($title, $menu, $content, $current_id = null, $current
         </ul>
     </nav>
     <div class="content">
+	    <div class="actionbar">
+    		<a class="logout" href="logout.php"><img class="logout-icon" src="img/logout-icon.svg" alt="Logout"><span>Logout</span></a>
+    	</div>
     <?php
     $content();
     ?>
