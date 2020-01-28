@@ -12,6 +12,7 @@ function ph_admin_template($title, $menu, $content, $current_id = null, $current
 </head>
 <body>
     <nav class="menu">
+	<div id="menu-burger" style="margin: 8px 1rem;display: inline-block;"></div>
         <ul>
             <?php
 
