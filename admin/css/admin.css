@@ -159,7 +159,19 @@ td,th {
 
 phantom-data { display: none; }
 
+
 @media only screen and (max-width: 768px) {
-    .menu { width: 0; }
-    .content { margin-left: 0; }
+    /* Menu styling only when the page has just been loaded and the menu button has not yet been pressed.*/
+    /*.menu { width: 0; }
+    .content { margin-left: 0; }*/
+    
+    /* The same menu width logic as above, put here for reference */
+    /*.menu.hidden { width: 0; }
+    .menu.hidden ~ .content { margin-left: 0; }*/
+    
+    /* Menu styling when the menu button has been pressed */
+    /*.menu { width: var(--menu-width); }
+    .content { margin-left: var(--menu-width); }*/
 }
+
+
