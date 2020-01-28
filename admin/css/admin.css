@@ -172,6 +172,10 @@ phantom-data { display: none; }
     /* Menu styling when the menu button has been pressed */
     /*.menu { width: var(--menu-width); }
     .content { margin-left: var(--menu-width); }*/
+    
+    .content {
+        width: 100vw;
+    }
 }
 
 
