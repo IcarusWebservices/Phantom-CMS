@@ -11,7 +11,7 @@ function ph_admin_template($title, $menu, $content, $current_id = null, $current
     <title><?= $title ?> • Phantom CMS</title>
 </head>
 <body>
-    <div class="menu">
+    <nav class="menu">
         <ul>
             <?php
 
@@ -38,7 +38,7 @@ function ph_admin_template($title, $menu, $content, $current_id = null, $current
 
                     case "collection":
                         ?>
-                        <li class="menu-item <?= $a ?>"><span class="menu-sub-items-title"><?= $value["display"] ?> ↓</span>
+                        <li class="accordion"><span class="accordion-title <?= $a ?>"><?= $value["display"] ?></span>
                         <ul>
                     
                         <?php
@@ -52,7 +52,7 @@ function ph_admin_template($title, $menu, $content, $current_id = null, $current
                             }
 
                             ?>
-                            <li><a class="menu-sub-item <?= $a2 ?>" href="<?= ph_uri_resolve("admin/" . $value2["url_to"]) ?>"><?= $value2["display"] ?></a></li>
+                            <li><a class="accordion-item <?= $a2 ?>" href="<?= ph_uri_resolve("admin/" . $value2["url_to"]) ?>"><?= $value2["display"] ?></a></li>
                             <?php
                         }
                         ?>
@@ -68,12 +68,24 @@ function ph_admin_template($title, $menu, $content, $current_id = null, $current
 
             ?>
         </ul>
-    </div>
+    </nav>
     <div class="content">
     <?php
     $content();
     ?>
     </div>
+    <script>
+        console.log('%c Phantom – Javascript initiated!', 'color: #29cc8d; font-weight: bold;');
+
+        const accordionTitles = document.querySelector('.accordion-title');
+
+        accordionTitles.onclick = (event) => {
+            if (!event.target.classList.contains('active')) {
+                event.target.classList.toggle('clicked');
+            }
+        }
+
+    </script>
 </body>
 </html>
     <?php
