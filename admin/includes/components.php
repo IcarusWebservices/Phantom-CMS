@@ -91,7 +91,6 @@ function ph_admin_template($title, $menu, $content, $current_id = null, $current
 			sidebar.classList.remove('hidden');
 			menuState = 1;
 		}
-		console.log('%c Resized menuState = ' + menuState, 'color: green;');
 	}
 	    
 	menuStateWidth();
@@ -105,7 +104,7 @@ function ph_admin_template($title, $menu, $content, $current_id = null, $current
 		} else {
 			sidebar.classList.remove('hidden');
 			menuState = 1;
-			console.log('%c New menuState = ' + menuState, 'color: red;');
+			console.log('%c New menuState = ' + menuState, 'color: green;');
 		}
         }
 
