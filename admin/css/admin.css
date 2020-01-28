@@ -53,6 +53,7 @@ Sidebar
 .menu.hidden ~ .content { margin-left: 0; }
 
 .menu-burger {
+    position: fixed;
     display: inline-block;
     margin: 8px 1rem;
 }
@@ -60,6 +61,10 @@ Sidebar
 .menu-burger::after {
     content: '\2630';
     font-size: 30px;
+}
+
+.menu > ul {
+    margin-top: 57px;
 }
 
 .menu-item {
@@ -127,6 +132,7 @@ Content
 ------------------------------ */
 .content {
     margin-left: var(--menu-width);
+    margin-top: 27px;
     padding: 2rem;
     box-sizing: border-box;
     transition: 200ms ease;
