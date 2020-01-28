@@ -158,3 +158,8 @@ td,th {
 }
 
 phantom-data { display: none; }
+
+@media only screen and (max-width: 768px) {
+    .menu { width: 0; }
+    .content { margin-left: 0; }
+}
