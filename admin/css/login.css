@@ -97,5 +97,12 @@ input[type=submit]:focus { outline: none; }
     height: 100%;
     border-radius: 0px;
   }
-  input[type=text], input[type=password] { width: calc(100% - 3rem); }
+  .login-box input[type=text], .login-box input[type=password] { width: calc(100% - 3rem); }
+
+  .login-box form {
+    position: absolute;
+    top: 40%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
 }
