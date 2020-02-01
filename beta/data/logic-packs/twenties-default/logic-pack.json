@@ -1,0 +1,22 @@
+{
+    "logicPackName": "Twenties Default Logic Pack",
+    "routes": {
+        "/:page": {
+            "controller": "Twenties_Page",
+            "method": "index",
+            "checkerFunction": "page_exists",
+            "importance": 20
+        }
+    },
+    "editors": {
+        "record_types": {
+            "a": {
+                "primary": [
+                    {
+                        
+                    }
+                ]
+            }
+        }
+    }
+}
