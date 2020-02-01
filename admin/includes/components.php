@@ -11,7 +11,8 @@ function ph_admin_template($title, $menu, $content, $current_id = null, $current
     <title><?= $title ?> • Phantom CMS</title>
 </head>
 <body>
-    <div class="menu">
+    <nav class="menu">
+	<div class="menu-burger"></div>
         <ul>
             <?php
 
@@ -38,7 +39,7 @@ function ph_admin_template($title, $menu, $content, $current_id = null, $current
 
                     case "collection":
                         ?>
-                        <li class="menu-item <?= $a ?>"><span class="menu-sub-items-title"><?= $value["display"] ?> ↓</span>
+                        <li class="accordion"><span class="accordion-title <?= $a ?>"><?= $value["display"] ?></span>
                         <ul>
                     
                         <?php
@@ -52,7 +53,7 @@ function ph_admin_template($title, $menu, $content, $current_id = null, $current
                             }
 
                             ?>
-                            <li><a class="menu-sub-item <?= $a2 ?>" href="<?= ph_uri_resolve("admin/" . $value2["url_to"]) ?>"><?= $value2["display"] ?></a></li>
+                            <li><a class="accordion-item <?= $a2 ?>" href="<?= ph_uri_resolve("admin/" . $value2["url_to"]) ?>"><?= $value2["display"] ?></a></li>
                             <?php
                         }
                         ?>
@@ -68,12 +69,56 @@ function ph_admin_template($title, $menu, $content, $current_id = null, $current
 
             ?>
         </ul>
-    </div>
+    </nav>
     <div class="content">
+	    <div class="actionbar">
+    		<a class="logout" href="logout.php"><img class="logout-icon" src="img/logout-icon.svg" alt="Logout"><span>Logout</span></a>
+    	</div>
     <?php
     $content();
     ?>
     </div>
+    <script>
+        console.log('%c Phantom – Javascript initiated!', 'color: #29cc8d; font-weight: bold;');
+
+        const sidebar = document.querySelector('.menu');
+        const sidebarBurger = document.querySelector('.menu-burger');
+        const accordionTitles = document.querySelector('.accordion-title');
+	var menuState = 1; // 1 = visible, 0 = hidden
+	    
+	function menuStateWidth() {
+		if (window.innerWidth <= 768) {
+			sidebar.classList.add('hidden');
+			menuState = 0;
+		} else {
+			sidebar.classList.remove('hidden');
+			menuState = 1;
+		}
+	}
+	    
+	menuStateWidth();
+        
+        sidebarBurger.onclick = () => {
+	        // sidebar.classList.toggle('hidden'); // Deprecated for this purpose because the class may already exist due to the function menuStateWidth().
+		if (menuState == 1) {
+			sidebar.classList.add('hidden');
+			menuState = 0;
+			console.log('%c New menuState = ' + menuState, 'color: red;');
+		} else {
+			sidebar.classList.remove('hidden');
+			menuState = 1;
+			console.log('%c New menuState = ' + menuState, 'color: green;');
+		}
+        }
+
+        accordionTitles.onclick = (event) => {
+            if (!event.target.classList.contains('active')) {
+                event.target.classList.toggle('clicked');
+            }
+        }
+	
+	window.onresize = menuStateWidth();
+    </script>
 </body>
 </html>
     <?php

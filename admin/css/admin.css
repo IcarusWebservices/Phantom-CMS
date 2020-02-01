@@ -6,68 +6,185 @@
 ul { list-style: none; margin: 0; padding: 0; }
 a { text-decoration: none; color: inherit; }
 
-.menu {
-    position: fixed;
-    height: 100%;
-    width: 200px;
-    z-index: 1;
-    top: 0;
-    left: 0;
-    background-color: #111;
-    overflow-x: hidden;
-    padding-top: 2rem;
-}
-
-.content {
-    margin-left: 200px;
-    padding: 2rem;
-    box-sizing: border-box;
-}
-
-.menu-item {
-    color: black;
-    background-color: white;
-    padding: 10px 10px;
-    border-bottom: 1px solid black;
-    display: block;
-}
-
-.menu-sub-items-title {
-    margin-bottom: 5px;
-    display: inline-block;
-}
-
-.menu .active  {
-    background-color: rgb(126, 255, 115);
-}
-
-.menu-sub-item {
-    color: black;
-    background-color: rgb(155, 155, 155);
-    padding: 5px 5px;
-    border: 1px solid black;
-    display: block;
-}
-
-phantom-data {
-    display: none;
+.title {
+    font: bold 20px sans-serif;
+    text-transform: uppercase;
 }
 
 .link {
     text-decoration: underline;
-    color: blue;
+    color: var(--menu-color-active-dark);
+}
+
+html {
+    --menu-width: 225px;
+    --menu-color: #c9c9c9;
+    --menu-color-active: #29cc8d;
+    --menu-color-active-dark: #1f996a;
+    --menu-background-color: #2c2d30;
+    --menu-background-color-active: #32353a;
+    overflow: hidden;
+}
+
+body {
+    font-family: sans-serif;
+    /*background-color: #212123;
+    color: #fff;*/
+    overflow: hidden;
+}
+
+
+/* ------------------------------
+Sidebar
+------------------------------ */
+.menu {
+    position: fixed;
+    height: 100%;
+    width: var(--menu-width);
+    top: 0;
+    left: 0;
+    background-color: var(--menu-background-color);
+    color: #aaa;
+    overflow-x: hidden;
+    z-index: 1;
+    transition: 200ms ease;
+}
+
+/* Menu width logic */
+.menu.hidden { width: 0; }
+.menu.hidden ~ .content { margin-left: 0; }
+
+.menu-burger {
+    position: fixed;
+    display: inline-block;
+    margin: 8px 1rem;
+}
+
+.menu-burger::after { content: '\2A09'; font-size: 30px; }
+.menu.hidden .menu-burger::after { content: '\2630'; }
+.menu > ul { margin-top: 57px; }
+
+.menu-item {
+    display: block;
+    padding: 15px 20px;
+    transition: 100ms ease;
+}
+
+.menu-item > i {
+    width: 16px;
+    margin-right: 8px;
+}
+
+.menu-item:hover,
+.accordion-title:hover {
+    background-color: rgba(255,255,255,.05);
+}
+
+.menu-item.active,
+.accordion-title.active {
+    padding-left: 16px;
+    border-left: 4px solid var(--menu-color-active);
+    background-color: var(--menu-background-color-active);
+    color: var(--menu-color-active);
+}
+
+/* Accordion */
+.accordion-title {
+    display: block;
+    padding: 15px 20px;
+    cursor: pointer;
+    transition: 100ms ease;
+}
+
+.accordion-title::after {
+    content: '\25BC';
+    float: right;
+    font-style: normal;
+}
+
+/* Accordion display logic */
+.accordion-title.clicked::after,
+.accordion-title.active::after { content: '\25B2'; }
+.accordion-title:not(.active) ~ ul { display: none; }
+.accordion-title.clicked ~ ul { display: block; }
+
+.accordion-item {
+    display: block;
+    padding: 10px 30px;
+    transition: 100ms ease;
+}
+
+.accordion-item:hover {
+    color: #fff;
+}
+
+.accordion-item.active {
+    color: #fff;
+    font-weight: bold;
+}
+
+
+/* ------------------------------
+Actionbar
+------------------------------ */
+.actionbar {
+    height: 4rem;
+    width: calc(100% + 4rem);
+    margin-top: -2rem;
+    margin-left: -2rem;
+    padding: 1rem 2rem;
+    box-sizing: border-box;
+    line-height: 2rem;
+}
+.logout { float: right; }
+.logout-icon { width: 1rem; margin-right: 8px; }
+
+
+/* ------------------------------
+Content
+------------------------------ */
+.content {
+    margin-left: var(--menu-width);
+    /*margin-top: 27px;*/
+    padding: 2rem;
+    box-sizing: border-box;
+    transition: 200ms ease;
 }
 
 table {
     margin: 0;
     margin-top: 1rem;
-    border: 1px solid #666;
+    border-collapse: collapse;
+    text-align: left;
 }
+
+thead { background-color: #ddd; }
+tbody { background-color: #f6f6f6; }
 
 td,th {
     padding: 15px;
+    border-bottom: 1px solid #aaa;
 }
 
-thead {
-    background-color: #eee;
+phantom-data { display: none; }
+
+
+@media only screen and (max-width: 768px) {
+    /* Menu styling only when the page has just been loaded and the menu button has not yet been pressed.*/
+    /*.menu { width: 0; }
+    .content { margin-left: 0; }*/
+    
+    /* The same menu width logic as above, put here for reference */
+    /*.menu.hidden { width: 0; }
+    .menu.hidden ~ .content { margin-left: 0; }*/
+    
+    /* Menu styling when the menu button has been pressed */
+    /*.menu { width: var(--menu-width); }
+    .content { margin-left: var(--menu-width); }*/
+    
+    .content {
+        width: 100vw;
+    }
 }
+
+

@@ -27,7 +27,7 @@ ph_admin_template($dt_name, $menu, function() {
 
 <h1><?= $dt_name ?></h1>
 
-<table rules="all" id="records-table">
+<table id="records-table">
     <thead>
         <tr>
             <th><input type="checkbox" data-behaviour="tableCheckboxSelectAll"></th>

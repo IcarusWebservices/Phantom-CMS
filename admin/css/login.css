@@ -55,7 +55,7 @@ input[type=text], input[type=password] {
     border: none;
     border-radius: 35px;
     background-color: rgba(0,0,0,.1);
-    color: #a9a9a9;
+    color: #333;
     padding: 10px 20px;
     transition: 200ms ease-in-out;
 }
@@ -63,7 +63,7 @@ input[type=text], input[type=password] {
 input[type=text]:focus,input[type=password]:focus,
 input[type=text]:hover,input[type=password]:hover {
     outline: none;
-    background-color: rgba(0,0,0,.2);
+    background-color: rgba(0,0,0,.15);
 }
 
 input[type=submit] {
@@ -75,11 +75,12 @@ input[type=submit] {
   background-color: #2fefa6;
   color: #fff;
   cursor: pointer;
+  transition: 200ms ease-in-out;
 }
 input[type=submit]:hover { background-color: #29cc8d; }
 input[type=submit]:focus { outline: none; }
 
-.forgot-password { font-size: 14px; line-height: 35px; color: #a9a9a9; }
+.forgot-password { font-size: 14px; line-height: 35px; color: #a9a9a9; transition: 150ms ease-in-out; }
 .forgot-password:hover { color: #333; }
 
 @media only screen and (max-width: 1200px) {
@@ -96,5 +97,12 @@ input[type=submit]:focus { outline: none; }
     height: 100%;
     border-radius: 0px;
   }
-  input[type=text], input[type=password] { width: calc(100% - 3rem); }
+  .login-box input[type=text], .login-box input[type=password] { width: calc(100% - 3rem); }
+
+  .login-box form {
+    position: absolute;
+    top: 40%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
 }
