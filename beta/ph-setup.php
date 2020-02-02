@@ -125,6 +125,13 @@ $theme_folder = null;
  */
 $theme_data = null;
 
+/**
+ * The language to be used
+ * 
+ * @since 2.0.0
+ */
+$language_code = 'nl';
+
 // Try to get the theme
 $t_q = PH_Query::settings([
     "==setting_key" => "appearance_theme"

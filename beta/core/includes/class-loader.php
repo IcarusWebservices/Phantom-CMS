@@ -49,6 +49,36 @@ class PH_Loader {
     }
 
     /**
+     * Requests a template
+     * 
+     * @param string $template_slug The slug of the template
+     * 
+     * @since 2.0.0
+     */
+    public static function requestTemplate($template_slug) {
+        global $theme_folder;
+
+        $r = registry()->get('templates', $template_slug);
+
+        if($r) {
+            if(var_instanceof($r, 'PH_Export')) {
+
+                if($r->hasProperty('class')) {
+                    $class = $r->getProperty('class');
+                    if(class_exists($class)) {
+                        $instance = new $class($theme_folder);
+                        return $instance;
+                    } else return null;
+                } else return null;
+
+            } else return null;
+        } else {
+            return null;
+        }
+
+    }
+
+    /**
      * Loads a theme
      * 
      * @since 2.0.0

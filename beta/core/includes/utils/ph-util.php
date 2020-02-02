@@ -37,6 +37,20 @@ function var_check($type, $var) {
 }
 
 /**
+ * Checks if a class is extending another class
+ * 
+ * @param mixed $object The object to check
+ * @param string $class_name The name of the extending class
+ * 
+ * @since 2.0.0
+ * 
+ * @return bool
+ */
+function var_inherits($object, $class_name) {
+    return is_subclass_of($object, $class_name);
+}
+
+/**
  * Checks whether a variable is instance of a specific class or interface.
  * Shorthand for instanceof.
  * 

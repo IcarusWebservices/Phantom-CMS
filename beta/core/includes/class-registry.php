@@ -97,4 +97,18 @@ class PH_Registry {
         }
     }
 
+    /**
+     * Checks whether the registry has a specific registered item
+     * 
+     * @param string $category  The category of the item
+     * @param string $slug      The slug of the item.
+     * 
+     * @since 2.0.0
+     * 
+     * @return bool
+     */
+    public function has($category, $slug) {
+        return isset($this->registry[$category][$slug]);
+    }
+
 }

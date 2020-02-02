@@ -19,6 +19,11 @@ define("POST", 2);
 define("PUT", 3);
 define("DELETE", 4);
 
+// ========= REGISTRY CONSTANTS =========
+define("CAT_RECORD_TYPES", "record-types");
+define("CAT_CONTROLLERS", "controllers");
+define("CAT_EDITOR_FIELDS", "editor-fields");
+
 // ========= DATABASE CONSTANTS =========
 define("PUBLISHED", 'published');
 define("AWAITING_REVIEW", 'awaiting_preview');

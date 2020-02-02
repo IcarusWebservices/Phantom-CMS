@@ -5,18 +5,26 @@ class Twenties_PageController {
     public function index($proporty) {
 
         // Request a template
-        // $template = PH_Loader::requestTemplate("page");
+        $template = PH_Loader::requestTemplate("page");
+        
+        return $template;
 
     }
 
 }
 
-$export = new PH_Export('Twenties_Page');
-$export->setProperty('class', 'Twenties_PageController');
-$export->setProperty('checkerFunctions', [
-    "page_exists" => function($parameters) {
-        return false;
-    }
+return new PH_Export('Twenties_Page', [
+    'class' => 'Twenties_PageController',
+    'checkerFunctions' => [
+        "page_exists" => function($parameters) {
+            $slug = $parameters["page"];
+            $record = PH_Query::records([
+                "==record_type" => "page",
+                "==record_slug" => $slug
+            ]);
+    
+            if(count($record) > 0) return true;
+            else return false;
+        }
+    ]
 ]);
-
-return $export;

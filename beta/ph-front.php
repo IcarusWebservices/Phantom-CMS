@@ -11,6 +11,12 @@ defined("ROOT") && defined("SETUP") or (die("This is an illegal route, please ro
 $front = new PH_Front_End;
 $result = $front->render( new PH_Request(), 0 );
 
-if(var_check(TYPE_STRING, $result)) {
-    echo $result;
+if(var_instanceof($result, 'PH_Document')) {
+    $result->render();
+} else if(var_inherits($result, 'PH_Template')) {
+
+    $document = render_template($result);
+
+    $document->render();
+
 }

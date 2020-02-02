@@ -94,7 +94,59 @@ class PH_Front_End {
                     }
 
                     if($has_found_candidate) {
-                        echo "ECHT WAAR?!";
+                        
+                        // Now load the controller
+
+                        if(isset($selected["parameters"]->controller)) {
+                            $controller = $selected["parameters"]->controller;
+
+                            $target_method = "index";
+
+                            if(isset($selected["parameters"]->method)) {
+                                $target_method = $selected["parameters"]->method;
+                            }
+
+                            $ex = registry()->get('controllers', $controller);
+
+                            if(var_instanceof($ex, 'PH_Export')) {
+
+                                if($ex->hasProperty('class')) {
+
+                                    $class = $ex->getProperty('class');
+
+                                    if(class_exists($class)) {
+                                        $instance = new $class;
+
+                                        if(method_exists($instance, $target_method)) {
+                                            
+                                            // Success! All factors are green, load the template
+
+                                            $router_parameters = new PH_Data($selected["__router_params"]);
+
+                                            $template = $instance->$target_method( $router_parameters );
+
+                                            return $template;
+
+                                        } else {
+                                            return $this->get500("Method " . $target_method . " does not exist on controller class " . $class);
+                                        }
+
+                                    } else {
+                                        return $this->get500("Controller " . $controller . "'s class does not exist (". $class . ")");
+                                    }
+
+                                } else {
+                                    return $this->get500("Controller " . $controller . " has no valid class.");
+                                }
+
+                            } else {
+                                return $this->get500("Controller " . $controller . " is invalid");
+                            }
+
+                        } else {
+                            return $this->get404();
+                        }
+
                     } else {
                         return $this->get404();
                     }
@@ -109,33 +161,49 @@ class PH_Front_End {
     }
 
     /**
+     * Gets the 500 template
+     * 
+     * @param string $message The error message
+     * 
+     * @since 2.0.0
+     */
+    public function get500($message) {
+        ob_start();
+
+        do_error_page('Internal Server Error', $message);
+
+        $str = ob_get_clean();
+        return new PH_Document($str, 500);
+    }
+
+    /**
      * Gets the 404 template, and sets the headers to 404
      * 
      * @since 2.0.0
      */
     public function get404() {
         global $theme_folder, $theme_valid;
-
+        ob_start();
         if($theme_valid) {
 
-            // Sets the header code to 404
-            http_response_code(404);
+            
 
             if(file_exists(DATA . 'themes/' . $theme_folder . '/404.php')) {
-                ob_start();
                 
                 include DATA . 'themes/' . $theme_folder . '/404.php';
 
-                return ob_get_clean();
-
             } else {
-                
-                ob_start();
 
                 do_error_page('404', 'This page was not found...');
 
-                return ob_get_clean();
             }
+
+            $str = ob_get_clean();
+            return new PH_Document($str, 404);
+        } else {
+            do_error_page('404', 'This page was not found...');
+            $str = ob_get_clean();
+            return new PH_Document($str, 404);
         }
     }
 

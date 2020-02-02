@@ -1,6 +1,6 @@
 <?php
 
-class PageRecordType {
+class PageRecordType extends PH_Record_Type {
 
     public function processContent($content) {
 
@@ -12,7 +12,7 @@ class PageRecordType {
 
     }
 
-    public function saveRecord($rawEditorData) {
+    public function saveRecord($rawEditorData, $previousRecord = null) {
 
     }
 
