@@ -30,6 +30,7 @@ class Demo_PostsOverview_Template extends PH_Template {
         ?>       
         </div>
         <?php
+        $this->requested_title = "Posts";
     }
 
     public function __construct()

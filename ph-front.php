@@ -18,13 +18,14 @@ if(count($views) > 0) {
     $new_val = ((int) json_decode($views[0]->processed_content)->total) + 1;
 
     // echo $new_val;
-
-    database()->update('ph_records', [
-        "record_content" => '{"total": '. $new_val .'}'
-    ], [
-        "==record_type" => "SYSTEM",
-        "==record_slug" => "SYSTEM_VIEWS"
-    ]);
+    if(var_check(TYPE_INT, $new_val)) {
+        database()->update('ph_records', [
+            "record_content" => '{"total": '. $new_val .'}'
+        ], [
+            "==record_type" => "SYSTEM",
+            "==record_slug" => "SYSTEM_VIEWS"
+        ]);
+    }
 }
 
 $front = new PH_Front_End;
