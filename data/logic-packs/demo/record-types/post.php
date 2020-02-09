@@ -35,5 +35,7 @@ class Demo_Post_Record_Type extends PH_Record_Type {
 }
 
 return export('demopost', [
-    "class" => "Demo_Post_Record_Type"
+    "class" => "Demo_Post_Record_Type",
+    "displayName" => "Posts",
+    "displayInAdmin" => true
 ]);

@@ -14,7 +14,7 @@ class Demo_PostsOverview_Template extends PH_Template {
         ]);
 
         $records = PH_Query::records([
-            "==record_type" => "post",
+            "==record_type" => "demopost",
             "==record_status" => "published"
         ]);
 

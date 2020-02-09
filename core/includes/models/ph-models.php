@@ -23,8 +23,10 @@ function request_stylesheet($relative_uri) {
  *                          If empty, will take in a direct javascript string
  * @param string|null $raw  (Optional) The javascript string if no URI was provided
  * 
+ * @param string|null $extra_attb (Optional) extra attributes HTML
+ * 
  * @since 2.0.0
  */
-function request_script($uri = null, $raw = null) {
+function request_script($uri = null, $raw = null, $extra_attb = null) {
     return new PH_Requested_Script($uri, $raw);
 }

@@ -27,3 +27,5 @@ Takes in the PH_Data object delivered by the editor associated with the record t
 | Property Name | Required? | Type | Explanation |
 |---|---|---|---|
 | class          | Yes       | `string` | The name of the class of the record type |
+| displayName    | No        | `string` | The name to display within the admin panel |
+| displayInAdmin | No        | `bool`   | Whether this record type should be displayed within the admin panel |

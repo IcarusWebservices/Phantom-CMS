@@ -14,10 +14,11 @@
     },
     "editors": {
         "record_types": {
-            "a": {
+            "demopost": {
                 "primary": [
                     {
-                        
+                        "fieldslug": "demotextfield",
+                        "exportid": "content"
                     }
                 ]
             }

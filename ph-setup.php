@@ -69,9 +69,7 @@ foreach ($packs as $pack) {
     if($json) {
 
         if(isset($json->routes)) {
-            $r = $json->routes;
-
-            foreach ($r as $pattern => $proporties) {
+            foreach ($json->routes as $pattern => $proporties) {
                 $routes[$pattern] = $proporties;
             }
         }

@@ -9,11 +9,17 @@ class PH_Requested_Script {
     /**
      * Constructor 
      */
-    public function __construct($source = null, $js_body = null)
+    public function __construct($source = null, $js_body = null, $xtra = null)
     {
         $this->source = $source;
         $this->js_body = $js_body;
+        $this->extra_attb = $xtra;
     }
+
+    /**
+     * Extra attribute raw html
+     */
+    public $extra_attb = null;
 
     /**
      * The source of the javascript.
@@ -34,11 +40,11 @@ class PH_Requested_Script {
     public function render() {
         if(!$this->source && var_check(TYPE_STRING, $this->js_body)) {
             ?>
-            <script><?= $this->js_body ?></script>
+            <script <?= $this->extra_attb ?>><?= $this->js_body ?></script>
             <?php
         } else if($this->source) {
             ?>
-            <script src="<?= $this->source ?>"></script>
+            <script src="<?= $this->source ?>" <?= $this->extra_attb ?>></script>
             <?php
         }
         

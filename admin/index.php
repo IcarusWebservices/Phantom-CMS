@@ -50,4 +50,4 @@ admin_template("Dashboard", $menu, function() {
     </div>
 
 <?php
-}, "dashboard", null);
+}, "item:dashboard", null);

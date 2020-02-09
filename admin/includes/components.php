@@ -3,6 +3,12 @@
  * The template function
  */
 function admin_template($title, $menu, $content, $current_id = null, $current_subitem_id = null) {
+    global $requested_body_scripts, $requested_header_scripts, $requested_stylesheets;
+    
+    // Render the body before the rest, so that certain scripts & stylesheets can be registered
+    ob_start();
+    $content();
+    $c = ob_get_clean();
     ?>
     <!DOCTYPE html>
 <html lang="en">
@@ -10,7 +16,13 @@ function admin_template($title, $menu, $content, $current_id = null, $current_su
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <?php
+        foreach ($requested_header_scripts as $script) {
+            $script->render();
+        }
+    ?>
     <link rel="stylesheet" href="css/admin.css">
+    <link rel="stylesheet" href="css/forms.css">
     <title><?= $title ?> • Phantom CMS</title>
 </head>
 <body>
@@ -78,7 +90,7 @@ function admin_template($title, $menu, $content, $current_id = null, $current_su
     		<a class="logout" href="logout.php"><img class="logout-icon" src="img/logout-icon.svg" alt="Logout"><span>Logout</span></a>
     	</div>
     <?php
-    $content();
+    echo $c;
     ?>
     </div>
     <script>
