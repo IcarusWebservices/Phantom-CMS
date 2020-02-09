@@ -1,9 +1,0 @@
-# |PHANTOM HTACCESS FILE|
-# |REDIRECTS ALL INPUT TO INDEX.PHP|
-
-RewriteEngine on
-RewriteCond %{REQUEST_FILENAME} !-f
-RewriteCond %{REQUEST_FILENAME} !-d
-RewriteRule ^.*$ index.php [L,QSA]
-
-# |IF YOU WANT TO FORCE SSL, ADD THE SSL CODE UNDER HERE|

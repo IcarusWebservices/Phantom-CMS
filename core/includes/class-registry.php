@@ -98,6 +98,23 @@ class PH_Registry {
     }
 
     /**
+     * Returns an entire category as an array
+     * 
+     * @param string $category  The category of the item
+     * 
+     * @since 2.0.0
+     * 
+     * @return array|null
+     */
+    public function getCategory($category) {
+        if(isset($this->registry[$category])) {
+            return $this->registry[$category];
+        } else {
+            return null;
+        }
+    }
+
+    /**
      * Checks whether the registry has a specific registered item
      * 
      * @param string $category  The category of the item
