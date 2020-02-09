@@ -104,5 +104,6 @@ input[type=submit]:focus { outline: none; }
     top: 40%;
     left: 50%;
     transform: translate(-50%, -50%);
+    width: calc(100% - 6rem);
   }
 }
