@@ -1,0 +1,26 @@
+{
+    "logicPackName": "Twenties Default Logic Pack",
+    "routes": {
+        "/": {
+            "controller": "Twenties_Index",
+            "method": "index",
+            "importance": 10
+        },
+        "/posts": {
+            "controller": "demopostscontroller",
+            "method": "overview",
+            "importance": 1000
+        }
+    },
+    "editors": {
+        "record_types": {
+            "a": {
+                "primary": [
+                    {
+                        
+                    }
+                ]
+            }
+        }
+    }
+}

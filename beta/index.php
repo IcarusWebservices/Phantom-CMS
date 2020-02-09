@@ -1,4 +1,5 @@
 <?php
+session_start();
 /**
  * Phantom Content Management System.
  * 
@@ -9,7 +10,6 @@
  * @copyright Daan Penning & Jesse Traas
  */
 define('ROOT', dirname(__FILE__) . '/');
-
 /**
  * The current version of the Phantom Content Management System
  * 

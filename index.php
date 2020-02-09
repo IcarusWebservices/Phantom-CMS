@@ -1,32 +1,35 @@
 <?php
 session_start();
 /**
- * Phantom CMS
- * Created by Icarus Webservices
+ * Phantom Content Management System.
  * 
- * @author IcarusWebservices
+ * Version 2.0.0
+ * 
+ * Created by Icarus Webservices.
+ * 
+ * @copyright Daan Penning & Jesse Traas
  */
-define("PH_VERSION", "1.0.0");
+define('ROOT', dirname(__FILE__) . '/');
+/**
+ * The current version of the Phantom Content Management System
+ * 
+ * @since 2.0.0
+ */
+define('VERSION', '2.0.0');
 
-// The root directory of the application
-define("PH_ROOT", dirname(__FILE__) . '/');
+/**
+ * Whether Phantom should process requests in "Development mode".
+ * 
+ * Development mode adds diagnostic information to the response, so that developers can see what is happening behind the scenes.
+ * 
+ * !Warning!
+ * Do not run dev in production. 
+ * Only set this to "True" if the website is not published on a public server OR if the websites publish status has been set to "Login required"
+ */
+define("RUN_DEV", true);
 
-require_once PH_ROOT . 'ph-setup.php';
+// Config
+require_once ROOT . 'ph-setup.php';
+require_once ROOT . 'ph-front.php';
 
-$phantom = new Phantom( $config );
-
-$request = new PH_Request;
-
-$response = $phantom->build( new PH_Request );
-
-// var_dump($registry);
-
-if($response instanceof PH_ResponseCode) {
-    ph_default_code_generator($response->code, $response->description);
-} else if($response instanceof PH_Template) {
-    ph_document_generator($response);
-}
-
-// if(!$response) {
-//     ph_default_code_generator(404, "The requested document was not found on this server...");
-// }
+$logger->write_log();

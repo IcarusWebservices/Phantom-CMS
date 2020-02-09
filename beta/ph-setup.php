@@ -132,6 +132,13 @@ $theme_data = null;
  */
 $language_code = 'nl';
 
+/**
+ * The session data
+ * 
+ * @since 2.0.0
+ */
+$session = new PH_Session;
+
 // Try to get the theme
 $t_q = PH_Query::settings([
     "==setting_key" => "appearance_theme"
