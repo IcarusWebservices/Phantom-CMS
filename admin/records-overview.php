@@ -39,7 +39,7 @@ admin_template($title, $menu, function() {
             foreach ($records as $record) {
                 $time = new DateTime($record->created_gmt);
                 ?>
-                <tr>
+                <tr data-id="<?= $record->id ?>">
                     <td><input type="checkbox" data-behaviour="tableCheckboxSelectThisRow"></td>
                     <td><a class="link" href="<?= uri_resolve("/admin/record.php?mode=edit&id=" . $record->id) ?>"><?= $record->title ?></a></td>
                     <td><?= $time->format("l d F Y") . " at " . $time->format("g:i a") ?></td>
