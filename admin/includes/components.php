@@ -27,7 +27,7 @@ function admin_template($title, $menu, $content, $current_id = null, $current_su
 </head>
 <body>
     <nav class="menu">
-	<div class="menu-burger"></div>
+	    <div class="menu-burger"></div>
         <ul>
             <?php
 
@@ -84,6 +84,14 @@ function admin_template($title, $menu, $content, $current_id = null, $current_su
 
             ?>
         </ul>
+        <footer class="sub-footer">
+            <nav class="sub-sidebar">
+                <a href="#">FAQ</a>
+                <a href="#">Support</a>
+                <a href="#">Legal &amp; Privacy</a>
+            </nav>
+            <p>© Icarus Webservices, 2020</p>
+          </footer>
     </nav>
     <div class="content">
 	    <div class="actionbar">
@@ -99,7 +107,7 @@ function admin_template($title, $menu, $content, $current_id = null, $current_su
         const sidebar = document.querySelector('.menu');
         const sidebarBurger = document.querySelector('.menu-burger');
         const accordionTitles = document.querySelector('.accordion-title');
-	var menuState = 1; // 1 = visible, 0 = hidden
+	    var menuState = 1; // 1 = visible, 0 = hidden
 	    
 	function menuStateWidth() {
 		if (window.innerWidth <= 768) {

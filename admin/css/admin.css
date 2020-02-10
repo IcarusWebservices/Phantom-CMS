@@ -124,6 +124,35 @@ Sidebar
 }
 
 
+.menu footer {
+  position: absolute;
+  left: 0;
+  bottom: 1rem;
+  width: 100%;
+  height: auto;
+  line-height: inherit;
+}
+
+.menu .sub-footer > p { text-align: center; }
+
+.menu .sub-sidebar {
+  color: white;
+  text-align: left;
+  padding: 1rem 0;
+}
+
+.menu .sub-sidebar a {
+  display: block;
+  margin-bottom: 0;
+  padding: 6px 20px;
+  transition: 100ms ease;
+  font-size: 15px;
+  text-align: left;
+}
+
+.menu .sub-sidebar a:hover { color: var(--menu-color-active-dark); }
+
+
 /* ------------------------------
 Actionbar
 ------------------------------ */
