@@ -177,14 +177,16 @@ class PH_DB {
      * @since 2.0.0
      */
     public function delete($tablename, $where) {
-        $qs = "DELETE " . $tablename . " ";
+        $qs = "DELETE FROM " . $tablename . " ";
         $vars = [];
 
         $this->getWhereClause($where);
 
         $data = $this->getWhereClause($where);
 
-        $qs .= " WHERE " . $data["string"];
+        $qs .= "WHERE " . $data["string"];
+
+        // echo $qs;
 
         $vars = array_merge($vars, $data["vars"]);
 

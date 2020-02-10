@@ -21,12 +21,13 @@ document.getElementById('delete').addEventListener('click', () => {
         let fd = new FormData()
         fd.append('id', document.getElementById('system:id').value);
         DoAjaxFormPost('actions/delete-record', fd, (s) => {
+            // console.log(s);
             let parsed = JSON.parse(s);
 
             let type = document.getElementById('system:recordtype').value;
 
             if(!parsed.error) {
-                window.open('records-overview?type=' . type);
+                window.open('records-overview?type=' + type, '_self');
             } else console.log("error!");
         });
     }
