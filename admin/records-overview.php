@@ -27,7 +27,12 @@ admin_template($title, $menu, function() {
     <table id="records-table">
         <thead>
             <tr>
-                <th><input type="checkbox" data-behaviour="tableCheckboxSelectAll" class="select-all"></th>
+                <th>
+                    <label class="control control-checkbox">
+                        <input type="checkbox" data-behaviour="tableCheckboxSelectAll" class="select-all">
+                        <div class="control-indicator"></div>
+                    </label>
+                </th>
                 <th>Name</th>
                 <th>Created</th>
                 <th>Status</th>
@@ -43,7 +48,12 @@ admin_template($title, $menu, function() {
                 $time = new DateTime($record->created_gmt);
                 ?>
                 <tr data-id="<?= $record->id ?>">
-                    <td><input type="checkbox" class="select-row" data-id="<?= $record->id ?>"></td>
+                    <td>
+                        <label class="control control-checkbox">
+                            <input type="checkbox" class="select-row" data-id="<?= $record->id ?>">
+                            <div class="control-indicator"></div>
+                        </label>
+                    </td>
                     <td><a class="link" href="<?= uri_resolve("/admin/record.php?mode=edit&id=" . $record->id) ?>"><?= $record->title ?></a></td>
                     <td><?= $time->format("l d F Y") . " at " . $time->format("g:i a") ?></td>
                     <td><?= $record->status ?></td>
