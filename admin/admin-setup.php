@@ -59,8 +59,13 @@ $menu = [
         "display" => "Records",
         "items" => $record_types_items
     ],
-    "item:settings" => [
-        "display" => "Settings",
-        "url_to" => "settings"
+    "collection:appearance" => [
+        "display" => "Appearance",
+        "items" => [
+            "theme" => [
+                "display" => "Theme",
+                "url_to" => "set-theme"
+            ]
+        ]
     ]
 ];

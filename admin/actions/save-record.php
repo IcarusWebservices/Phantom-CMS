@@ -29,6 +29,7 @@ echo json_encode([
             // The record's slug
             $slug = fd_set('system:slug') ? fd_get('system:slug') : (string) random_int(-10000, 100000);
 
+            $type = fd_set('system:recordtype') ? fd_get('system:recordtype') : null;
             // var_dump($_POST);
             switch($mode) {
 
@@ -46,6 +47,7 @@ echo json_encode([
                     $sv->status = $status;
                     $sv->title = $title;
                     $sv->slug = $slug;
+                    $sv->type = $type;
                     // var_dump($sv);
 
                     $s = PH_Save::record($sv);
@@ -77,6 +79,7 @@ echo json_encode([
                                 $sv->status = $status;
                                 $sv->title = $title;
                                 $sv->slug = $slug;
+                               
 
                                 $s = PH_Save::record($sv);
 
@@ -94,13 +97,13 @@ echo json_encode([
                             
                         } else {
                             echo json_encode([
-                                "error" => false
+                                "error" => true
                             ]);
                         }
                         
                     } else {
                         echo json_encode([
-                            "error" => false
+                            "error" => true
                         ]);
                     }
                 break;

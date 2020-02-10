@@ -36,8 +36,10 @@ class Demo_Post_Record_Type extends PH_Record_Type {
 
             return $previousRecord;
         } else {
+            $content = isset($rawEditorData["content:textfield"]) ? $rawEditorData["content:textfield"] : null;
             $newRecord = new PH_Record([
-                "title" => $rawEditorData["system:title"]
+                "title" => $rawEditorData["system:title"],
+                "content" => $content
             ]);
             return $newRecord;
         }
