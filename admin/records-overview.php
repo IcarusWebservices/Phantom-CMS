@@ -36,6 +36,7 @@ admin_template($title, $menu, function() {
                 <th>Name</th>
                 <th>Created</th>
                 <th>Status</th>
+                <th>Author</th>
             </tr>
         </thead>
         <tbody>
@@ -57,6 +58,19 @@ admin_template($title, $menu, function() {
                     <td><a class="link" href="<?= uri_resolve("/admin/record.php?mode=edit&id=" . $record->id) ?>"><?= $record->title ?></a></td>
                     <td><?= $time->format("l d F Y") . " at " . $time->format("g:i a") ?></td>
                     <td><?= $record->status ?></td>
+                    <td>
+                        <?php
+                            $u = PH_Query::users([
+                                "==id" => $record->author
+                            ]);
+
+                            if(count($u) > 0) {
+                                $u = $u[0];
+
+                                echo $u->username;
+                            }
+                        ?>
+                    </td>
                 </tr>
                 <?php
             }
