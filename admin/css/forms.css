@@ -1,46 +1,100 @@
-.editor-title {
-    height: 40px;
-    font-size: 40px;
+#editors {
+    display: grid;
+    grid-template-columns: 3fr 1fr;
+    grid-template-rows: auto;
+    grid-gap: 2rem;
+    margin-top: 1rem;
     width: 100%;
 }
 
-input[type=submit] {
+.editor-title {
+    font-size: 40px;
+    background-color: transparent;
+    border: none;
+    border-bottom: 2px solid #888;
+    transition: 150ms ease;
+}
+
+.editor-title:focus {
+    outline: none;
+    border-color: #29cc8d;
+}
+
+#primary {
+    width: 100%;
+}
+
+#side {
+    width: 100%;
+}
+
+.side-inner {
     display: inline-block;
+    width: 100%;
+    height: auto;
+    padding: 2rem;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    box-sizing: border-box;
+}
+
+.field {
+    margin-bottom: 1rem;
+}
+
+.field label {
+    display: block;
+    margin-bottom: 4px;
+}
+
+
+input[type=submit] {
     float: left;
-    padding: 10px 30px;
+    padding: 10px 24px;
     border: none;
     border-radius: 35px;
     background-color: #2fefa6;
     color: #fff;
     cursor: pointer;
-    transition: 200ms ease-in-out;
-  }
-  input[type=submit]:hover { background-color: #29cc8d; }
-  input[type=submit]:focus { outline: none; }
-
-#primary {
-    display: inline-block;
-    width: 74%;
-    /* border: 1px solid black; */
-    float: left;
+    transition: 150ms ease-in-out;
 }
+input[type=submit]:hover { background-color: #29cc8d; }
+input[type=submit]:focus { outline: none; }
 
-.field {
-    margin: 15px 0;
-}
-
-#side {
-    display: inline-block;
-    width: 25%;
-    background-color: rgb(180, 171, 164);
-    /* height: 30px; */
-    float: right;
-    height: 100%;
-}
-
-#editors {
-    margin: 20px 20px;
-    display: inline-block;
+#side input[type=text] {
+    display: block;
     width: 100%;
+    border: none;
+    border-radius: 35px;
+    background-color: rgba(0,0,0,.1);
+    color: #333;
+    padding: 10px 20px;
+    box-sizing: border-box;
+    transition: 200ms ease-in-out;
 }
-  
+
+#side input[type=text]:focus,
+#side input[type=text]:hover {
+    outline: none;
+    background-color: rgba(0,0,0,.15);
+}
+
+#side .button#delete {
+    display: inline-block;
+    padding: 10px 24px;
+    border: none;
+    border-radius: 6px;
+    background-color: red;
+    color: #fff;
+    cursor: pointer;
+    transition: 150ms ease-in-out;
+}
+
+@media only screen and (max-width: 1000px) {
+    #editors {
+        grid-template-columns: 1fr;
+        grid-template-rows: 1fr min-content;
+        grid-gap: 1rem;
+    }
+}

@@ -136,16 +136,29 @@ admin_template("Edit", $menu, function() {
             ?>
         </div>
         <div id="side">
-            <div class="field">
-                <label for="system:status">Status: </label>
-                Published <input type="radio" name="system:status" value="published" checked>
-                Private <input type="radio" name="system:status" value="private">
-            </div>
-            <div class="field">
-                Slug: <input type="text" id="slug" name="system:slug" value="<?= isset($record) ? $record->slug : null ?>" required>
-            </div>
-            <div class="field">
-                <a href="#" class="link" id="delete">Delete</a>
+            <div class="side-inner">
+                <div class="field">
+                    <label for="system:status">Status:</label>
+                    
+                    <label class="control control-radio">Published
+                        <input type="radio" name="system:status" value="published" checked>
+                        <div class="control-indicator"></div>
+                    </label>
+
+                    <label class="control control-radio">Private
+                        <input type="radio" name="system:status" value="private">
+                        <div class="control-indicator"></div>
+                    </label>
+                </div>
+                <br>
+                <div class="field">
+                    <label for="system:slug">Slug:</label>
+
+                    <input type="text" id="slug" name="system:slug" value="<?= isset($record) ? $record->slug : null ?>" required>
+                </div>
+                <div class="field">
+                    <a href="#" class="button" id="delete">Delete</a>
+                </div>
             </div>
         </div>
     </div><br>
