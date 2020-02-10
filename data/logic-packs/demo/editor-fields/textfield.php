@@ -9,7 +9,7 @@ class Demo_Textfields extends PH_Editor_Field {
     public function render($export_id, $predata, $required = false) {
         global $requested_header_scripts;
 
-        array_push($requested_header_scripts, request_script('https://cdn.tiny.cloud/1/i08egnb6jplk781bjqpoonahbcijqkmz83dqbf4x4ci7amh7/tinymce/5/tinymce.min.js', null, 'referrerpolicy="origin"'))
+        array_push($requested_header_scripts, request_script('https://cdn.tiny.cloud/1/jqz6adq226jac2gcjo4v3lvosnn54i2pfon6dfzjgws5ox6r/tinymce/5/tinymce.min.js', null, 'referrerpolicy="origin"'))
         ?>
         <textarea name="<?= $export_id ?>:textfield" height="500px" <?php 
             if($required) {
