@@ -38,4 +38,31 @@ class PH_Save {
 
     }
 
+    /**
+     * Inserts or updates a setting
+     * 
+     * @param PH_Setting $setting The setting to update
+     * 
+     * @since 2.0.0
+     * 
+     * @return bool
+     */
+    public static function setting($setting) {
+        
+        if($setting->exists_on_db) {
+            $properties = [
+                "setting_value" => $setting->value
+            ];
+            return database()->update('ph_settings', $properties, [
+                "==setting_key" => $setting->key
+            ]);
+        } else {
+            $properties = [
+                "setting_key" => $setting->key,
+                "setting_value" => $setting->value
+            ];
+            return database()->insert('ph_settings', $properties);
+        }
+    }
+
 }

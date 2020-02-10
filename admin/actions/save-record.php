@@ -19,6 +19,16 @@ echo json_encode([
         if($rt_e->hasProperty('class') && class_exists($rt_e->getProperty('class'))) {
             $class = $rt_e->getProperty('class');
             $instance = new $class();
+
+            // The record's status
+            $status = fd_set('system:status') ? fd_get('system:status') : PUBLISHED;
+
+            // The record's title
+            $title = fd_set('system:title') ? fd_get('system:title') : 'Untitled';
+
+            // The record's slug
+            $slug = fd_set('system:slug') ? fd_get('system:slug') : (string) random_int(-10000, 100000);
+
             // var_dump($_POST);
             switch($mode) {
 
@@ -33,7 +43,10 @@ echo json_encode([
                 case 'save-new':
                     $sv = $instance->saveRecord($_POST);
 
-                    var_dump($sv);
+                    $sv->status = $status;
+                    $sv->title = $title;
+                    $sv->slug = $slug;
+                    // var_dump($sv);
 
                     $s = PH_Save::record($sv);
 
@@ -60,6 +73,10 @@ echo json_encode([
 
                             if(count($record) > 0) {
                                 $sv = $instance->saveRecord($_POST, $record[0]);
+
+                                $sv->status = $status;
+                                $sv->title = $title;
+                                $sv->slug = $slug;
 
                                 $s = PH_Save::record($sv);
 

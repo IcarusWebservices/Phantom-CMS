@@ -10,6 +10,13 @@
 class PH_Setting extends PH_Model_Base {
 
     /**
+     * Whether the setting exists on the database
+     * 
+     * (Used for PH_Save)
+     */
+    public $exists_on_db = false;
+
+    /**
      * The name of the setting
      * 
      * @since 2.0.0

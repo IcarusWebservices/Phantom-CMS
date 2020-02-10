@@ -76,6 +76,7 @@ foreach ($loaded_packs as $pack) {
 admin_template("Edit", $menu, function() {
     global $type_controller, $record, $field_data, $processed_mode, $type;
 ?>
+<div class="" id="snackbar-saved">Record saved!</div>
 <form action="<?= uri_resolve('/admin/actions/save-record') ?>" method="post" id="recordsform">
     <?php
         if($processed_mode == 'save-edit' || $processed_mode == 'draft-edit' && $record) {
@@ -84,7 +85,7 @@ admin_template("Edit", $menu, function() {
     ?>
     <input type="hidden" name="system:mode" value="<?= $processed_mode ?>">
     <input type="hidden" name="system:recordtype" value="<?= $type ?>">
-    <input type="text" name="system:title" class="editor-title" placeholder="Title" value="<?= isset($record) ? $record->title : null ?>" required>
+    <input type="text" id="title" name="system:title" class="editor-title" placeholder="Title" value="<?= isset($record) ? $record->title : null ?>" required>
     <div id="editors">
         <div id="primary">
             <?php
@@ -140,12 +141,15 @@ admin_template("Edit", $menu, function() {
                 Published <input type="radio" name="system:status" value="published" checked>
                 Private <input type="radio" name="system:status" value="private">
             </div>
-            
+            <div class="field">
+                Slug: <input type="text" id="slug" name="system:slug" value="<?= isset($record) ? $record->slug : null ?>" required>
+            </div>
         </div>
     </div><br>
     
     <input type="submit" value="Save">
 </form>
+<script src="<?= uri_resolve('/admin/js/ajax.js') ?>"></script>
 <script src="<?= uri_resolve('/admin/js/record.js') ?>"></script>
 <?php
 }, "collection:recordtypes", $type);

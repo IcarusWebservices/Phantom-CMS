@@ -15,7 +15,7 @@ class Demo_Textfields extends PH_Editor_Field {
             if($required) {
                 echo 'required';
             }
-        ?>>
+        ?> id="<?= $export_id ?>">
             <?php
                 if($predata) {
                     echo($predata);
@@ -30,7 +30,14 @@ class Demo_Textfields extends PH_Editor_Field {
             toolbar_drawer: 'floating',
             tinycomments_mode: 'embedded',
             tinycomments_author: 'Author name',
-            height: "500"
+            height: "500",
+            setup: function(editor) {
+                editor.on('input', function(e) {
+                    isInUnsavedState = true;
+                    // console.log(tinymce.activeEditor.getContent());
+                    document.getElementById('<?= $export_id ?>').innerHTML = tinymce.activeEditor.getContent();
+                })
+            }
             });
         </script>
         <?php

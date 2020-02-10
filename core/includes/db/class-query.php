@@ -119,7 +119,8 @@ class PH_Query {
                 foreach ($result as $i) {
                     array_push($o, new PH_Setting([
                         "key" => $i->setting_key,
-                        "value" => $i->setting_value
+                        "value" => $i->setting_value,
+                        "exists_on_db" => true
                     ]));
                 }
 

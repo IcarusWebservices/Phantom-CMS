@@ -58,5 +58,9 @@ $menu = [
     "collection:recordtypes" => [
         "display" => "Records",
         "items" => $record_types_items
+    ],
+    "item:settings" => [
+        "display" => "Settings",
+        "url_to" => "settings"
     ]
 ];

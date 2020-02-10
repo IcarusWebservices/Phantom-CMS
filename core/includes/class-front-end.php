@@ -24,7 +24,7 @@ class PH_Front_End {
         if(count($loaded_packs) < 1) {
             do_error_page('No logic packs enabled...', 'Go into Settings > Logic Packs to enable a pack');
         } else if (!$theme_valid) {
-            do_error_page('No (valid) theme selected', 'Select a (valid) theme through Settings > Appearance > Theme');
+            do_error_page('No (valid) theme selected', 'Select a (valid) theme through Settings > Theme');
         } else if( !$request->uri_startswith_baseuri ) {
             do_error_page('Invalid base uri!', 'Set your base URI in your ph-config.php file');
         } else {

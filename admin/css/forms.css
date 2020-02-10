@@ -40,6 +40,7 @@ input[type=submit] {
 
 #editors {
     margin: 20px 20px;
-    display: block;
+    display: inline-block;
+    width: 100%;
 }
   
