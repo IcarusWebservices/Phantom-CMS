@@ -57,7 +57,17 @@ admin_template($title, $menu, function() {
                     </td>
                     <td><a class="link" href="<?= uri_resolve("/admin/record.php?mode=edit&id=" . $record->id) ?>"><?= $record->title ?></a></td>
                     <td><?= $time->format("l d F Y") . " at " . $time->format("g:i a") ?></td>
-                    <td><?= $record->status ?></td>
+                    <td>
+                        <?php
+                            $color = 'green';
+                            switch($record->status) {
+                                case PUBLISHED:
+                                    $color = 'red';
+                                break;
+                            }
+                        ?>
+                        <span class="tag <?= $color ?>"><?= $record->status ?></span>
+                    </td>
                     <td>
                         <?php
                             $u = PH_Query::users([
