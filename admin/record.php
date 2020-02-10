@@ -75,7 +75,7 @@ foreach ($loaded_packs as $pack) {
 
 admin_template("Edit", $menu, function() {
     global $type_controller, $record, $field_data, $processed_mode, $type;
-    var_dump(session()->user);
+    // var_dump(session()->user);
 ?>
 
 <div class="" id="snackbar-saved">Record saved!</div>
@@ -143,12 +143,22 @@ admin_template("Edit", $menu, function() {
                     <label for="system:status">Status:</label>
                     
                     <label class="control control-radio">Published
-                        <input type="radio" name="system:status" value="published" checked>
+                        <input type="radio" name="system:status" value="published" <?php
+                            if(isset($record->status)) {
+                                if($record->status == PUBLISHED) echo "checked";
+                            } else if(!$record) {
+                                echo "checked";
+                            }
+                        ?>>
                         <div class="control-indicator"></div>
                     </label>
 
                     <label class="control control-radio">Private
-                        <input type="radio" name="system:status" value="private">
+                        <input type="radio" name="system:status" value="private" <?php
+                            if(isset($record->status)) {
+                                if($record->status == PRIVATE_RECORD) echo "checked";
+                            }
+                        ?>>
                         <div class="control-indicator"></div>
                     </label>
                 </div>

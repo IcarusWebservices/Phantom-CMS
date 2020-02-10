@@ -67,5 +67,18 @@ $menu = [
                 "url_to" => "set-theme"
             ]
         ]
+    ],
+    "collection:settings" => [
+        "display" => "Settings",
+        "items" => [
+            "users" => [
+                "display" => "Users",
+                "url_to" => "users"
+            ]
+        ]
+            ],
+    "item:documentation" => [
+        "display" => "Documentation",
+        "url_to" => "docs"
     ]
 ];

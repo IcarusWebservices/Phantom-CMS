@@ -62,6 +62,9 @@ admin_template($title, $menu, function() {
                             $color = 'green';
                             switch($record->status) {
                                 case PUBLISHED:
+                                    $color = 'green';
+                                break;
+                                case PRIVATE_RECORD:
                                     $color = 'red';
                                 break;
                             }
