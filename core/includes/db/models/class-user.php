@@ -6,6 +6,7 @@
  */
 class PH_User extends PH_Model_Base {
 
+    public $id;
     public $username = null;
     public $email = null;
     public $password_hash = null;

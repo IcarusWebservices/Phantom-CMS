@@ -75,7 +75,9 @@ foreach ($loaded_packs as $pack) {
 
 admin_template("Edit", $menu, function() {
     global $type_controller, $record, $field_data, $processed_mode, $type;
+    var_dump(session()->user);
 ?>
+
 <div class="" id="snackbar-saved">Record saved!</div>
 <form action="<?= uri_resolve('/admin/actions/save-record') ?>" method="post" id="recordsform">
     <?php
@@ -156,9 +158,16 @@ admin_template("Edit", $menu, function() {
 
                     <input type="text" id="slug" name="system:slug" value="<?= isset($record) ? $record->slug : null ?>" required>
                 </div>
-                <div class="field">
-                    <a href="#" class="button" id="delete">Delete</a>
-                </div>
+                <?php
+                    if($processed_mode != 'save-new') {
+?>
+                        <div class="field">
+                            <a href="#" class="button" id="delete">Delete</a>
+                        </div>
+<?php
+                    }
+                ?> 
+                
             </div>
         </div>
     </div><br>

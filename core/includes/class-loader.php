@@ -119,6 +119,37 @@ class PH_Loader {
         }
     }
 
+    public static function getValidThemes() {
+        $path = DATA . 'themes/';
+        $themes = [];
+        foreach (glob($path . '*') as $dir) {
+            if(is_dir($dir)) {
+                $dir = $dir . '/';
+                // Try to get the logic-pack.json file
+                if(file_exists($dir . 'theme.json')) {
+
+                    $json = get_json_file($dir . 'theme.json');
+
+                    if($json) {
+                        
+                        $theme_id = substr($dir, strlen(DATA . 'themes/'));
+                        $theme_id = substr($theme_id, 0, strlen($theme_id) - 1);
+                        $theme_name = isset($json->themeName) ? $json->themeName : null;
+
+                        $themes[$theme_id] = [
+                            "themeName" => $theme_name
+                        ];
+
+                    }
+
+                } 
+
+            }
+        }
+
+        return $themes;
+    }
+
 }
 
 /**

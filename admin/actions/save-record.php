@@ -30,6 +30,8 @@ echo json_encode([
             $slug = fd_set('system:slug') ? fd_get('system:slug') : (string) random_int(-10000, 100000);
 
             $type = fd_set('system:recordtype') ? fd_get('system:recordtype') : null;
+
+            $user_id = isset(session()->user->id) ? session()->user->id : 0;
             // var_dump($_POST);
             switch($mode) {
 
@@ -48,6 +50,7 @@ echo json_encode([
                     $sv->title = $title;
                     $sv->slug = $slug;
                     $sv->type = $type;
+                    $sv->author = $user_id;
                     // var_dump($sv);
 
                     $s = PH_Save::record($sv);
@@ -81,6 +84,7 @@ echo json_encode([
                                 $sv->status = $status;
                                 $sv->title = $title;
                                 $sv->slug = $slug;
+                                $sv->author = $user_id;
                                
 
                                 $s = PH_Save::record($sv);
