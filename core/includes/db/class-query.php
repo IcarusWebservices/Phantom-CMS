@@ -225,4 +225,31 @@ class PH_Query {
         } else return [];
     }
 
+    /**
+     * Queries a taxonomy term from the database
+     * 
+     * @since 2.0.0
+     */
+    public static function taxonomy($where) {
+        if(var_check(TYPE_ARRAY, $where)) {
+            $result = database()->select('ph_taxonomy', ['*'], $where);
+
+            if($result->hasResult()) {
+                $o = [];
+
+                foreach ($result as $i) {
+                    array_push($o, new PH_Taxonomy([
+                        "id" => $i->id,
+                        "record_id" => $i->record_id,
+                        "type" => $i->taxonomy_type,
+                        "value" => $i->taxonomy_value
+                    ]));
+                }
+
+                return $o;
+            } else return [];
+
+        } else return [];
+    }
+
 }

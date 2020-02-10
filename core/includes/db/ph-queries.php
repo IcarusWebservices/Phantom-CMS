@@ -19,3 +19,14 @@ function get_menu($menu_name) {
     ]);
     return $result;
 }
+
+/**
+ * Returns an array of posts by taxonomy type and value
+ * 
+ * @since 2.0.0
+ */
+function get_records_by_taxonomy( $record_type, $taxonomy_type, $taxonomy_value ) {
+
+    
+
+}
