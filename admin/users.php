@@ -23,7 +23,13 @@ admin_template("Users", $menu, function() {
                     <td><?= $user->username ?></td>
                     <td><?= $user->email ?></td>
                     <td>
-                        <a href="#" class="link">Delete</a>
+                        <?php
+                            // var_dump(session()->user->id);
+                            if(session()->user->id != $user->id) {
+                                ?><a href="<?= uri_resolve('/admin/actions/user?action=delete&id=' . $user->id) ?>" class="link">Delete</a><?php
+                            } else echo "(Cannot delete self)";
+                        ?>
+                        
                     </td>
                 </tr>
                 <?php
