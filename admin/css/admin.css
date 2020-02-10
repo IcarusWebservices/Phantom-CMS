@@ -18,6 +18,7 @@ a { text-decoration: none; color: inherit; }
 
 html {
     --menu-width: 225px;
+    --navbar-height: 4rem;
     --menu-color: #c9c9c9;
     --menu-color-active: #29cc8d;
     --menu-color-active-dark: #1f996a;
@@ -62,7 +63,7 @@ Sidebar
 
 .menu-burger::after { content: '\2A09'; font-size: 30px; }
 .menu.hidden .menu-burger::after { content: '\2630'; }
-.menu > ul { margin-top: 57px; }
+.menu > ul { margin-top: var(--navbar-height); }
 
 .menu-item {
     display: block;
@@ -153,21 +154,37 @@ Sidebar
 .menu .sub-sidebar a:hover { color: var(--menu-color-active-dark); }
 
 
+
+.logout-icon { width: 1rem; margin-right: 8px; }
+
+
+
 /* ------------------------------
 Actionbar
 ------------------------------ */
 .actionbar {
-    height: 4rem;
-    width: calc(100% + 4rem);
-    margin-top: -2rem;
-    margin-left: -2rem;
-    padding: 1rem 2rem;
+    margin-left: var(--menu-width);
+    width: calc(100% - var(--menu-width));
+    height: var(--navbar-height);
+    line-height: var(--navbar-height);
+    padding: 0 2rem;
     box-sizing: border-box;
-    line-height: 2rem;
 }
-.logout { float: right; }
-.logout-icon { width: 1rem; margin-right: 8px; }
 
+.actionbar .nav-button {
+  line-height: normal;
+  padding: 22.5px 8px;
+  display: inline-block;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 600;
+  cursor: pointer;
+  transition: 150ms ease;
+}
+
+.actionbar .nav-button:hover { color: #666; }
+.actionbar .nav-left { float: left; }
+.actionbar .nav-right { float: right; }
+.actionbar .username { color: var(--menu-color-active-dark); }
 
 /* ------------------------------
 Content
@@ -175,7 +192,7 @@ Content
 .content {
     margin-left: var(--menu-width);
     /*margin-top: 27px;*/
-    padding: 2rem;
+    padding: 0 2rem 2rem 2rem;
     box-sizing: border-box;
     transition: 200ms ease;
 }

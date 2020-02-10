@@ -4,6 +4,7 @@
  */
 function admin_template($title, $menu, $content, $current_id = null, $current_subitem_id = null) {
     global $requested_body_scripts, $requested_header_scripts, $requested_stylesheets;
+    global $session;
     
     // Render the body before the rest, so that certain scripts & stylesheets can be registered
     ob_start();
@@ -93,10 +94,16 @@ function admin_template($title, $menu, $content, $current_id = null, $current_su
             <p>© Icarus Webservices, 2020</p>
           </footer>
     </nav>
+    <div class="actionbar">
+        <div class="nav-left">
+            <div class="nav-button"><span><a href="/" target="__blank">Open website</a></span></div>
+        </div>
+        <div class="nav-right">
+            <span>Logged in as <span class="username"><?= $session->user->username ?></span></span>
+            <div class="nav-button"><span><a href="logout.php">Logout</a></span></div>
+        </div>
+    </div>
     <div class="content">
-	    <div class="actionbar">
-    		<a class="logout" href="logout.php"><img class="logout-icon" src="img/logout-icon.svg" alt="Logout"><span>Logout</span></a>
-    	</div>
     <?php
     echo $c;
     ?>
