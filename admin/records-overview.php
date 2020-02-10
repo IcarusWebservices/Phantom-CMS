@@ -22,10 +22,11 @@ admin_template($title, $menu, function() {
 ?>
     <h1><?= $title ?></h1>
     <a href="<?= uri_resolve('/admin/record?mode=new&type=' . $type) ?>" style="text-decoration: underline; color: blue;">New post</a>
+    
     <table id="records-table">
         <thead>
             <tr>
-                <th><input type="checkbox" data-behaviour="tableCheckboxSelectAll"></th>
+                <th><input type="checkbox" data-behaviour="tableCheckboxSelectAll" class="select-all"></th>
                 <th>Name</th>
                 <th>Created</th>
                 <th>Status</th>
@@ -41,7 +42,7 @@ admin_template($title, $menu, function() {
                 $time = new DateTime($record->created_gmt);
                 ?>
                 <tr data-id="<?= $record->id ?>">
-                    <td><input type="checkbox" data-behaviour="tableCheckboxSelectThisRow"></td>
+                    <td><input type="checkbox" class="select-row" data-id="<?= $record->id ?>"></td>
                     <td><a class="link" href="<?= uri_resolve("/admin/record.php?mode=edit&id=" . $record->id) ?>"><?= $record->title ?></a></td>
                     <td><?= $time->format("l d F Y") . " at " . $time->format("g:i a") ?></td>
                     <td><?= $record->status ?></td>
@@ -51,5 +52,6 @@ admin_template($title, $menu, function() {
         ?>
         </tbody>
     </table>
+    <script src="<?= uri_resolve('/admin/js/records-overview.js') ?>"></script>
 <?php
 }, 'collection:recordtypes', $type);

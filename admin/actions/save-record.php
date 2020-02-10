@@ -53,8 +53,10 @@ echo json_encode([
                     $s = PH_Save::record($sv);
 
                     if($s->hasResult()) {
+
                         echo json_encode([
-                            "error" => false
+                            "error" => false,
+                            "new" => true
                         ]);
                     } else {
                         echo json_encode([

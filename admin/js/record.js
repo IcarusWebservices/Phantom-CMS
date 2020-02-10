@@ -59,13 +59,24 @@ form.addEventListener('submit', (e) => {
             x.className = "show";
 
             // After 3 seconds, remove the show class from DIV
-            setTimeout(function(){ x.className = x.className.replace("show", ""); }, 2950);
+            setTimeout(function(){ 
+                x.className = x.className.replace("show", ""); 
+
+                
+            }, 2950);
+
+            
 
             console.log('%c Phantom – Success!', 'color: #29cc8d; font-weight: bold;');
 
         } else console.log('%c Phantom – Failure!', 'color: crimson; font-weight: bold;');
 
         isInUnsavedState = false;
+
+        let type = document.getElementById('system:recordtype').value;
+        if(parsed.new) {
+            window.open('records-overview?type=' + type, '_self');
+        }
     })
 })
 

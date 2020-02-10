@@ -41,6 +41,8 @@ function login_required() {
         if(!$u || !var_instanceof($u, 'PH_User')) {
             $uri = uri_self();
             redirect(uri_resolve('/admin/login?redirect=' . '/' .$uri));
+        } else {
+            session()->user = $u;
         }
     } else {
         $uri = uri_self();
