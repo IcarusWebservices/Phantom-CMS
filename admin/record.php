@@ -80,11 +80,11 @@ admin_template("Edit", $menu, function() {
 <form action="<?= uri_resolve('/admin/actions/save-record') ?>" method="post" id="recordsform">
     <?php
         if($processed_mode == 'save-edit' || $processed_mode == 'draft-edit' && $record) {
-            ?><input type="hidden" name="system:id" value="<?= $record->id ?>"><?php
+            ?><input type="hidden" name="system:id" value="<?= $record->id ?>" id="system:id"><?php
         }
     ?>
     <input type="hidden" name="system:mode" value="<?= $processed_mode ?>">
-    <input type="hidden" name="system:recordtype" value="<?= $type ?>">
+    <input type="hidden" name="system:recordtype" value="<?= $type ?>" id="system:recordtype">
     <input type="text" id="title" name="system:title" class="editor-title" placeholder="Title" value="<?= isset($record) ? $record->title : null ?>" required>
     <div id="editors">
         <div id="primary">
@@ -143,6 +143,9 @@ admin_template("Edit", $menu, function() {
             </div>
             <div class="field">
                 Slug: <input type="text" id="slug" name="system:slug" value="<?= isset($record) ? $record->slug : null ?>" required>
+            </div>
+            <div class="field">
+                <a href="#" class="link" id="delete">Delete</a>
             </div>
         </div>
     </div><br>

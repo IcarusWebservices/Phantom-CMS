@@ -169,6 +169,29 @@ class PH_DB {
     }
 
     /**
+     * Deletes a row from the database
+     * 
+     * @param string $tablename The name of the table to delete from
+     * @param array $where      The where variables
+     * 
+     * @since 2.0.0
+     */
+    public function delete($tablename, $where) {
+        $qs = "DELETE " . $tablename . " ";
+        $vars = [];
+
+        $this->getWhereClause($where);
+
+        $data = $this->getWhereClause($where);
+
+        $qs .= " WHERE " . $data["string"];
+
+        $vars = array_merge($vars, $data["vars"]);
+
+        return $this->execute($qs, $vars);
+    }
+
+    /**
      * Generates a WHERE clause
      * 
      * @param array $where The where array

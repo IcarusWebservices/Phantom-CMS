@@ -14,6 +14,24 @@ window.onbeforeunload = () => {
 
 };
 
+document.getElementById('delete').addEventListener('click', () => {
+    let r = confirm('Are you sure you want to delete this record?');
+
+    if(r) {
+        let fd = new FormData()
+        fd.append('id', document.getElementById('system:id').value);
+        DoAjaxFormPost('actions/delete-record', fd, (s) => {
+            let parsed = JSON.parse(s);
+
+            let type = document.getElementById('system:recordtype').value;
+
+            if(!parsed.error) {
+                window.open('records-overview?type=' . type);
+            } else console.log("error!");
+        });
+    }
+})
+
 form.addEventListener('submit', (e) => {
 
     console.log('%c Phantom – Form Submit event triggered...', 'color: #29cc8d; font-weight: bold;');
@@ -25,6 +43,9 @@ form.addEventListener('submit', (e) => {
     let formdata = new FormData(form);
 
     DoAjaxFormPost('actions/save-record', formdata, (s) => {
+
+        // console.log(s);
+
         let parsed = JSON.parse(s);
 
         if(!parsed.error) {

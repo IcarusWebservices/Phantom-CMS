@@ -134,11 +134,13 @@ function admin_template($title, $menu, $content, $current_id = null, $current_su
 		}
         }
 
-        accordionTitles.onclick = (event) => {
-            if (!event.target.classList.contains('active')) {
-                event.target.classList.toggle('clicked');
-            }
-        }
+        accordionTitles.forEach(acc => {
+            acc.addEventListener('click', (e) => {
+                if (!event.target.classList.contains('active')) {
+                    event.target.classList.toggle('clicked');
+                }
+            })
+        });
 	
 	window.onresize = menuStateWidth();
     </script>
