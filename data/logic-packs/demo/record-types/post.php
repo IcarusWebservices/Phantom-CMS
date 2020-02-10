@@ -29,7 +29,25 @@ class Demo_Post_Record_Type extends PH_Record_Type {
 
     public function saveRecord($rawEditorData, $previousRecord = null)
     {
-        return $previousRecord;
+        if($previousRecord) {
+            $content = isset($rawEditorData["content:textfield"]) ? $rawEditorData["content:textfield"] : null;
+            $previousRecord->content = $content;
+            $previousRecord->title = $rawEditorData["system:title"];
+
+            return $previousRecord;
+        } else {
+            $newRecord = new PH_Record([
+                "title" => $rawEditorData["system:title"]
+            ]);
+            return $newRecord;
+        }
+
+    }
+
+    public function provideEditordata($content) {
+        return [
+            "content" => $content
+        ];
     }
 
 }

@@ -12,6 +12,7 @@ if(!qp_set('mode')) {
 }
 
 $mode = qp_get('mode');
+$processed_mode = null;
 
 $predata = null;
 
@@ -19,6 +20,8 @@ $type = null;
 
 switch($mode) {
     case "edit":
+
+        $processed_mode = 'save-edit';
 
         if(!qp_set('id')) redirect(uri_resolve('/admin/index'));
 
@@ -34,9 +37,31 @@ switch($mode) {
             $record = $record[0];
 
             $type = $record->type;
+            $tce = registry()->get(CAT_RECORD_TYPES, $type);
+
+            if($tce) {
+                $class = $tce->getProperty('class');
+                $type_controller = new $class;
+            }
+            
 
         } else redirect(uri_resolve('/admin/index'));
 
+    break;
+
+    case "new":
+        $processed_mode = 'save-new';
+
+        if(!qp_set('type')) redirect(uri_resolve('/admin/index'));
+
+        $type = qp_get('type');
+
+        $tce = registry()->get(CAT_RECORD_TYPES, $type);
+
+        if($tce) {
+            $class = $tce->getProperty('class');
+            $type_controller = new $class;
+        }
     break;
 }
 
@@ -49,10 +74,17 @@ foreach ($loaded_packs as $pack) {
 }
 
 admin_template("Edit", $menu, function() {
-    global $predata, $record, $field_data;
+    global $type_controller, $record, $field_data, $processed_mode, $type;
 ?>
-<form action="<?= uri_resolve('/admin/actions/save-record') ?>" method="post">
-    <input type="text" name="system:title" class="editor-title" placeholder="Title">
+<form action="<?= uri_resolve('/admin/actions/save-record') ?>" method="post" id="recordsform">
+    <?php
+        if($processed_mode == 'save-edit' || $processed_mode == 'draft-edit' && $record) {
+            ?><input type="hidden" name="system:id" value="<?= $record->id ?>"><?php
+        }
+    ?>
+    <input type="hidden" name="system:mode" value="<?= $processed_mode ?>">
+    <input type="hidden" name="system:recordtype" value="<?= $type ?>">
+    <input type="text" name="system:title" class="editor-title" placeholder="Title" value="<?= isset($record) ? $record->title : null ?>" required>
     <div id="editors">
         <div id="primary">
             <?php
@@ -64,6 +96,7 @@ admin_template("Edit", $menu, function() {
                         foreach ($field_data->primary as $data) {
                             $exportID = isset($data->exportid) ? $data->exportid : null;
                             $fieldSlug = isset($data->fieldslug) ? $data->fieldslug : null;
+                            $required = isset($data->required) ? $data->required : false;
 
                             $field = registry()->get(CAT_EDITOR_FIELDS, $fieldSlug);
 
@@ -79,7 +112,18 @@ admin_template("Edit", $menu, function() {
 
                                         if(var_inherits($instance, 'PH_Editor_Field')) {
                                             // echo 5;
-                                            $instance->render($exportID, []);
+                                            
+                                            if($record && $type_controller) {
+                                                $editordata = $type_controller->provideEditordata( $record->content );
+                                                
+                                                if(isset($editordata[$exportID])) {
+                                                    $instance->render($exportID, $editordata[$exportID], $required);
+                                                } else $instance->render($exportID, [], $required);
+                    
+                                            } else {
+                                                $instance->render($exportID, [], $required);
+                                            }
+
                                         }
                                     }
                                 }
@@ -93,7 +137,7 @@ admin_template("Edit", $menu, function() {
         <div id="side">
             <div class="field">
                 <label for="system:status">Status: </label>
-                Published <input type="radio" name="system:status" value="published">
+                Published <input type="radio" name="system:status" value="published" checked>
                 Private <input type="radio" name="system:status" value="private">
             </div>
             
@@ -102,5 +146,6 @@ admin_template("Edit", $menu, function() {
     
     <input type="submit" value="Save">
 </form>
+<script src="<?= uri_resolve('/admin/js/record.js') ?>"></script>
 <?php
 }, "collection:recordtypes", $type);

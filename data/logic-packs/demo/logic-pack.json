@@ -18,7 +18,8 @@
                 "primary": [
                     {
                         "fieldslug": "demotextfield",
-                        "exportid": "content"
+                        "exportid": "content",
+                        "required": true
                     }
                 ]
             }

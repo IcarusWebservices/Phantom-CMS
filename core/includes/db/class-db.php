@@ -116,7 +116,11 @@ class PH_DB {
      * 
      * @since 2.0.0
      */
-    public function insert($tablename, $columns, $values) {
+    public function insert($tablename, $keyvalues) {
+
+        $columns = array_keys($keyvalues);
+        $values = array_values($keyvalues);
+
         $qs = "INSERT INTO " . $tablename . " (";
         foreach ($columns as $column) {
             $qs .= $column . ', ';
