@@ -21,7 +21,8 @@ admin_template($title, $menu, function() {
     global $title, $type;
 ?>
     <h1><?= $title ?></h1>
-    <a href="<?= uri_resolve('/admin/record?mode=new&type=' . $type) ?>" class="link">New record</a>
+    <br>
+    <a href="<?= uri_resolve('/admin/record?mode=new&type=' . $type) ?>" class="button">New post</a>
     
     <table id="records-table">
         <thead>

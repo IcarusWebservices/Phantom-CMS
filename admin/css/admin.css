@@ -6,17 +6,24 @@
 ul { list-style: none; margin: 0; padding: 0; }
 a { text-decoration: none; color: inherit; }
 
-.title {
-    font: bold 20px sans-serif;
-    text-transform: uppercase;
-}
+.title { font: bold 20px sans-serif; text-transform: uppercase; }
+.link { text-decoration: underline; color: var(--menu-color-active-dark); }
 
-.link {
-    text-decoration: underline;
-    color: var(--menu-color-active-dark);
+.button {
+    display: inline-block;
+    padding: 10px 24px;
+    border: none;
+    border-radius: 35px;
+    background-color: var(--color-primary);
+    color: #fff;
+    cursor: pointer;
+    transition: 150ms ease-in-out;
 }
+.button:hover { background-color: var(--menu-color-active-dark); }
 
 html {
+    --color-primary-light: #29cc8d;
+    --color-primary: #24b37c;
     --menu-width: 225px;
     --navbar-height: 4rem;
     --menu-color: #c9c9c9;
@@ -173,7 +180,7 @@ Actionbar
 
 .actionbar .nav-button {
   line-height: normal;
-  padding: 22.5px 8px;
+  padding: 22.5px 0;
   display: inline-block;
   font-family: 'Montserrat', sans-serif;
   font-weight: 600;
@@ -185,6 +192,8 @@ Actionbar
 .actionbar .nav-left { float: left; }
 .actionbar .nav-right { float: right; }
 .actionbar .username { color: var(--menu-color-active-dark); }
+
+.actionbar .nav-right a { margin-left: 8px; }
 
 /* ------------------------------
 Content
@@ -200,7 +209,7 @@ Content
 table {
     width: 100%;
     margin: 0;
-    margin-top: 1rem;
+    margin-top: 8px;
     border-collapse: collapse;
     text-align: left;
 }
