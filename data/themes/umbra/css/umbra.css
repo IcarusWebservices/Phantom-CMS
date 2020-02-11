@@ -51,7 +51,6 @@ Navbar
   background-color: #212121;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
   z-index: 1;
-  transition: 150ms ease;
 }
 .navbar-logo { height: var(--navbar-height); }
 .navbar-logo > * { height: calc(var(--navbar-height) - 3rem); margin: 1.5rem 0; }
