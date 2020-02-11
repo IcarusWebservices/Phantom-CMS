@@ -1,8 +1,13 @@
 <?php
 session_start();
+
+// Turn on errors
 ini_set('display_startup_errors', true);
 error_reporting(E_ALL);
 ini_set('display_errors', true);
+
+// Start output buffering...
+ob_start();
 /**
  * Phantom Content Management System.
  * 
@@ -29,10 +34,13 @@ define('VERSION', '2.0.0');
  * Do not run dev in production. 
  * Only set this to "True" if the website is not published on a public server OR if the websites publish status has been set to "Login required"
  */
-define("RUN_DEV", true);
+define("RUN_DEV", false);
 
 // Config
 require_once ROOT . 'ph-setup.php';
 require_once ROOT . 'ph-front.php';
 
 $logger->write_log();
+
+// Buffer out
+echo ob_get_clean();
