@@ -130,6 +130,30 @@ Content
 section { padding: 2rem 20%;}
 section:nth-child(even) { background-color: #f4f4f4;}
 
+section.duo {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: auto;
+  grid-template-areas:
+    'left right';
+  grid-gap: 2rem;
+}
+
+section.duo:nth-child(even) .text {
+  grid-area: right;
+}
+
+.duo .illustration > img.svg { width: 100%; }
+.duo .illustration > img { max-width: 100%; max-height: 550px; }
+
+.phantom-mobile {
+  position: absolute;
+  left: 32%;
+  top: 50%;
+  transform: translate(-50%, -50%) rotate(-2deg);
+}
+
+
 .title { font: bold 36px sans-serif;}
 
 .link { text-decoration: underline; color: var(--color-primary-dark); transition: 200ms ease;}
