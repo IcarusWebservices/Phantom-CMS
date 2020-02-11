@@ -8,7 +8,7 @@
  */
 defined("ROOT") && defined("SETUP") or (die("This is an illegal route, please route through index.php"));
 
-echo "Tracing: OK";
+// echo "Tracing: OK";
 
 $front = new PH_Front_End;
 $result = $front->render( new PH_Request(), 0 );
