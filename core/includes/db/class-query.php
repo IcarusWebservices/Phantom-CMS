@@ -240,7 +240,7 @@ class PH_Query {
      */
     public static function taxonomy($where) {
         if(var_check(TYPE_ARRAY, $where)) {
-            $result = database()->select('ph_taxonomy', ['*'], $where);
+            $result = database()->select('ph_taxonomy', ['*'], $where, null, null, 'taxonomy_type');
 
             if($result->hasResult()) {
                 $o = [];

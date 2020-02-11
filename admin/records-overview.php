@@ -77,7 +77,7 @@ admin_template($title, $menu, function() {
                                 break;
                             }
                         ?>
-                        <span class="tag <?= $color ?>"><?= $record->status ?></span>
+                        <span class="tag <?= $color ?>"><?= $record->status ?></span> 
                     </td>
                     <td>
                         <?php

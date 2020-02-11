@@ -173,6 +173,7 @@ admin_template("Edit", $menu, function() {
 ?>
                         <div class="field">
                             <a href="#" class="button" id="delete">Delete</a>
+                            <a href="<?= uri_resolve('/admin/taxonomy?id=' . $record->id) ?>" class="button">Go to taxonomy</a>
                         </div>
 <?php
                     }

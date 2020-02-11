@@ -29,6 +29,7 @@ $requested_header_scripts = [];
 $requested_body_scripts = [];
 
 $record_types_items = [];
+$taxonomy_items = [];
 
 foreach ($record_types as $name => $export) {
 
@@ -45,6 +46,11 @@ foreach ($record_types as $name => $export) {
             "url_to" => "records-overview?type=" . $export->name
         ];
 
+        $taxonomy_items[$export->name . "_tax"] = [
+            "display" => $display,
+            "url_to" => "taxonomy-overview?recordtype=" . $export->name
+        ];
+
     }
 
     
@@ -58,6 +64,10 @@ $menu = [
     "collection:recordtypes" => [
         "display" => "Records",
         "items" => $record_types_items
+    ],
+    "collection:taxonomy" => [
+        "display" => "Taxonomy",
+        "items" => $taxonomy_items
     ],
     "collection:appearance" => [
         "display" => "Appearance",
@@ -77,8 +87,4 @@ $menu = [
             ]
         ]
             ],
-    "item:documentation" => [
-        "display" => "Documentation",
-        "url_to" => "docs"
-    ]
 ];
