@@ -127,7 +127,10 @@ Banner
 /* ------------------------------
 Content
 ------------------------------ */
-section { padding: 2rem 20%;}
+section {
+  position: relative;
+  padding: 8rem 20%;
+}
 section:nth-child(even) { background-color: #f4f4f4;}
 
 section.duo {
