@@ -5,6 +5,26 @@ let ellipsis = document.querySelector('.table-ellipsis');
 let countVis = document.querySelector('.items-selected');
 let count = 0;
 
+document.getElementById('delete').addEventListener('click', (e) => {
+    let checked = getChecked();
+    
+    let succes = true;
+
+    checked.forEach((id) => {
+        let fd = new FormData();
+        fd.append('id', id);
+        DoAjaxFormPost('actions/delete-record', fd, (s) => {
+            let parsed = JSON.parse(s);
+
+            if(parsed.error) {
+                succes = false;
+            } else console.log("Succesfully delete record!");
+        });
+    });
+
+    window.location.reload();
+})
+
 selectAll.addEventListener('click', (e) => {
     if(selectAll.checked) {
         rowSelectors.forEach(row => {
@@ -52,11 +72,11 @@ function getChecked() {
 
     rowSelectors.forEach(row => {
         if(row.checked) {
-            rows.push(row.dataset.id);
+            rows.push(parseInt(row.dataset.id));
         }
     })
 
-    console.log(rows);
+    return rows;
 }
 
 // PX Toevoeging

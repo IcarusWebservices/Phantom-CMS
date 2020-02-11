@@ -30,7 +30,7 @@ admin_template($title, $menu, function() {
                 <th></th>
                 <th class="items-selected">1 item selected</th>
                 <th class="table-actions">
-                    <img src="/admin/img/trashcan.svg" alt="Delete" class="table-delete">
+                    <img src="/admin/img/trashcan.svg" alt="Delete" class="table-delete" id="delete">
                     <img src="/admin/img/ellipsis.svg" alt="Menu" class="table-ellipsis">
                 </th>
             </tr>
@@ -98,6 +98,7 @@ admin_template($title, $menu, function() {
         ?>
         </tbody>
     </table>
+    <script src="<?= uri_resolve('/admin/js/ajax.js') ?>"></script>
     <script src="<?= uri_resolve('/admin/js/records-overview.js') ?>"></script>
 <?php
 }, 'collection:recordtypes', $type);
