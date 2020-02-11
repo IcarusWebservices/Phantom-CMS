@@ -54,7 +54,7 @@ echo json_encode([
                     $sv->created_gmt = date("Y-m-d H:i:s");
                     // var_dump($sv);
 
-                    var_dump($sv);
+                    // var_dump($sv);
 
                     $s = PH_Save::record($sv);
 
@@ -90,7 +90,7 @@ echo json_encode([
                                 $sv->author = $user_id;
                                 $sv->updated_gmt = date("Y-m-d H:i:s");
                                
-                                var_dump($sv);
+                                // var_dump($sv);
 
                                 $s = PH_Save::record($sv);
 
