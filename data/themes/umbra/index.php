@@ -35,7 +35,7 @@ class Twenties_Homepage extends PH_Template {
                 <a href="#" class="link learn-more">Learn More</a>
             </div>
             <div class="illustration">
-                <img src="/sites/phantom/img/icon-diamond.svg" alt="Sparkles" class="svg">
+                <img src="https://jezz.tech/sites/phantom/img/icon-diamond.svg" alt="Sparkles" class="svg">
             </div>
         </section>
         <section class="duo">
@@ -45,7 +45,7 @@ class Twenties_Homepage extends PH_Template {
                 <a href="#" class="link learn-more">Learn More</a>
             </div>
             <div class="illustration">
-                <img src="/sites/phantom/img/phantom-mockup.png" alt="Phantom Mobile" class="phantom-mobile">
+                <img src="https://jezz.tech/sites/phantom/img/phantom-mockup.png" alt="Phantom Mobile" class="phantom-mobile">
             </div>
         </section>
         <section class="duo">
@@ -55,7 +55,7 @@ class Twenties_Homepage extends PH_Template {
                 <a href="#" class="link learn-more">Learn More</a>
             </div>
             <div class="illustration">
-                <img src="/sites/phantom/img/icon-diamond.svg" alt="Sparkles" class="svg">
+                <img src="https://jezz.tech/sites/phantom/img/icon-diamond.svg" alt="Sparkles" class="svg">
             </div>
         </section>
         
