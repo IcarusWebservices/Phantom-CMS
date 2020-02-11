@@ -34,13 +34,19 @@ define('VERSION', '2.0.0');
  * Do not run dev in production. 
  * Only set this to "True" if the website is not published on a public server OR if the websites publish status has been set to "Login required"
  */
-define("RUN_DEV", false);
+define("RUN_DEV", true);
 
 // Config
 require_once ROOT . 'ph-setup.php';
 require_once ROOT . 'ph-front.php';
 
-$logger->write_log();
+// $logger->log('Check if this works still...');
+
 
 // Buffer out
-echo ob_get_clean();
+$output = ob_get_clean();
+
+$logger->log('Test: ');
+$logger->log($output);
+$logger->write_log();
+echo $output;

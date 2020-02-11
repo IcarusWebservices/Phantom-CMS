@@ -1,0 +1,333 @@
+[18:17:04:000] Test: 
+[18:17:04:000] <!DOCTYPE html>
+<html lang="nl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+            <link rel="stylesheet" href="/data/themes/umbra/css/umbra.css">
+            <title>Posts</title>
+</head>
+<body>
+    <nav class="navbar" role="navigation" aria-label="main navigation">
+    <a href="/" class="navbar-logo"><img src="https://jezz.tech/sites/phantom/img/ph-icon-solid-light.png" alt="Phantom Icon"></a>
+    <div class="navbar-buttons">
+                <a class="navbar-item" href="/">
+        Home        </a>
+                <a class="navbar-item" href="/posts">
+        Posts        </a>
+                <a class="navbar-item" href="/over-mij">
+        Over mij        </a>
+        
+    </div>
+    <div class="navbar-login"><a href="/admin" class="button">Go To Admin</a></div>
+    <div class="navbar-burger"><i class="fas fa-bars fa-2x" aria-hidden="true"></i></div>
+</nav>
+        <main>
+            <section>
+                
+                <div class="masonry-title">Newest articles</div>
+                                        <div class="article-card">
+                                <div>
+        <h1 style="font-size: 1.5rem;">Een mooi artikel</h1>
+        <p>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer gravida viverra eros, ac rutrum tellus porttitor id. Aenean pharetra diam eget tellus tristique, sit amet convallis libero semper. In non arcu in dui consectetur malesuada sit amet quis enim. Aliquam hendrerit elit id efficitur eleifend. Sed vitae sapien non nibh feugiat ultricies. In ipsum tellus, rutrum ac dignissim at, consequat ac dolor. Sed tempus id ligula eget sollicitudin.</p>
+<p>Nunc ac feugiat ligula. Morbi sollicitudin ac tortor rhoncus rutrum. Aliquam erat volutpat. Nulla quis leo vitae ante tempus sollicitudin eu eget est. Etiam sagittis justo quis erat volutpat cursus. Nunc sed malesuada arcu. Nunc et faucibus felis. In convallis vehicula elit, pharetra tempus sem pharetra at. Nam sit amet venenatis lacus, sed feugiat neque.</p>
+<p>Nullam nec suscipit arcu, nec semper metus. In lobortis faucibus mattis. Sed et tincidunt massa. Curabitur neque nisl, vulputate vel turpis rhoncus, interdum consectetur ligu...            <a href="/posts/een-mooi-artikel?origin=/posts" class="link">Read more</a>
+        </p>
+        
+        <small>Written by icarus. Posted on 2020-02-10 23:40:30</small>        
+    </div>
+                            </div>
+                        
+            </section>
+        </main>
+                        <script src="/data/themes/umbra/js/main.js" ></script>
+            </body>
+</html>
+[18:17:06:000] Test: 
+[18:17:06:000] <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="/core/pages/css/landing.css">
+    <title>This page was not found on this server - Mijn blog</title>
+</head>
+<body>
+    <div id="container">
+        <div id="logo">
+            <h1>...!</h1>
+        </div>
+        <h1>This page was not found on this server</h1>
+        <p>
+            The uri that you entered was not found on this server (/service-worker.js)
+        </p>
+    </div>
+    <span id="version">Twenties theme</span>
+</body>
+</html>
+[18:17:10:000] Test: 
+[18:17:10:000] <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="/core/pages/css/landing.css">
+    <title>This page was not found on this server - Mijn blog</title>
+</head>
+<body>
+    <div id="container">
+        <div id="logo">
+            <h1>...!</h1>
+        </div>
+        <h1>This page was not found on this server</h1>
+        <p>
+            The uri that you entered was not found on this server (/service-worker.js)
+        </p>
+    </div>
+    <span id="version">Twenties theme</span>
+</body>
+</html>
+[18:17:14:000] Test: 
+[18:17:14:000] <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="/core/pages/css/landing.css">
+    <title>This page was not found on this server - Mijn blog</title>
+</head>
+<body>
+    <div id="container">
+        <div id="logo">
+            <h1>...!</h1>
+        </div>
+        <h1>This page was not found on this server</h1>
+        <p>
+            The uri that you entered was not found on this server (/service-worker.js)
+        </p>
+    </div>
+    <span id="version">Twenties theme</span>
+</body>
+</html>
+[18:17:21:000] Test: 
+[18:17:21:000] <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="/core/pages/css/landing.css">
+    <title>This page was not found on this server - Mijn blog</title>
+</head>
+<body>
+    <div id="container">
+        <div id="logo">
+            <h1>...!</h1>
+        </div>
+        <h1>This page was not found on this server</h1>
+        <p>
+            The uri that you entered was not found on this server (/service-worker.js)
+        </p>
+    </div>
+    <span id="version">Twenties theme</span>
+</body>
+</html>
+[18:17:22:000] Test: 
+[18:17:22:000] <!DOCTYPE html>
+<html lang="nl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+            <link rel="stylesheet" href="/data/themes/umbra/css/umbra.css">
+            <title>Posts</title>
+</head>
+<body>
+    <nav class="navbar" role="navigation" aria-label="main navigation">
+    <a href="/" class="navbar-logo"><img src="https://jezz.tech/sites/phantom/img/ph-icon-solid-light.png" alt="Phantom Icon"></a>
+    <div class="navbar-buttons">
+                <a class="navbar-item" href="/">
+        Home        </a>
+                <a class="navbar-item" href="/posts">
+        Posts        </a>
+                <a class="navbar-item" href="/over-mij">
+        Over mij        </a>
+        
+    </div>
+    <div class="navbar-login"><a href="/admin" class="button">Go To Admin</a></div>
+    <div class="navbar-burger"><i class="fas fa-bars fa-2x" aria-hidden="true"></i></div>
+</nav>
+        <main>
+            <section>
+                
+                <div class="masonry-title">Newest articles</div>
+                                        <div class="article-card">
+                                <div>
+        <h1 style="font-size: 1.5rem;">Een mooi artikel</h1>
+        <p>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer gravida viverra eros, ac rutrum tellus porttitor id. Aenean pharetra diam eget tellus tristique, sit amet convallis libero semper. In non arcu in dui consectetur malesuada sit amet quis enim. Aliquam hendrerit elit id efficitur eleifend. Sed vitae sapien non nibh feugiat ultricies. In ipsum tellus, rutrum ac dignissim at, consequat ac dolor. Sed tempus id ligula eget sollicitudin.</p>
+<p>Nunc ac feugiat ligula. Morbi sollicitudin ac tortor rhoncus rutrum. Aliquam erat volutpat. Nulla quis leo vitae ante tempus sollicitudin eu eget est. Etiam sagittis justo quis erat volutpat cursus. Nunc sed malesuada arcu. Nunc et faucibus felis. In convallis vehicula elit, pharetra tempus sem pharetra at. Nam sit amet venenatis lacus, sed feugiat neque.</p>
+<p>Nullam nec suscipit arcu, nec semper metus. In lobortis faucibus mattis. Sed et tincidunt massa. Curabitur neque nisl, vulputate vel turpis rhoncus, interdum consectetur ligu...            <a href="/posts/een-mooi-artikel?origin=/posts" class="link">Read more</a>
+        </p>
+        
+        <small>Written by icarus. Posted on 2020-02-10 23:40:30</small>        
+    </div>
+                            </div>
+                                                <div class="article-card">
+                                <div>
+        <h1 style="font-size: 1.5rem;">Test</h1>
+        <p>
+            <p>testtesttest</p>            <a href="/posts/test?origin=/posts" class="link">Read more</a>
+        </p>
+        
+        <small>Written by icarus. Posted on 2020-02-11 18:17:19</small>        
+    </div>
+                            </div>
+                        
+            </section>
+        </main>
+                        <script src="/data/themes/umbra/js/main.js" ></script>
+            </body>
+</html>
+[18:17:24:000] Test: 
+[18:17:24:000] <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="/core/pages/css/landing.css">
+    <title>This page was not found on this server - Mijn blog</title>
+</head>
+<body>
+    <div id="container">
+        <div id="logo">
+            <h1>...!</h1>
+        </div>
+        <h1>This page was not found on this server</h1>
+        <p>
+            The uri that you entered was not found on this server (/service-worker.js)
+        </p>
+    </div>
+    <span id="version">Twenties theme</span>
+</body>
+</html>
+[18:17:29:000] Test: 
+[18:17:29:000] <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="/core/pages/css/landing.css">
+    <title>This page was not found on this server - Mijn blog</title>
+</head>
+<body>
+    <div id="container">
+        <div id="logo">
+            <h1>...!</h1>
+        </div>
+        <h1>This page was not found on this server</h1>
+        <p>
+            The uri that you entered was not found on this server (/service-worker.js)
+        </p>
+    </div>
+    <span id="version">Twenties theme</span>
+</body>
+</html>
+[18:17:32:000] Test: 
+[18:17:32:000] <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="/core/pages/css/landing.css">
+    <title>This page was not found on this server - Mijn blog</title>
+</head>
+<body>
+    <div id="container">
+        <div id="logo">
+            <h1>...!</h1>
+        </div>
+        <h1>This page was not found on this server</h1>
+        <p>
+            The uri that you entered was not found on this server (/service-worker.js)
+        </p>
+    </div>
+    <span id="version">Twenties theme</span>
+</body>
+</html>
+[18:17:33:000] Test: 
+[18:17:33:000] <!DOCTYPE html>
+<html lang="nl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+            <link rel="stylesheet" href="/data/themes/umbra/css/umbra.css">
+            <title>Posts</title>
+</head>
+<body>
+    <nav class="navbar" role="navigation" aria-label="main navigation">
+    <a href="/" class="navbar-logo"><img src="https://jezz.tech/sites/phantom/img/ph-icon-solid-light.png" alt="Phantom Icon"></a>
+    <div class="navbar-buttons">
+                <a class="navbar-item" href="/">
+        Home        </a>
+                <a class="navbar-item" href="/posts">
+        Posts        </a>
+                <a class="navbar-item" href="/over-mij">
+        Over mij        </a>
+        
+    </div>
+    <div class="navbar-login"><a href="/admin" class="button">Go To Admin</a></div>
+    <div class="navbar-burger"><i class="fas fa-bars fa-2x" aria-hidden="true"></i></div>
+</nav>
+        <main>
+            <section>
+                
+                <div class="masonry-title">Newest articles</div>
+                                        <div class="article-card">
+                                <div>
+        <h1 style="font-size: 1.5rem;">Test</h1>
+        <p>
+            <p>testtesttest</p>            <a href="/posts/test?origin=/posts" class="link">Read more</a>
+        </p>
+        
+        <small>Written by icarus. Posted on 2020-02-11 18:17:19</small>        
+    </div>
+                            </div>
+                        
+            </section>
+        </main>
+                        <script src="/data/themes/umbra/js/main.js" ></script>
+            </body>
+</html>
+[18:17:35:000] Test: 
+[18:17:35:000] <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="/core/pages/css/landing.css">
+    <title>This page was not found on this server - Mijn blog</title>
+</head>
+<body>
+    <div id="container">
+        <div id="logo">
+            <h1>...!</h1>
+        </div>
+        <h1>This page was not found on this server</h1>
+        <p>
+            The uri that you entered was not found on this server (/service-worker.js)
+        </p>
+    </div>
+    <span id="version">Twenties theme</span>
+</body>
+</html>

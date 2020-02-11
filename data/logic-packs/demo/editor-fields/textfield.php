@@ -11,11 +11,7 @@ class Demo_Textfields extends PH_Editor_Field {
 
         array_push($requested_header_scripts, request_script('https://cdn.tiny.cloud/1/jqz6adq226jac2gcjo4v3lvosnn54i2pfon6dfzjgws5ox6r/tinymce/5/tinymce.min.js', null, 'referrerpolicy="origin"'))
         ?>
-        <textarea name="<?= $export_id ?>:textfield" height="500px" <?php 
-            if($required) {
-                echo 'required';
-            }
-        ?> id="<?= $export_id ?>">
+        <textarea name="<?= $export_id ?>:textfield" height="500px" id="<?= $export_id ?>">
             <?php
                 if($predata) {
                     echo($predata);
