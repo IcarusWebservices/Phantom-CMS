@@ -10,10 +10,21 @@ selectAll.addEventListener('click', (e) => {
         rowSelectors.forEach(row => {
             row.checked = true;
         })
+        console.log(rowSelectors.length);
+        count = rowSelectors.length;
+        showActionMenu();
     } else {
         rowSelectors.forEach(row => {
             row.checked = false;
         })
+        count = 0;
+        hideActionMenu();
+    }
+
+    if (count > 1) {
+        countVis.innerHTML = count + ' items selected';
+    } else {
+        countVis.innerHTML = count + ' item selected';
     }
 })
 
