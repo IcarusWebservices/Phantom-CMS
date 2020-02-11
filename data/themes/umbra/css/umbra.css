@@ -234,3 +234,8 @@ footer > div {
         padding: 6rem 15%;
     }
 }
+
+.article-card img {
+  display: inline-block;
+  width: 100%;
+}

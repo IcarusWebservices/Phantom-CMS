@@ -15,11 +15,26 @@
             "controller": "demopostscontroller",
             "method": "single",
             "importance": 1000
+        },
+        "/:slug": {
+            "controller": "demopagecontroller",
+            "method": "page",
+            "importance": 10,
+            "checkerFunction": "checkpage"
         }
     },
     "editors": {
         "record_types": {
             "demopost": {
+                "primary": [
+                    {
+                        "fieldslug": "demotextfield",
+                        "exportid": "content",
+                        "required": true
+                    }
+                ]
+            },
+            "demopage": {
                 "primary": [
                     {
                         "fieldslug": "demotextfield",
