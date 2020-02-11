@@ -47,7 +47,9 @@ form.addEventListener('submit', (e) => {
 
     DoAjaxFormPost('actions/save-record', formdata, (s) => {
 
-        // console.log(s);
+        console.log(s);
+
+
 
         let parsed = JSON.parse(s);
 

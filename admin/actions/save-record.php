@@ -53,6 +53,8 @@ echo json_encode([
                     $sv->author = $user_id;
                     // var_dump($sv);
 
+                    var_dump($sv);
+
                     $s = PH_Save::record($sv);
 
                     if($s->hasResult()) {
@@ -86,6 +88,7 @@ echo json_encode([
                                 $sv->slug = $slug;
                                 $sv->author = $user_id;
                                
+                                var_dump($sv);
 
                                 $s = PH_Save::record($sv);
 
