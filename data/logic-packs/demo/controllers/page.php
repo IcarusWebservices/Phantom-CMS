@@ -31,7 +31,8 @@ return export('demopagecontroller', [
 
             $record = PH_Query::records([
                 "==record_type" => "demopage",
-                "==record_slug" => $slug
+                "==record_slug" => $slug,
+                "==record_status" => PUBLISHED
             ]);
 
             if(count($record) > 0) {
