@@ -19,7 +19,7 @@ class Twenties_Homepage extends PH_Template {
         <div class="banner-content">
             <h1>Phantom CMS</h1>
             <p>The CMS of the future</p>
-            <a href="/phantom/posts" class="button">Get Started</a>
+            <a href="/posts" class="button">Get Started</a>
         </div>
         <div class="banner-illustration">
             <img src="https://jezz.tech/sites/phantom/img/cms.svg" alt="CMS Icon" class="cms">
