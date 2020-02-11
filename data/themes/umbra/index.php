@@ -22,7 +22,7 @@ class Twenties_Homepage extends PH_Template {
             <a href="/phantom/posts" class="button">Get Started</a>
         </div>
         <div class="banner-illustration">
-            <img src="https://jezz.tech/sites/phantom/img/cms.svg" alt="CMS Icon" class="bin-open">
+            <img src="https://jezz.tech/sites/phantom/img/cms.svg" alt="CMS Icon" class="cms">
         </div>
     </header>
         
