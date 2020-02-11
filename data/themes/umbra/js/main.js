@@ -1,8 +1,6 @@
-const MenuButton = document.getElementById('hamburger-expand');
-const Menu = document.getElementById('navbarBasicExample');
+const banner = document.querySelector('.banner');
+const navbar = document.querySelector('.navbar');
 
-MenuButton.addEventListener('click', (e) => {
-    if(Menu.style.display == "none") Menu.style.display = "block";
-    else if(!Menu.style.display) Menu.style.display = "block";
-    else Menu.style.display = "none";
-})
+if (banner) {
+  navbar.classList.add('transparent');
+}
