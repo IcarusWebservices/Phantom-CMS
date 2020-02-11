@@ -111,6 +111,7 @@ function admin_template($title, $menu, $content, $current_id = null, $current_su
     <script>
         console.log('%c Phantom – Javascript initiated!', 'color: #29cc8d; font-weight: bold;');
 
+        const actionbar = document.querySelector('.actionbar');
         const sidebar = document.querySelector('.menu');
         const sidebarBurger = document.querySelector('.menu-burger');
         const accordionTitles = document.querySelectorAll('.accordion-title');
@@ -118,9 +119,11 @@ function admin_template($title, $menu, $content, $current_id = null, $current_su
 	    
 	function menuStateWidth() {
 		if (window.innerWidth <= 768) {
+            actionbar.classList.add('full');
 			sidebar.classList.add('hidden');
 			menuState = 0;
 		} else {
+            actionbar.classList.remove('full');
 			sidebar.classList.remove('hidden');
 			menuState = 1;
 		}
@@ -128,26 +131,27 @@ function admin_template($title, $menu, $content, $current_id = null, $current_su
 	    
 	menuStateWidth();
         
-        sidebarBurger.onclick = () => {
-	        // sidebar.classList.toggle('hidden'); // Deprecated for this purpose because the class may already exist due to the function menuStateWidth().
-		if (menuState == 1) {
-			sidebar.classList.add('hidden');
-			menuState = 0;
-			console.log('%c New menuState = ' + menuState, 'color: red;');
-		} else {
-			sidebar.classList.remove('hidden');
-			menuState = 1;
-			console.log('%c New menuState = ' + menuState, 'color: green;');
-		}
+    sidebarBurger.onclick = () => {
+        if (menuState == 1) {
+            actionbar.classList.add('full');
+            sidebar.classList.add('hidden');
+            menuState = 0;
+            console.log('%c New menuState = ' + menuState, 'color: red;');
+        } else {
+            actionbar.classList.remove('full');
+            sidebar.classList.remove('hidden');
+            menuState = 1;
+            console.log('%c New menuState = ' + menuState, 'color: green;');
         }
+    }
 
-        accordionTitles.forEach(acc => {
-            acc.addEventListener('click', (e) => {
-                if (!event.target.classList.contains('active')) {
-                    event.target.classList.toggle('clicked');
-                }
-            })
-        });
+    accordionTitles.forEach(acc => {
+        acc.addEventListener('click', (e) => {
+            if (!event.target.classList.contains('active')) {
+                event.target.classList.toggle('clicked');
+            }
+        })
+    });
 
 	
 	window.onresize = menuStateWidth();

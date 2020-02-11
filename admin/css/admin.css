@@ -191,6 +191,16 @@ Actionbar
     line-height: var(--navbar-height);
     padding: 0 2rem;
     box-sizing: border-box;
+    transition: 150ms ease;
+}
+
+.actionbar.full {
+    margin-left: 0;
+    width: 100%;
+}
+
+.actionbar.full .nav-left {
+    margin-left: 2rem;
 }
 
 .actionbar .nav-button {
@@ -294,11 +304,63 @@ Radio Buttons
 #records-table .control-indicator { position: static;}
 
 
+/* ----------
+Theme cards
+---------- */
+.card-grid {
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(14rem, 1fr));
+    grid-gap: 1rem;
+    padding: 1rem 0;
+}
+
+.card {
+    position: relative;
+    text-align: center;
+    border-radius: 6px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    transition: transform 200ms ease;
+}
+
+.card, .card-top, .card-bottom {
+    width: 100%;
+}
+
+.card-top {
+    height: 8rem;
+    background: #36D1DC;
+    background: -webkit-linear-gradient(120deg, #5B86E5, #36D1DC);
+    background: linear-gradient(120deg, #5B86E5, #36D1DC);
+}
+
+.card-bottom {
+    display: flex;
+    padding: 1rem;
+    background-color: #fff;
+    box-sizing: border-box;
+}
+
+.card-content {
+    min-width: 0;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+
 
 phantom-data { display: none; }
 
 
+/* ----------------------------------------
+MQ #3 - 768px [Phone]
+---------------------------------------- */
 @media only screen and (max-width: 768px) {
+    .card-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
     /* Menu styling only when the page has just been loaded and the menu button has not yet been pressed.*/
     /*.menu { width: 0; }
     .content { margin-left: 0; }*/
@@ -313,6 +375,17 @@ phantom-data { display: none; }
     
     .content {
         width: 100vw;
+    }
+
+    .nav-left {
+        display: none;
+    }
+}
+
+@media only screen and (max-width: 600px) {
+    .card-grid {
+        grid-template-columns: 1fr;
+        grid-template-rows: auto;
     }
 }
 
