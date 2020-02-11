@@ -69,7 +69,7 @@ class PH_Document {
         http_response_code($this->http_response_code);
         // Set the other headers
         header('Content-Type: ' . $this->content_type);
-        header('Content-Length: ' . $this->content_length);
+        // header('Content-Length: ' . $this->content_length);
         // Echo the webpage
         echo $this->document;
     }
