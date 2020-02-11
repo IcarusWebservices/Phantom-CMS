@@ -230,6 +230,10 @@ Content
     transition: 200ms ease;
 }
 
+.widget h1 {
+    margin-block-start: 2px;
+}
+
 table {
     position: relative;
     width: 100%;
