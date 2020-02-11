@@ -78,12 +78,12 @@ Navbar
 
 .navbar-burger { display: none;}
 
-header.banner ~ .navbar {
+.banner ~ .navbar {
   background-color: transparent;
   box-shadow: none;
 }
 
-header.banner ~ .navbar-buttons > * { color: #fff;}
+.banner ~ .navbar-buttons > * { color: #fff;}
 
 /* ------------------------------
 Banner
