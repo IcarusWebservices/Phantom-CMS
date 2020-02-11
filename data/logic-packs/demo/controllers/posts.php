@@ -13,6 +13,18 @@ class Demo_Posts_Controller {
         return $template;
     }
 
+    public function single($parameters) {
+        $slug = $parameters->post_slug;
+
+        $template = PH_Loader::requestTemplate('demoposts_single');
+
+        $template->addData([
+            "slug" => $slug
+        ]);
+
+        return $template;
+    }
+
 }
 
 return export('demopostscontroller', [

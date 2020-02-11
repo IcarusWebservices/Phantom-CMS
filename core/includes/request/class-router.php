@@ -35,7 +35,13 @@ class PH_Router {
      * @since 2.0.0
      */
     public function matchRoute($route_pattern) {
-        $auri = $this->request->request_uri;
+
+        $qs = explode('?', $this->request->request_uri);
+
+        if(count($qs) > 0) {
+            $auri = $qs[0];
+        } else $auri = $this->request->request_uri;
+        
         $aseg = explode('/', $auri);
 
         $pseg = explode('/', $route_pattern);

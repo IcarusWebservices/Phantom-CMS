@@ -10,6 +10,11 @@
             "controller": "demopostscontroller",
             "method": "overview",
             "importance": 1000
+        },
+        "/posts/:post_slug": {
+            "controller": "demopostscontroller",
+            "method": "single",
+            "importance": 1000
         }
     },
     "editors": {

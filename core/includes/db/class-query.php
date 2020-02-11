@@ -14,6 +14,9 @@ class PH_Query {
      * @since 2.0.0
      */
     public static function records($where = []) {
+        if(qp_set('dbless')) {
+            return [];
+        }
         if(var_check(TYPE_ARRAY, $where)) {
             $result = database()->select('ph_records', ['*'], $where);
 
@@ -202,6 +205,11 @@ class PH_Query {
      * @return array
      */
     public static function menu_items($where) {
+
+        if(qp_set('dbless')) {
+            return [];
+        }
+
         if(var_check(TYPE_ARRAY, $where)) {
             $result = database()->select('ph_menu_items', ['*'], $where);
 

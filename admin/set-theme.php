@@ -22,7 +22,7 @@ admin_template("Theme", $menu, function() {
                             <?php
                             // echo $id . ' ' . $theme_folder;
                             if($id != $theme_folder) {
-                                ?><a href="<?= uri_resolve('/admin/actions/set-theme') ?>" class="link">Set active!</a><?php
+                                ?><a href="<?= uri_resolve('/admin/actions/set-theme?theme=' . $id) ?>" class="link">Set active!</a><?php
                             } else {
                                 ?>Already active!<?php
                             }

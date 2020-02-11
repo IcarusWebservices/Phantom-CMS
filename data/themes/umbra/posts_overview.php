@@ -26,6 +26,7 @@ class Demo_PostsOverview_Template extends PH_Template {
                 <?php
 
                     foreach($records as $record) {
+                        // var_dump($record);
                         ?>
                         <div class="article-card">
                             <?php demo_render_post($record); ?>
