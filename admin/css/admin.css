@@ -31,14 +31,14 @@ html {
     --menu-color-active-dark: #1f996a;
     --menu-background-color: #2c2d30;
     --menu-background-color-active: #32353a;
-    overflow: hidden;
+    overflow-x: hidden;
 }
 
 body {
     font-family: sans-serif;
     background-color: #eee;
     color: #212121;
-    overflow: hidden;
+    overflow-x: hidden;
 }
 
 span.tag {
@@ -231,11 +231,13 @@ Content
 }
 
 table {
+    position: relative;
     width: 100%;
     margin: 0;
     margin-top: 8px;
     border-collapse: collapse;
     text-align: left;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
 }
 
 thead { background-color: #ddd; }
@@ -248,6 +250,39 @@ th:first-child, td:first-child {
 td,th {
     padding: 15px;
     border-bottom: 1px solid #aaa;
+}
+
+.action-overlay {
+    position: absolute;
+    display: none;
+    width: 100%;
+    left: 0;
+    top: 0;
+    background-color: var(--color-primary);
+    color: #fff;
+}
+
+.action-overlay > th:first-child {
+    min-width: 20px;
+}
+
+.table-actions {
+    height: 50px;
+    min-width: 75px;
+    width: auto;
+    padding: 0;
+}
+
+.table-actions > * {
+    display: inline-block;
+    /*padding: calc((50px - 20px) / 2) 0;*/
+    height: 20px;
+    margin: 0 8px;
+    cursor: pointer;
+}
+
+.items-selected {
+    width: 100%;
 }
 
 

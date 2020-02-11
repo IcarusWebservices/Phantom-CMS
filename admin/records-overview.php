@@ -26,6 +26,14 @@ admin_template($title, $menu, function() {
     
     <table id="records-table">
         <thead>
+            <tr class="action-overlay">
+                <th></th>
+                <th class="items-selected">1 item selected</th>
+                <th class="table-actions">
+                    <img src="/admin/img/trashcan.svg" alt="Delete" class="table-delete">
+                    <img src="/admin/img/ellipsis.svg" alt="Menu" class="table-ellipsis">
+                </th>
+            </tr>
             <tr>
                 <th>
                     <label class="control control-checkbox">
