@@ -97,10 +97,7 @@ Banner
   background: linear-gradient(120deg, #4ca2cd, #67B26F);
 }
 
-.banner .button {
-  margin-top: 8px;
-  padding: 8px 35px;
-}
+.banner .button { margin-top: 8px; padding: 8px 35px;}
 
 .banner-content {
   position: absolute;
@@ -111,17 +108,9 @@ Banner
   color: #fff;
 }
 
-.banner-content > * {
-  margin-bottom: 6px;
-}
-
-.banner-content h1 {
-  font-size: 48px;
-}
-
-.banner-content p {
-  font-size: 18px;
-}
+.banner-content > * { margin-bottom: 6px;}
+.banner-content h1 { font-size: 48px;}
+.banner-content p { font-size: 18px;}
 
 .banner-illustration {
   position: absolute;
@@ -137,28 +126,14 @@ Banner
 
 /* ------------------------------
 Content
------------------------------- */  
-section {
-  padding: 2rem 20%;
-}
+------------------------------ */
+section { padding: 2rem 20%;}
+section:nth-child(even) { background-color: #f4f4f4;}
 
-section:nth-child(even) {
-  background-color: #f4f4f4;
-}
+.title { font: bold 36px sans-serif;}
 
-.title {
-  font: bold 36px sans-serif;
-}
-
-.link {
-  text-decoration: underline;
-  color: var(--color-primary-dark);
-  transition: 200ms ease;
-}
-
-.link:hover {
-  color: var(--color-primary);
-}
+.link { text-decoration: underline; color: var(--color-primary-dark); transition: 200ms ease;}
+.link:hover { color: var(--color-primary);}
 
 main h1 {
   font-size: 36px !important;
@@ -195,6 +170,9 @@ main p {
   box-shadow: 0 2px 4px rgba(0,0,0,0.1);
 }
 
+/* ------------------------------
+Footer
+------------------------------ */  
 footer {
   padding: 0 20%;
   height: 3rem;
@@ -204,18 +182,11 @@ footer {
   background-color: #212121;
 }
 
-footer > div {
-  width: 100%;
-}
+footer > div { width: 100%;}
 
 @media only screen and (max-width: 1400px) {
-  .banner-content {
-    width: 80%;
-  }
-  
-  .banner-illustration {
-    left: 75%;
-  }
+  .banner-content { width: 80%;}
+  .banner-illustration { left: 75%;}
 }
 
 @media only screen and (max-width: 1200px) {
@@ -225,12 +196,7 @@ footer > div {
 
 @media only screen and (max-width: 768px) {
     .navbar-buttons, .navbar-login { display: none; }
-    .navbar-burger {
-        display: block;
-        float: right;
-    }
+    .navbar-burger { display: block; float: right; }
   
-    section {
-        padding: 6rem 15%;
-    }
+    section { padding: 6rem 15%;}
 }
