@@ -201,77 +201,6 @@ main p {
   box-shadow: 0 2px 4px rgba(0,0,0,0.1);
 }
 
-
-/* ----------------------------------------
-Basic Form Styling
----------------------------------------- */
-input[type=text], input[type=password], textarea {
-  width: 100%;
-  padding: 12px 20px;
-  margin: 8px 0;
-  display: inline-block;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  box-sizing: border-box;
-}
-
-input:focus, textarea:focus {
-  outline: none;
-  border: 1px solid #888;
-  border-radius: 4px;
-}
-
-input[type=submit] {
-  width: 100%;
-  background-color: #888;
-  color: white;
-  padding: 14px 20px;
-  margin: 8px 0;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
-}
-
-input[type=submit]:hover {
-  background-color: #212121;
-}
-
-/* ----------------------------------------
-Input with an icon
-
-HTML Example:
-
-  <div class="input-with-icon">
-    <input type="text">
-    <i class="fas fa-user"></i>
-  </div>
----------------------------------------- */
-.input-with-icon {
-  position: relative;
-}
-
-.input-with-icon i {
-  position: absolute;
-  top: 18px;
-  left: 0;
-  padding: 2px 12px;
-  color: #888;
-}
-
-.input-with-icon input:focus {
-  color: #212121;
-  border-color: dodgerblue;
-  transition: 150ms ease;
-}
-
-.input-with-icon input:focus + i {
-  color: dodgerblue;
-  transition: 150ms ease;
-}
-
-
-
-
 footer {
   padding: 0 20%;
   height: 3rem;
@@ -283,6 +212,21 @@ footer {
 
 footer > div {
   width: 100%;
+}
+
+@media only screen and (max-width: 1400px) {
+  .banner-content {
+    width: 80%;
+  }
+  
+  .banner-illustration {
+    left: 75%;
+  }
+}
+
+@media only screen and (max-width: 1200px) {
+  .banner-content { text-align: center; }
+  .banner-illustration { display: none; }
 }
 
 @media only screen and (max-width: 768px) {
