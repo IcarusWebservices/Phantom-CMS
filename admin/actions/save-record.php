@@ -51,6 +51,7 @@ echo json_encode([
                     $sv->slug = $slug;
                     $sv->type = $type;
                     $sv->author = $user_id;
+                    $sv->created_gmt = date("Y-m-d H:i:s");
                     // var_dump($sv);
 
                     var_dump($sv);
@@ -87,6 +88,7 @@ echo json_encode([
                                 $sv->title = $title;
                                 $sv->slug = $slug;
                                 $sv->author = $user_id;
+                                $sv->updated_gmt = date("Y-m-d H:i:s");
                                
                                 var_dump($sv);
 
