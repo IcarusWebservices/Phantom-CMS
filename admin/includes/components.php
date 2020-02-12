@@ -88,6 +88,7 @@ function admin_template($title, $menu, $content, $current_id = null, $current_su
         <footer class="sub-footer">
             <nav class="sub-sidebar">
                 <a href="#">FAQ</a>
+                <a href="<?= uri_resolve('/admin/docs.php') ?>">Documentation</a>
                 <a href="#">Support</a>
                 <a href="#">Legal &amp; Privacy</a>
             </nav>

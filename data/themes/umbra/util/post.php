@@ -39,6 +39,7 @@ function demo_render_post($post) {
         ?>
         
     </div>
+    </pre>
     <?php
 }
 

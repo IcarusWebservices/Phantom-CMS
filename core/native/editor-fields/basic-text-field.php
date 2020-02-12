@@ -4,7 +4,7 @@
  * 
  * @since 2.0.0
  */
-class Demo_Textfields extends PH_Editor_Field {
+class NATIVE_EDITOR_FIELD_Textfields extends PH_Editor_Field {
 
     public function render($export_id, $predata, $required = false) {
         global $requested_header_scripts;
@@ -49,6 +49,6 @@ class Demo_Textfields extends PH_Editor_Field {
 
 }
 
-return new PH_Export('demotextfield', [
-    "class" => "Demo_Textfields"
+return new PH_Export('native_textfield', [
+    "class" => "NATIVE_EDITOR_FIELD_Textfields"
 ]);

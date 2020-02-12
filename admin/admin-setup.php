@@ -75,6 +75,10 @@ $menu = [
             "theme" => [
                 "display" => "Theme",
                 "url_to" => "set-theme"
+            ],
+            "strings" => [
+                "display" => "Strings",
+                "url_to" => "strings-overview"
             ]
         ]
     ],
@@ -86,5 +90,6 @@ $menu = [
                 "url_to" => "users"
             ]
         ]
-            ],
+    ],
+    
 ];

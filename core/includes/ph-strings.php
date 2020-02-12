@@ -38,14 +38,10 @@ function get_string($string, $default = null) {
 
         if(!var_check(TYPE_STRING, $default)) $default = $string;
 
-        database()->insert("ph_strings", [
-            "language_code",
-            "string_name",
-            "string_value"
-        ], [
-            "en",
-            $string,
-            $default
+        $r = database()->insert("ph_strings", [
+            "language_code" => 'en',
+            "string_name" => $string,
+            "string_value" => $default
         ]);
 
         return $default;

@@ -28,7 +28,7 @@
             "demopost": {
                 "primary": [
                     {
-                        "fieldslug": "demotextfield",
+                        "fieldslug": "native_textfield",
                         "exportid": "content",
                         "required": true
                     }
@@ -37,7 +37,7 @@
             "demopage": {
                 "primary": [
                     {
-                        "fieldslug": "demotextfield",
+                        "fieldslug": "native_textfield",
                         "exportid": "content",
                         "required": true
                     }

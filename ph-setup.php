@@ -63,6 +63,8 @@ $packs = PH_Query::logic_packs([
 $loaded_packs = [];
 $routes = [];
 
+read_and_register(CORE . 'native/editor-fields/', 'editor-fields');
+
 foreach ($packs as $pack) {
     $json = PH_Loader::loadLogicPack($pack->folder_name);
 
