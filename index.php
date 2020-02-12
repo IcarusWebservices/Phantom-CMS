@@ -46,7 +46,5 @@ require_once ROOT . 'ph-front.php';
 // Buffer out
 $output = ob_get_clean();
 
-$logger->log('Test: ');
-$logger->log($output);
 $logger->write_log();
 echo $output;
