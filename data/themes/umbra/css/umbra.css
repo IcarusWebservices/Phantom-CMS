@@ -127,7 +127,10 @@ Banner
 /* ------------------------------
 Content
 ------------------------------ */
-section { padding: 2rem 20%;}
+section {
+  position: relative;
+  padding: 8rem 20%;
+}
 section:nth-child(even) { background-color: #f4f4f4;}
 
 section.duo {
@@ -223,6 +226,31 @@ footer > div { width: 100%;}
     .navbar-burger { display: block; float: right; }
   
     section { padding: 6rem 15%;}
+    
+    section.duo {
+        grid-template-rows: 1fr min-content;
+        grid-template-columns: 1fr;
+        grid-template-areas:
+        'left'
+        'right';
+    }
+
+    section.duo:nth-child(even) .text {
+      grid-area: auto;
+    }
+
+    .duo .illustration .phantom-mobile {
+      left: 50%;
+      top: 75%;
+      transform: translate(-50%, -50%) rotate(-2deg);
+      max-height: 400px;
+    }
+
+    .duo .illustration {
+      height: 200px;
+    }
+  
+    .phantom-mobile { display: none; }
 }
 
 .article-card img {
