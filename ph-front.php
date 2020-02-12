@@ -13,11 +13,12 @@ defined("ROOT") && defined("SETUP") or (die("This is an illegal route, please ro
 $front = new PH_Front_End;
 $result = $front->render( new PH_Request(), 0 );
 
-if(var_instanceof($result, 'PH_Document')) {
+if(var_instanceof($result, 'PH_DisplayEngine_Document')) {
     $result->render();
 } else if(var_inherits($result, 'PH_Template')) {
 
-    $document = render_template($result);
+    $document = PH_DisplayEngine::generateHTML5($result);
+    $document->http_response_code = 200;
 
     $document->render();
 
