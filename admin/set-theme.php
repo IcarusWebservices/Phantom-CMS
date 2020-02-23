@@ -2,6 +2,23 @@
 require_once 'admin-setup.php';
 login_required();
 
+if($site_id) {
+    $q_theme = PH_Query::settings([
+        "==setting_key" => "appearance_theme",
+        "==site" => $site_id
+    ]);
+} else {
+    $q_theme = PH_Query::settings([
+        "==setting_key" => "appearance_theme",
+        "NLsite" => null
+    ]);
+}
+
+if(count($q_theme)>0) {
+    $theme_folder = $q_theme[0]->value;
+} else {
+    $theme_folder = null;
+}
 
 admin_template("Theme", $menu, function() {
     global $theme_folder;

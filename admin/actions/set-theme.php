@@ -11,6 +11,7 @@ if(qp_set('theme')) {
     $setting = new PH_Setting([]);
     $setting->key = "appearance_theme";
     $setting->value = qp_get('theme');
+    $setting->site = $site_id;
 
     if(count($test) > 0) {
         $setting->exists_on_db = true;

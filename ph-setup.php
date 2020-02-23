@@ -55,10 +55,21 @@ $logger = new PH_Logger;
  */
 $registry = new PH_Registry;
 
+/**
+ * The that is currently being displayed.
+ * 
+ * Only if is_multisite is set to true in the config
+ * 
+ * @var string
+ */
+$site = null;
+
+
+
 // ======== Load the logic-packs ========
 $packs = PH_Query::logic_packs([
     "==enabled" => 1
-], "importance");
+]);
 
 $loaded_packs = [];
 $routes = [];
@@ -66,6 +77,7 @@ $routes = [];
 read_and_register(CORE . 'native/editor-fields/', 'editor-fields');
 
 foreach ($packs as $pack) {
+    // var_dump($pack);
     $json = PH_Loader::loadLogicPack($pack->folder_name);
 
     if($json) {
@@ -100,8 +112,35 @@ foreach ($packs as $pack) {
  */
 $request = new PH_Request();
 
+
 if($config->router_baseuri) {
     $request->applyBaseURI($config->router_baseuri);
+}
+
+if($config->is_multisite) {
+    $uri = $request->request_uri;
+    $try = explode('/', $uri);
+
+    if(isset($try[0])) {
+        $site_try = $try[0];
+    } else $site_try = $try;
+
+    $avsites = PH_Query::sites([]);
+
+    $found = false;
+
+    foreach ($avsites as $st) {
+        if($site_try == $st->slug) {
+            $found = true;
+        }
+    }
+
+    if($found) {
+        $request->applyBaseURI($site_try);
+        $site = $site_try;
+    } else {
+        $site = null;
+    }
 }
 
 /**

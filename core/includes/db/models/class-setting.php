@@ -31,6 +31,13 @@ class PH_Setting extends PH_Model_Base {
     public $value;
 
     /**
+     * The site for the setting
+     * 
+     * @since 2.0.0
+     */
+    public $site;
+
+    /**
      * The constructor method
      * 
      * @param array $data An assoc object with values

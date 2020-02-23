@@ -11,7 +11,7 @@ defined("ROOT") && defined("SETUP") or (die("This is an illegal route, please ro
 // echo "Tracing: OK";
 
 $front = new PH_Front_End;
-$result = $front->render( new PH_Request(), 0 );
+$result = $front->render( 0 );
 
 if(var_instanceof($result, 'PH_DisplayEngine_Document')) {
     $result->render();

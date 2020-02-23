@@ -3,7 +3,7 @@
  * The template function
  */
 function admin_template($title, $menu, $content, $current_id = null, $current_subitem_id = null) {
-    global $requested_body_scripts, $requested_header_scripts, $requested_stylesheets;
+    global $requested_body_scripts, $requested_header_scripts, $requested_stylesheets, $site, $config;
     global $session;
     
     // Render the body before the rest, so that certain scripts & stylesheets can be registered
@@ -97,7 +97,26 @@ function admin_template($title, $menu, $content, $current_id = null, $current_su
     </nav>
     <div class="actionbar">
         <div class="nav-left">
-            <div class="nav-button"><span><a href="/" target="__blank">Open website</a></span></div>
+            <div class="nav-button"><span><a href="/<?= $site ?>" target="__blank">Open website</a></span></div>
+            <?php if($config->is_multisite) {
+                $sites = PH_Query::sites([]);
+                ?>
+                <select id="siteselect">
+                <option value="__def" <?php if(!$site) echo 'selected'; ?>>-- Main --</option>
+                <?php
+                    foreach ($sites as $st) {
+                        ?><option value="<?= $st->slug ?>" <?php
+                            if($st->slug == $site) {
+                                echo 'selected';
+                            }
+                        ?>><?= $st->name ?></option><?php
+                    }
+                ?>
+            </select>
+                <?php
+            }
+            ?>
+            
         </div>
         <div class="nav-right">
             <span>Logged in as <span class="username"><?= $session->user->username ?></span></span>
@@ -109,6 +128,20 @@ function admin_template($title, $menu, $content, $current_id = null, $current_su
     echo $c;
     ?>
     </div>
+    <?php
+    // Request URI filtering for site selection
+    $uri = $_SERVER["REQUEST_URI"];
+
+    $site_uri = null;
+
+    $q = explode('?', $uri);
+
+    if(count($q)>1) {
+        $site_uri = $uri . '&';
+    } else {
+        $site_uri = $uri . '?';
+    }
+    ?>
     <script>
         console.log('%c Phantom – Javascript initiated!', 'color: #29cc8d; font-weight: bold;');
 
@@ -153,6 +186,15 @@ function admin_template($title, $menu, $content, $current_id = null, $current_su
             }
         })
     });
+
+    let select = document.getElementById("siteselect");
+    if(select) {
+        select.addEventListener('change', (e) => {
+            let lang = select.options[select.selectedIndex].value;
+            window.open('<?= $site_uri ?>site=' + lang, '_self');
+        })
+    }
+
 
 	
 	window.onresize = menuStateWidth();

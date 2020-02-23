@@ -1,9 +1,60 @@
 <?php
 session_start();
+
 // Root value
 define("ROOT", dirname(dirname(__FILE__)) . '/');
 require_once ROOT . 'ph-setup.php';
 load_recursively(ROOT . 'admin/includes/');
+
+if($config->is_multisite) {
+    if(qp_set('site')) {
+        $site = qp_get('site');
+
+        if($site == '__def') {
+            $site = null;
+        }
+
+        $session->setVar('site', $site);
+
+        $qp = [];
+
+        $u = $_SERVER["REQUEST_URI"];
+        $q = explode('?', $u);
+        if(count($q) > 0) $u = $q[0];
+
+        $u .= '?';
+
+        foreach ($_GET as $key => $value) {
+            if($key != 'site') {
+                $u .= $key . '=' . $value . '&';
+            }
+        }
+
+        $u = substr($u, 0, strlen($u) -1);
+
+        redirect($u);
+    } else {
+        if(!$session->issetVars('site')) {
+            $site = null;
+        } else {
+            $site = $session->getVar('site');
+        
+            if($site == '__def') {
+                $site = null;
+            }
+        }
+    }
+
+    if($site) {
+        $st = PH_Query::sites(["==site_slug" => $site]);
+        if(count($st)>0) $site_id = $st[0]->id;
+        else $site_id = null;
+    } else $site_id = null;
+
+}
+
+
+
 
 $record_types = registry()->getCategory(CAT_RECORD_TYPES);
 
@@ -93,3 +144,10 @@ $menu = [
     ],
     
 ];
+
+if($config->is_multisite) {
+    $menu["collection:settings"]["items"]["multisite"] = [
+        "display" => "Multisite",
+        "url_to" => "multisite"
+    ];
+}

@@ -27,7 +27,7 @@ function demo_render_post($post) {
         <?php
         if($post->author) {
 
-            $author = PH_Query::users([
+            $author = PH_Query::admin_users([
                 "==id" => $post->author
             ]);
 

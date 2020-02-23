@@ -19,7 +19,7 @@ function demo_render_post_full($post) {
         <?php
         if($post->author) {
 
-            $author = PH_Query::users([
+            $author = PH_Query::admin_users([
                 "==id" => $post->author
             ]);
 

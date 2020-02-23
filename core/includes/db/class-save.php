@@ -21,7 +21,8 @@ class PH_Save {
             "record_slug" => $record->slug,
             "record_title" => $record->title,
             "record_content" => $record->content,
-            "record_author" => $record->author
+            "record_author" => $record->author,
+            "site" => $record->site
         ];
 
         if($record->id) {
@@ -48,14 +49,24 @@ class PH_Save {
      * @return bool
      */
     public static function setting($setting) {
+        global $site_id;
         
+        $where = [
+            "==setting_key" => $setting->key
+        ];
+
+        if($site_id) {
+            $where["==site"] = $site_id;
+        } else {
+            $where["NLsite"] = null;
+        }
+
         if($setting->exists_on_db) {
             $properties = [
                 "setting_value" => $setting->value
             ];
-            return database()->update('ph_settings', $properties, [
-                "==setting_key" => $setting->key
-            ]);
+            
+            return database()->update('ph_settings', $properties, $where);
         } else {
             $properties = [
                 "setting_key" => $setting->key,

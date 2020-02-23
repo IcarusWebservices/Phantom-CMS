@@ -4,7 +4,7 @@ login_required();
 
 
 admin_template("Users", $menu, function() {
-    $users = PH_Query::users([]);
+    $users = PH_Query::admin_users([]);
 ?>
 <div id="user-creation" class="modal">
 

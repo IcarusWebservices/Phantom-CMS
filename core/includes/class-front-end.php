@@ -18,7 +18,7 @@ class PH_Front_End {
      * 
      * @since 2.0.0
      */
-    public function render($request, $mode = 0) {
+    public function render($mode = 0) {
         global $loaded_packs, $routes, $request, $theme_valid;
 
         if(count($loaded_packs) < 1) {
@@ -179,7 +179,7 @@ class PH_Front_End {
         do_error_page('Internal Server Error', $message);
 
         $str = ob_get_clean();
-        return new PH_Document($str, 500);
+        return new PH_DisplayEngine_Document($str, 500);
     }
 
     /**
@@ -205,11 +205,11 @@ class PH_Front_End {
             }
 
             $str = ob_get_clean();
-            return new PH_Document($str, 404);
+            return new PH_DisplayEngine_Document($str, 404);
         } else {
             do_error_page('404', 'This page was not found...');
             $str = ob_get_clean();
-            return new PH_Document($str, 404);
+            return new PH_DisplayEngine_Document($str, 404);
         }
     }
 

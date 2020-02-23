@@ -18,6 +18,13 @@ class PH_Query {
             return [];
         }
         if(var_check(TYPE_ARRAY, $where)) {
+
+            $site = PH_Query::current_site();
+
+            if($site) {
+                $where["==site"] = $site->id;
+            } else $where["NLsite"] = null;
+
             $result = database()->select('ph_records', ['*'], $where);
 
             if($result->hasResult()) {
@@ -79,11 +86,11 @@ class PH_Query {
      * 
      * @since 2.0.0
      */
-    public static function logic_packs($where = [], $order_by = null) {
+    public static function logic_packs($where = []) {
         
         if(var_check(TYPE_ARRAY, $where)) {
             
-            $result = database()->select('ph_logic_packs', ['*'], $where, null, null, $order_by);
+            $result = database()->select('ph_logic_packs', ['*'], $where, null, null);
 
             if($result->hasResult()) {
                 $o = [];
@@ -93,7 +100,7 @@ class PH_Query {
                         "id" => $i->id,
                         "folder_name" => $i->folder_name,
                         "enabled" => $i->enabled,
-                        "importance" => $i->importance
+                        "site" => $i->site
                     ]));
                 }
 
@@ -114,6 +121,13 @@ class PH_Query {
      */
     public static function settings($where = []) {
         if(var_check(TYPE_ARRAY, $where)) {
+
+            $site = PH_Query::current_site();
+
+            if($site) {
+                $where["==site"] = $site->id;
+            } else $where["NLsite"] = null;
+
             $result = database()->select('ph_settings', ['*'], $where);
 
             if($result->hasResult()) {
@@ -173,19 +187,23 @@ class PH_Query {
      * 
      * @return array
      */
-    public static function users($where) {
+    public static function admin_users($where) {
         if(var_check(TYPE_ARRAY, $where)) {
-            $result = database()->select('ph_users', ['*'], $where);
+
+            $result = database()->select('ph_admin_users', ['*'], $where);
 
             if($result->hasResult()) {
                 $o = [];
 
                 foreach ($result as $i) {
-                    array_push($o, new PH_User([
-                        "id" => $i->id,
-                        "username" => $i->user_username,
-                        "password_hash" => $i->user_password,
-                        "email" => $i->user_email
+                    array_push($o, new PH_Admin_User([
+                        "id" => $i->admin_user_id,
+                        "username" => $i->admin_user_username,
+                        "password_hash" => $i->admin_user_password_hash,
+                        "email" => $i->admin_user_email,
+                        "first_name" => $i->admin_user_first_name,
+                        "last_name" => $i->admin_user_last_name,
+                        "permissions_int" => $i->admin_user_permissions_int
                     ]));
                 }
 
@@ -193,7 +211,57 @@ class PH_Query {
             } else return [];
 
         } else return [];
-    } 
+    }
+
+    /**
+     * Queries the current site
+     * 
+     * @since 2.0.0
+     */
+    public static function current_site() {
+        global $site;
+
+        if($site) {
+            $s = PH_Query::sites([
+                "==site_slug" => $site
+            ]);
+    
+            if(count($s) > 0) {
+                return $s[0];
+            } else {
+                return false;
+            }
+        } else {
+            return false;
+        }
+        
+    }
+    
+    /**
+     * Queries site info from the database
+     * 
+     * @since 2.0.0
+     */
+    public static function sites($where) {
+        if(var_check(TYPE_ARRAY, $where)) {
+            $result = database()->select('ph_sites', ['*'], $where);
+
+            if($result->hasResult()) {
+                $o = [];
+
+                foreach ($result as $i) {
+                    array_push($o, new PH_Site([
+                        "id" => $i->site_id,
+                        "slug" => $i->site_slug,
+                        "name" => $i->site_name,
+                    ]));
+                }
+
+                return $o;
+            } else return [];
+
+        } else return [];
+    }
 
     /**
      * Queries menu items from the database
@@ -211,6 +279,13 @@ class PH_Query {
         }
 
         if(var_check(TYPE_ARRAY, $where)) {
+
+            $site = PH_Query::current_site();
+
+            if($site) {
+                $where["==site"] = $site->id;
+            } else $where["NLsite"] = null;
+
             $result = database()->select('ph_menu_items', ['*'], $where);
 
             if($result->hasResult()) {

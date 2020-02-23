@@ -28,4 +28,7 @@ class PH_Config {
     // The base-path for the router
     public $router_baseuri = "/";
 
+    // Whether the site is a multisite
+    public $is_multisite = false;
+
 }

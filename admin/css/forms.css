@@ -74,6 +74,24 @@ input[type=submit]:focus { outline: none; }
     transition: 200ms ease-in-out;
 }
 
+input[type=text] {
+    display: block;
+    width: 100%;
+    border: none;
+    border-radius: 35px;
+    background-color: rgba(0,0,0,.1);
+    color: #333;
+    padding: 10px 20px;
+    box-sizing: border-box;
+    transition: 200ms ease-in-out;
+}
+
+input[type=text]:focus,
+input[type=text]:hover {
+    outline: none;
+    background-color: rgba(0,0,0,.15);
+}
+
 #side input[type=text]:focus,
 #side input[type=text]:hover {
     outline: none;

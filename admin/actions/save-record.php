@@ -4,6 +4,13 @@ login_required();
 
 header('Content-Type: application/json');
 
+// if($site) {
+//     $st = PH_Query::sites(["==site_slug" => $site]);
+//     if(count($st)>0) $site_id = $st[0]->id;
+//     else $site_id = null;
+// } else $site_id = null;
+
+
 if(!fd_set('system:mode', 'system:recordtype')) {
 echo json_encode([
     "error" => true
@@ -52,6 +59,7 @@ echo json_encode([
                     $sv->type = $type;
                     $sv->author = $user_id;
                     $sv->created_gmt = date("Y-m-d H:i:s");
+                    $sv->site = $site_id;
                     // var_dump($sv);
 
                     // var_dump($sv);
@@ -89,7 +97,10 @@ echo json_encode([
                                 $sv->slug = $slug;
                                 $sv->author = $user_id;
                                 $sv->updated_gmt = date("Y-m-d H:i:s");
-                               
+                                $sv->site = $site_id;
+
+                                // var_dump($sv);
+
                                 // var_dump($sv);
 
                                 $s = PH_Save::record($sv);

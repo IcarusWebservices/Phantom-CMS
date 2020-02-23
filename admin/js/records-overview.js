@@ -8,12 +8,16 @@ let count = 0;
 document.getElementById('delete').addEventListener('click', (e) => {
     let checked = getChecked();
     
+    console.log('TEST!');
+
     let succes = true;
 
     checked.forEach((id) => {
         let fd = new FormData();
         fd.append('id', id);
+        
         DoAjaxFormPost('actions/delete-record', fd, (s) => {
+            console.log(s);
             let parsed = JSON.parse(s);
 
             if(parsed.error) {

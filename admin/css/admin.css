@@ -39,6 +39,7 @@ body {
     background-color: #eee;
     color: #212121;
     overflow-x: hidden;
+    height: 100%;
 }
 
 span.tag {
@@ -228,6 +229,7 @@ Content
     padding: 0 2rem 2rem 2rem;
     box-sizing: border-box;
     transition: 200ms ease;
+    height: 100%;
 }
 
 .content h1 {

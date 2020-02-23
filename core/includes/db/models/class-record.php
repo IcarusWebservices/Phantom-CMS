@@ -16,6 +16,7 @@ class PH_Record extends PH_Model_Base {
     public $created_gmt = null;
     public $updated_gmt = null;
     public $author = null;
+    public $site = null;
 
     // ========= Non-rows properties =========
     public $processed_content = null;

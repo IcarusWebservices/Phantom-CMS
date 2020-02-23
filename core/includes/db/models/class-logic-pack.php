@@ -9,7 +9,7 @@ class PH_Logic_Pack_DB extends PH_Model_Base {
     public $id = null;
     public $folder_name = null;
     public $enabled = null;
-    public $importance = null;
+    public $site = 0;
 
     /**
      * The constructor method

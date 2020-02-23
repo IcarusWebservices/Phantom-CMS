@@ -214,9 +214,16 @@ function html_to_string($function) {
  * @return string
  */
 function ph_pattern($input) {
-    global $theme_folder;
+    global $theme_folder, $site, $config;
     // Match all available patterns
-    $input = preg_replace("/(%BASE%)/", uri_resolve(''), $input);
+
+    if($site && $config->is_multisite) {
+        $base = "/" . $site;
+    } else {
+        $base = '';
+    }
+
+    $input = preg_replace("/(%BASE%)/", uri_resolve($base), $input);
 
     if($theme_folder) $input = preg_replace("/(%THEME%)/", uri_resolve('/data/themes/' . $theme_folder), $input);
 

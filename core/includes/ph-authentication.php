@@ -11,8 +11,8 @@
  */
 function authenticate_user($username, $password) {
 
-    $userselection = PH_Query::users([
-        "==user_username" => $username
+    $userselection = PH_Query::admin_users([
+        "==admin_user_username" => $username
     ]);
 
     if(count($userselection) > 0) {
@@ -38,7 +38,7 @@ function authenticate_user($username, $password) {
 function login_required() {
     if(session()->issetVars("username", "password")) {
         $u = authenticate_user(session()->getVar("username"), session()->getVar("password"));
-        if(!$u || !var_instanceof($u, 'PH_User')) {
+        if(!$u || !var_instanceof($u, 'PH_Admin_User')) {
             $uri = uri_self();
             redirect(uri_resolve('/admin/login?redirect=' . '/' .$uri));
         } else {

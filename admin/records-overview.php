@@ -81,14 +81,14 @@ admin_template($title, $menu, function() {
                     </td>
                     <td>
                         <?php
-                            $u = PH_Query::users([
-                                "==id" => $record->author
+                            $u = PH_Query::admin_users([
+                                "==admin_user_id" => $record->author
                             ]);
 
                             if(count($u) > 0) {
                                 $u = $u[0];
 
-                                echo $u->username;
+                                echo $u->last_name . ', ' . $u->first_name;
                             }
                         ?>
                     </td>
