@@ -22,7 +22,7 @@ admin_template($title, $menu, function() {
 ?>
     <h1><?= $title ?></h1>
     <br>
-    <a href="<?= uri_resolve('/admin/record?mode=new&type=' . $type) ?>" class="button">New post</a>
+    <a href="<?= uri_resolve('/admin/record?mode=new&type=' . $type) ?>" class="button">New <?= strtolower(rtrim($title, "s")) ?></a>
     
     <table id="records-table">
         <thead>
