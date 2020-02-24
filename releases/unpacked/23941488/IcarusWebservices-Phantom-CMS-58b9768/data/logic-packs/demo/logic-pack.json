@@ -1,0 +1,48 @@
+{
+    "logicPackName": "Twenties Default Logic Pack",
+    "routes": {
+        "/": {
+            "controller": "Twenties_Index",
+            "method": "index",
+            "importance": 10
+        },
+        "/posts": {
+            "controller": "demopostscontroller",
+            "method": "overview",
+            "importance": 1000
+        },
+        "/posts/:post_slug": {
+            "controller": "demopostscontroller",
+            "method": "single",
+            "importance": 1000
+        },
+        "/:slug": {
+            "controller": "demopagecontroller",
+            "method": "page",
+            "importance": 10,
+            "checkerFunction": "checkpage"
+        }
+    },
+    "editors": {
+        "record_types": {
+            "demopost": {
+                "primary": [
+                    {
+                        "fieldslug": "native_textfield",
+                        "exportid": "content",
+                        "required": true
+                    }
+                ]
+            },
+            "demopage": {
+                "primary": [
+                    {
+                        "fieldslug": "native_textfield",
+                        "exportid": "content",
+                        "required": true
+                    }
+                ]
+            }
+        }
+    }
+}

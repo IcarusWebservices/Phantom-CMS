@@ -139,6 +139,10 @@ $menu = [
             "users" => [
                 "display" => "Users",
                 "url_to" => "users"
+            ],
+            "releases" => [
+                "display" => "Releases",
+                "url_to" => "releases"
             ]
         ]
     ],

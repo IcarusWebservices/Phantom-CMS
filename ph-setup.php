@@ -13,10 +13,25 @@ define("CORE", ROOT . 'core/');
 define("DATA", ROOT . 'data/');
 // Require the loading functions
 require_once CORE . 'ph-load.php';
+/**
+ * The current version of the Phantom Content Management System
+ * 
+ * @since 2.0.0
+ */
+define('VERSION', '2.0.0');
+
+/**
+ * The GitHub version for the releases page
+ * 
+ * @since 2.0.0
+ */
+define("RELEASE_VERSION", "v1.0-beta1");
 // Now load the includes
 load_recursively(CORE . 'includes/');
 // Now set up the global variables
 require_once CORE . 'pages/error.php';
+
+
 
 // Load the configuration file (ph-config.php)
 if(!file_exists(ROOT . 'ph-config.php')) {
@@ -33,13 +48,6 @@ $dsn = "mysql:host=". $config->db_hostname . ";dbname=". $config->db_database . 
  * @var PH_DB
  */
 $database = new PH_DB($dsn, $config->db_username, $config->db_password);
-
-/**
- * The hook controller
- * 
- * @var PH_Hooks
- */
-$hooks = new PH_Hooks;
 
 /**
  * The logging tool

@@ -1,0 +1,115 @@
+/* ----------------------------------------
+Audioplayer
+---------------------------------------- */
+.audioplayer {
+  position: relative;
+  height: var(--musicplayer-height);
+  color: #fff;
+  background-color: var(--color-primary-dark);
+  padding: 0 calc(var(--section-padding) + 2rem);
+}
+
+.audioplayer > * {
+  display: inline-block;
+  vertical-align: middle;
+}
+.audioplayer > *:not(:last-child) { margin-right: 1rem; }
+
+
+
+.audioplayer .metadata {
+    font-size: 15px;
+}
+
+.audioplayer #apSeekArea {
+  position: relative;
+  bottom: 0;
+  /*width: calc(100% - 5rem - 1rem - 150px - 1rem - 115px - 1rem - 125px); final 300px is right side space*/
+  width: calc(100% - 5rem - 1rem - 150px - 1rem - 115px - 4rem);
+}
+
+.audioplayer #apCurrentTime,
+.audioplayer #apTrackLength,
+.audioplayer #apSeekArea {
+  margin-right: 8px;
+}
+
+
+
+
+
+
+#apSongTitle {
+  font-weight: 600;
+}
+
+.apButtons > button {
+  height: var(--musicplayer-height);
+  margin: 0 4px;
+  padding: 4px;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  color: #eee;
+  background-color: transparent;
+  transition: 150ms ease;
+}
+
+.apButtons > button:hover,
+.apButtons .active {
+  color: #bbb;
+}
+
+#apSeekArea {
+  position: absolute;
+  bottom: 2rem;
+  width: calc(100% - 4rem);
+  height: 10px;
+  background-color: #eee;
+  border-radius: 20px;
+  cursor: pointer;
+}
+
+#apFill {
+  width: 0;
+  margin: 0;
+  height: 10px;
+  background-color: #aaa;
+  transition: width 200ms ease;
+  border-radius: 20px 0 0 20px;
+  z-index: 100;
+}
+
+#ins-time {
+  position: absolute;
+  top: -29px;
+  color: #fff;
+  font-size: 12px;
+  white-space: pre;
+  padding: 5px 6px;
+  border-radius: 4px;
+  display:none;
+}
+
+#apSeekHover {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  opacity: 0.2;
+  border-radius: 20px 0 0 20px;
+  z-index: 2;
+}
+
+#ins-time,
+#apSeekHover {
+  background-color: #212121;
+}
+
+#apCurrentTime,
+#apTrackLength {
+  font-size: 12px;
+  display: inline-block;
+  opacity: 0;
+  transition: 200ms ease opacity;
+}

@@ -1,0 +1,58 @@
+*, *::before, *::after {
+	margin: 0 auto;
+	padding: 0;
+}
+
+a { text-decoration: none; color: inherit; }
+ul { list-style: none; padding: 0; margin: 0; }
+
+body {
+	font-family: sans-serif;
+	text-align: center;
+	color: #fff;
+	background-color: #212121;
+}
+
+header {
+	height: 4rem;
+	width: 100%;
+	padding: 2rem;
+	box-sizing: border-box;
+	text-align: left;
+}
+
+header img { height: 2.5rem; }
+
+.container {
+	position: absolute;
+	top: 45%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+}
+
+.projects { margin-top: 2rem; margin-bottom: 3rem; }
+.project-item {
+	display: inline-block;
+	width: 200px;
+	height: 200px;
+	padding: 90px 0; /* Text height is 20px, so adding 90px to top and bottom will center it in a 200px * 200px box */
+	background-color: #eee;
+	color: black;
+	box-sizing: border-box;
+	transition: transform 400ms cubic-bezier(0.22, 0.61, 0.36, 1);
+}
+.project-item:not(:last-child) { margin-right: 20px; }
+
+.project-item:hover {
+	transform: scale(1.03);
+}
+
+.logout {
+	display: inline-block;
+	padding: 10px 25px;
+	border: 1px solid #777;
+	color: #777;
+	font-size: 14px;
+	letter-spacing: 1.5px;
+	text-transform: uppercase;
+}

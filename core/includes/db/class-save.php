@@ -63,14 +63,16 @@ class PH_Save {
 
         if($setting->exists_on_db) {
             $properties = [
-                "setting_value" => $setting->value
+                "setting_value" => $setting->value,
+                "site" => $setting->site
             ];
             
             return database()->update('ph_settings', $properties, $where);
         } else {
             $properties = [
                 "setting_key" => $setting->key,
-                "setting_value" => $setting->value
+                "setting_value" => $setting->value,
+                "site" => $setting->site
             ];
             return database()->insert('ph_settings', $properties);
         }

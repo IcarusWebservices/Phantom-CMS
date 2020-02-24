@@ -18,12 +18,7 @@ ob_start();
  * @copyright Daan Penning & Jesse Traas
  */
 define('ROOT', dirname(__FILE__) . '/');
-/**
- * The current version of the Phantom Content Management System
- * 
- * @since 2.0.0
- */
-define('VERSION', '2.0.0');
+
 
 /**
  * Whether Phantom should process requests in "Development mode".
