@@ -1,2 +1,3 @@
-# Phantom-CMS
-👻 A modern CMS with a focus on customizability!
+<div align="center">
+    <h1>Phantom Content Management System</h1>
+</div>
