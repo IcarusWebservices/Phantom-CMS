@@ -1,5 +1,5 @@
 <div align="center">
-    <span style="font-size: 2rem;">👻</span>
+    <h1>👻</h1>
     <h1>Phantom</h1>
     <i>A lightweight CMS, created with a focus on customizability</i>
 </div>
