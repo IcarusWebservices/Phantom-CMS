@@ -40,6 +40,26 @@ class PH_Save {
     }
 
     /**
+     * Saves a site 
+     * 
+     * @since 2.0.0
+     */
+    public static function site($site) {
+        $properties = [
+            "site_name" => $site->name,
+            "site_slug" => $site->slug
+        ];
+
+        if($site->id) {
+            return database()->update('ph_sites', $properties, [
+                "==site_id" => $site->id
+            ]);
+        } else {
+            return database()->insert('ph_sites', $properties);
+        }
+    }
+
+    /**
      * Inserts or updates a setting
      * 
      * @param PH_Setting $setting The setting to update
