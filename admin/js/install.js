@@ -1,43 +1,16 @@
-(() => {
+let download = document.getElementById('download')
+let install = document.getElementById('install')
+let stat = document.getElementById('status')
+let id = document.getElementById('ID')
 
-    let idElement = document.getElementById('update-id')
-    let pBar = document.getElementById('install-progress')
-    let taskText = document.getElementById('tasktext');
+download.addEventListener('click', e => {
+    stat.innerHTML = 'Downloading ZIP...'
 
-    if(idElement) {
+    DoAjaxGet('admin/actions/install-release?step=1&id=' + id.innerHTML, s => {
+        stat.innerHTML = 'ZIP downloaded!'
+    })
+})
 
-        let id = idElement.innerHTML;
+install.addEventListener('click', e => {
 
-        // DoAjaxGet('actions/install-release?step=1&id=' + id, (s) => {
-        //     if(s) {
-        //         pBar.value = 25;
-        //         taskText.innerHTML = 'Downloading release...'
-        //         DoAjaxGet('actions/install-release?step=2&id=' + id, (a) => {
-        //             if(a) {
-        //                 pBar.value = 50;
-        //                 taskText.innerHTML = 'Unpakking...'
-        //                 DoAjaxGet('actions/install-release?step=3&id=' + id, (b) => {
-        //                     if(b) {
-        //                         pBar.value = 75;
-        //                         taskText.innerHTML = 'Installing...'
-        //                         DoAjaxGet('actions/install-release?step=4&id=' + id, (c) => {
-        //                             if(c) {
-        //                                 console.log(c);
-        //                             }
-        //                         });
-        //                     }
-        //                 });
-        //             }
-        //         });
-        //     }
-        // });
-
-        DoAjaxGet('actions/install-release?step=4&id=' + id, (c) => {
-            if(c) {
-                console.log(c);
-            }
-        });
-
-    }
-
-})();
+})

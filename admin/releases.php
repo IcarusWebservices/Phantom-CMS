@@ -4,66 +4,50 @@ login_required();
 
 admin_template("Releases", $menu, function() {
 
-    $ch = curl_init('https://api.github.com/repos/IcarusWebservices/Phantom-CMS/releases');
-    curl_setopt($ch, CURLOPT_USERAGENT, 'Mozilla/5.0 (Windows NT 6.1) AppleWebKit/537.2 (KHTML, like Gecko) Chrome/22.0.1216.0 Safari/537.2');
-    curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-    $github_response = curl_exec($ch);
-
-    var_dump($github_response);
-
-    $json = json_decode($github_response);
-
+    $releases = PH_Query::release([]);
     ?>
+    <a href="#" class="link" id="reload">Reload</a>
     <h1>Releases</h1>
-    <?php
-
-    if($json) {
-        ?>
-        <table>
-            <thead>
-                <tr>
-                    <th>
-                        Version
-                    </th>
-                    <th>
-                        Release Name
-                    </th>
-                </tr>
-            </thead>
-            <tbody>
-        <?php
-        $curr_found = false;
-        foreach ($json as $release) {
-            ?>
+    <table>
+        <thead>
             <tr>
-                <th><?php
-                    if($release->tag_name == RELEASE_VERSION) {
-                        $curr_found = true;
-                        ?>
-                        <span class="tag blue">Current Version</span>
-                        <?php
-                    } elseif($curr_found) {
-                        ?>
-                        <span class="tag red">Older Version</span>
-                        <?php
-                    } else {
-                        ?>
-                        <span class="tag green">Newer version</span>
-                        <?php
-                    }
-                ?></th>
-                <th><a href="<?= uri_resolve('/admin/release?id=' . $release->id) ?>" class="link"><?= isset($release->name) ? $release->name : "Untitled (Not recommended downloading this version)" ?></a></th>
+                <th></th>
+                <th>Version</th>
+                <th>Name</th>
+                <th>Released at</th>
+                <th></th>
             </tr>
-            <h2></h2>
+        </thead>
+        <tbody>
             <?php
-        }
-        ?>
-            </tbody>
-        </table>
-        <?php
-    } else {
-        ?>
-        <strong>Updating service unavailable!</strong>
-        <?php
-    }
+            foreach ($releases as $release) {
+                ?>
+                <tr>
+                    <td><?php
+                        if($release->is_current_version) {
+                            ?>
+                            <span class="tag blue">Current</span>
+                            <?php
+                        }
+                    ?></td>
+                    <td><?= $release->version_string ?></td>
+                    <td><?= $release->name ?></td>
+                    <td><?= $release->released_at ?></td>
+                    <td><a href="<?= uri_resolve('/admin/release?id=' . $release->id) ?>" class="link">Install</a></td>
+                </tr>
+                <?php
+            }
+            ?>
+        </tbody>
+    </table>
+    <script src="<?= uri_resolve('/admin/js/ajax.js') ?>"></script>
+    <script>
+        let reload = document.getElementById('reload');
+        reload.addEventListener('click', (e) => {
+            DoAjaxGet('actions/reload-releases',(s) => {
+                window.location.reload();
+            })
+        })
+    </script>
+    <?php
 }, 'collection:settings', 'releases');

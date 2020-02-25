@@ -10,8 +10,8 @@ class PH_Github {
         return json_decode($response);
     }
 
-    public static function getReleaseAssets($id) {
-        $url = 'https://api.github.com/repos/IcarusWebservices/Phantom-CMS/releases/' . $id . '/assets';
+    public static function getReleases() {
+        $url = 'https://api.github.com/repos/IcarusWebservices/Phantom-CMS/releases';
         $response = PH_Github::doRequest($url);
         return json_decode($response);
     }

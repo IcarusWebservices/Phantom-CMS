@@ -178,18 +178,19 @@ class PH_DB {
      */
     public function delete($tablename, $where) {
         $qs = "DELETE FROM " . $tablename . " ";
-        $vars = [];
 
-        $this->getWhereClause($where);
+        if(count($where) > 0) {
+            $vars = [];
 
-        $data = $this->getWhereClause($where);
-
-        $qs .= "WHERE " . $data["string"];
-
-        // echo $qs;
-
-        $vars = array_merge($vars, $data["vars"]);
-
+            $data = $this->getWhereClause($where);
+    
+            $qs .= "WHERE " . $data["string"];
+    
+            // echo $qs;
+    
+            $vars = array_merge($vars, $data["vars"]);
+        }
+        
         return $this->execute($qs, $vars);
     }
 

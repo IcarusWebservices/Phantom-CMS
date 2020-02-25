@@ -8,23 +8,51 @@ if(!qp_set('id')) {
 
 $id = qp_get('id');
 
-$data = PH_Github::getReleaseInfo($id);
+if(!is_numeric($id)) {
+    redirect(uri_resolve('/admin/releases'));
+}
 
-admin_template("Release " . $data->name, $menu, function() {
-    global $data;
+$id = (int) $id;
+
+$release = PH_Query::release([
+    "==id" => $id
+]);
+
+if(count($release) > 0) $release = $release[0];
+else redirect(uri_resolve('/admin/releases'));
+
+admin_template("Release " . $release->name, $menu, function() {
+    global $release;
     ?>
-    <h1>Release <?= $data->name ?></h1>
-    <p>
-        <?php
-        var_dump($data->zipball_url);
-            if($data->tag_name == RELEASE_VERSION) {
-                ?>
-                <i>This is already the current version! Installing it won't make a difference...</i>
-                <?php
-            }
-        ?>
-    </p>
-    <a href="<?= uri_resolve('/admin/install_release?id=' . $data->id) ?>" class="button">Install</a>
+    <a href="<?= uri_resolve('/admin/releases') ?>" class="link">🠐 Releases</a>
+    <h1>Release <?= $release->name ?></h1>
+    <?php
+
+    $zip_downloaded = false;
+    $zip_unpacked = false;
+
+    if(file_exists(ROOT . 'releases/zip/' . $release->id . '.zip')) {
+        $zip_downloaded = true;
+    }
+
+    if(is_dir(ROOT . 'releases/unpacked/' . $release->id . '/')) {
+        $zip_unpacked = true;
+    }
+
+    ?>
+    <span style="display:none;" id="ID"><?= $release->id ?></span>
+    <ul>
+        <li>Downloaded: <i><?= $zip_downloaded ? "Yes" : "No" ?></i></li>
+        <li>Unpacked: <i><?= $zip_unpacked ? "Yes" : "No" ?></i></li>
+        <li>Installed: <i><?= $release->version_string == RELEASE_VERSION ? "Yes" : "No" ?></i></li>
+    </ul><br><br>
+    <a href="#" class="button" id="download">Download</a>
+    <a href="#" class="button" id="install">Install</a>
+    <br><br>
+    <p><i><span id="status"></span></i></p>
+
+    <script src="<?= uri_resolve('/admin/js/ajax.js') ?>"></script>
+    <script src="<?= uri_resolve('/admin/js/install.js') ?>"></script>
     <?php
 }, 'collection:settings', 'releases');
 
