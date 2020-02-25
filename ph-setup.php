@@ -64,7 +64,7 @@ $logger = new PH_Logger;
 $registry = new PH_Registry;
 
 /**
- * The that is currently being displayed.
+ * The site that is currently being displayed.
  * 
  * Only if is_multisite is set to true in the config
  * 
@@ -72,6 +72,12 @@ $registry = new PH_Registry;
  */
 $site = null;
 
+/**
+ * Whether the front-end runs in customizer mode
+ * 
+ * @since 2.0.0
+ */
+$is_in_customizer_mode = false;
 
 
 // ======== Load the logic-packs ========
@@ -82,7 +88,8 @@ $packs = PH_Query::logic_packs([
 $loaded_packs = [];
 $routes = [];
 
-read_and_register(CORE . 'native/editor-fields/', 'editor-fields');
+read_and_register(CORE . 'native/editor-fields/', CAT_EDITOR_FIELDS);
+read_and_register(CORE . 'native/template-record-types/', CAT_TEMPLATE_RECORD_TYPES);
 
 foreach ($packs as $pack) {
     // var_dump($pack);

@@ -127,9 +127,9 @@ $menu = [
                 "display" => "Theme",
                 "url_to" => "set-theme"
             ],
-            "strings" => [
-                "display" => "Strings",
-                "url_to" => "strings-overview"
+            "customizer" => [
+                "display" => "Customizer",
+                "url_to" => "customizer"
             ]
         ]
     ],

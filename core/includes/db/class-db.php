@@ -219,6 +219,7 @@ class PH_DB {
                         foreach ($or_compare as $var => $val) {
                             $qs .= '(';
                             $iii = 0;
+                            // var_dump($val);
                             foreach ($val as $vl) {
                                 $qs .= $this->getWhereComparisonString($var);
                                 array_push($where_vals, $vl);

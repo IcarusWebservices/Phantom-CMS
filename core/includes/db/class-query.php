@@ -148,27 +148,26 @@ class PH_Query {
     }
 
     /**
-     * Gets a string from the database
-     * 
-     * @param array $where The where data to query
+     * Gets a template record from the database
      * 
      * @since 2.0.0
-     * 
-     * @return array Array of strings
      */
-    public static function strings($where) {
+    public static function template_record($where) {
         if(var_check(TYPE_ARRAY, $where)) {
-            $result = database()->select('ph_strings', ['*'], $where);
+
+            $result = database()->select('ph_template_records', ['*'], $where);
 
             if($result->hasResult()) {
                 $o = [];
 
                 foreach ($result as $i) {
-                    array_push($o, new PH_String([
-                        "id" => $i->id,
-                        "language_code" => $i->language_code,
-                        "string_name" => $i->string_name,
-                        "string_value" => $i->string_value
+                    array_push($o, new PH_Template_Record([
+                        "id" => $i->template_record_id,
+                        "type" => $i->template_record_type,
+                        "data" => $i->template_record_data,
+                        "slug" => $i->template_record_slug,
+                        "language" => $i->template_record_language,
+                        "site" => $i->site
                     ]));
                 }
 
