@@ -32,7 +32,9 @@ admin_template("Release " . $release->name, $menu, function() {
     $zip_unpacked = false;
 
     if(file_exists(ROOT . 'releases/zip/' . $release->id . '.zip')) {
-        $zip_downloaded = true;
+        if(filesize(ROOT . 'releases/zip/' . $release->id . '.zip') > 0) {
+            $zip_downloaded = true;
+        }
     }
 
     if(is_dir(ROOT . 'releases/unpacked/' . $release->id . '/')) {
@@ -46,7 +48,17 @@ admin_template("Release " . $release->name, $menu, function() {
         <li>Unpacked: <i><?= $zip_unpacked ? "Yes" : "No" ?></i></li>
         <li>Installed: <i><?= $release->version_string == RELEASE_VERSION ? "Yes" : "No" ?></i></li>
     </ul><br><br>
-    <a href="#" class="button" id="download">Download</a>
+    <?php
+    if(!$zip_downloaded) {
+        ?>
+        <a href="#" class="button" id="download">Download</a>
+        <?php
+    } else {
+        ?>
+        <span class="tag blue">Already downloaded!</span>
+        <?php
+    }
+    ?>
     <a href="#" class="button" id="install">Install</a>
     <br><br>
     <p><i><span id="status"></span></i></p>
