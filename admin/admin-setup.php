@@ -117,7 +117,7 @@ $menu = [
         "items" => $record_types_items
     ],
     "collection:taxonomy" => [
-        "display" => "Taxonomy",
+        "display" => "Tax",
         "items" => $taxonomy_items
     ],
     "collection:appearance" => [
