@@ -4,4 +4,5 @@
 </div>
 <hr>
 
+## About
 Phantom CMS is a Content Management System inspired by Wordpress, but with a bigger focus on customizability.
