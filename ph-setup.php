@@ -25,7 +25,7 @@ define('VERSION', '2.0.0');
  * 
  * @since 2.0.0
  */
-define("RELEASE_VERSION", "v1.0-beta1");
+define("RELEASE_VERSION", "v1.0-prebeta1");
 // Now load the includes
 load_recursively(CORE . 'includes/');
 // Now set up the global variables
