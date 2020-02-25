@@ -1,5 +1,5 @@
 <div align="center">
-    <h1 style="color: #29cc8d">Phantom CMS</h1>
+    <h1>Phantom</h1>
     <i>A lightweight CMS, created with a focus on customizability</i>
 </div>
 <hr>
