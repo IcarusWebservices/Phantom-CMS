@@ -11,6 +11,7 @@
     <a class="nav-icon" href="/wim"><img src="http://wimsteenbakker.nl/wp-content/uploads/2012/08/logo_wim_steenbakker-e1344252229717-300x110.png"></a>
     <div class="nav-buttons">
         <div class="nav-btn active"><a href="<?= uri_resolve('/wim') ?>">Home</a></div>
+        <div class="nav-btn"><a href="/wim/over">Over</a></div>
         <?php
         get_template_part('menu.php', ["active_id" => $data["active_id"]]);
         ?>
