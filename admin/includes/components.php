@@ -100,19 +100,27 @@ function admin_template($title, $menu, $content, $current_id = null, $current_su
             <div class="nav-button"><span><a href="/<?= $site ?>" target="__blank">Open website</a></span></div>
             <?php if($config->is_multisite) {
                 $sites = PH_Query::sites([]);
+                $site_still_exists = false;
                 ?>
-                <select id="siteselect">
-                <option value="__def" <?php if(!$site) echo 'selected'; ?>>-- Main --</option>
+                Currently editing: <select id="siteselect">
+                <option value="__def" <?php if(!$site) {echo 'selected'; $site_still_exists = true;} ?>>-- Main --</option>
                 <?php
                     foreach ($sites as $st) {
                         ?><option value="<?= $st->slug ?>" <?php
                             if($st->slug == $site) {
                                 echo 'selected';
+                                $site_still_exists = true;
                             }
                         ?>><?= $st->name ?></option><?php
                     }
                 ?>
-            </select>
+            </select> <a href="?site=<?php
+                if($site_still_exists) {
+                    echo $site;
+                } else {
+                    echo "__def";
+                }
+            ?>">↻</a>
                 <?php
             }
             ?>

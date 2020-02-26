@@ -20,7 +20,8 @@ if(fd_set('setting_id', 'setting_value')) {
 
     $setting = new PH_Setting([
         "key" => $id,
-        "value" => $value
+        "value" => $value,
+        "site" => $site_id
     ]);
 
     if(count($existing) > 0) {

@@ -13,10 +13,25 @@ define("CORE", ROOT . 'core/');
 define("DATA", ROOT . 'data/');
 // Require the loading functions
 require_once CORE . 'ph-load.php';
+/**
+ * The current version of the Phantom Content Management System
+ * 
+ * @since 2.0.0
+ */
+define('VERSION', '2.0.0');
+
+/**
+ * The GitHub version for the releases page
+ * 
+ * @since 2.0.0
+ */
+define("RELEASE_VERSION", "v1.0-prebeta1");
 // Now load the includes
 load_recursively(CORE . 'includes/');
 // Now set up the global variables
 require_once CORE . 'pages/error.php';
+
+
 
 // Load the configuration file (ph-config.php)
 if(!file_exists(ROOT . 'ph-config.php')) {
@@ -35,13 +50,6 @@ $dsn = "mysql:host=". $config->db_hostname . ";dbname=". $config->db_database . 
 $database = new PH_DB($dsn, $config->db_username, $config->db_password);
 
 /**
- * The hook controller
- * 
- * @var PH_Hooks
- */
-$hooks = new PH_Hooks;
-
-/**
  * The logging tool
  * 
  * @var PH_Logger
@@ -56,7 +64,7 @@ $logger = new PH_Logger;
 $registry = new PH_Registry;
 
 /**
- * The that is currently being displayed.
+ * The site that is currently being displayed.
  * 
  * Only if is_multisite is set to true in the config
  * 
@@ -64,6 +72,12 @@ $registry = new PH_Registry;
  */
 $site = null;
 
+/**
+ * Whether the front-end runs in customizer mode
+ * 
+ * @since 2.0.0
+ */
+$is_in_customizer_mode = false;
 
 
 // ======== Load the logic-packs ========
@@ -74,7 +88,8 @@ $packs = PH_Query::logic_packs([
 $loaded_packs = [];
 $routes = [];
 
-read_and_register(CORE . 'native/editor-fields/', 'editor-fields');
+read_and_register(CORE . 'native/editor-fields/', CAT_EDITOR_FIELDS);
+read_and_register(CORE . 'native/template-record-types/', CAT_TEMPLATE_RECORD_TYPES);
 
 foreach ($packs as $pack) {
     // var_dump($pack);

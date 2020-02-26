@@ -148,27 +148,26 @@ class PH_Query {
     }
 
     /**
-     * Gets a string from the database
-     * 
-     * @param array $where The where data to query
+     * Gets a template record from the database
      * 
      * @since 2.0.0
-     * 
-     * @return array Array of strings
      */
-    public static function strings($where) {
+    public static function template_record($where) {
         if(var_check(TYPE_ARRAY, $where)) {
-            $result = database()->select('ph_strings', ['*'], $where);
+
+            $result = database()->select('ph_template_records', ['*'], $where);
 
             if($result->hasResult()) {
                 $o = [];
 
                 foreach ($result as $i) {
-                    array_push($o, new PH_String([
-                        "id" => $i->id,
-                        "language_code" => $i->language_code,
-                        "string_name" => $i->string_name,
-                        "string_value" => $i->string_value
+                    array_push($o, new PH_Template_Record([
+                        "id" => $i->template_record_id,
+                        "type" => $i->template_record_type,
+                        "data" => $i->template_record_data,
+                        "slug" => $i->template_record_slug,
+                        "language" => $i->template_record_language,
+                        "site" => $i->site
                     ]));
                 }
 
@@ -326,6 +325,35 @@ class PH_Query {
                         "record_id" => $i->record_id,
                         "type" => $i->taxonomy_type,
                         "value" => $i->taxonomy_value
+                    ]));
+                }
+
+                return $o;
+            } else return [];
+
+        } else return [];
+    }
+
+    /**
+     * Queries a release from the database
+     * 
+     * @since 2.0.0
+     */
+    public static function release($where) {
+        if(var_check(TYPE_ARRAY, $where)) {
+            $result = database()->select('ph_releases', ['*'], $where);
+
+            if($result->hasResult()) {
+                $o = [];
+
+                foreach ($result as $i) {
+                    array_push($o, new PH_Release([
+                        "id" => $i->id,
+                        "version_string" => $i->version_string,
+                        "is_current_version" => $i->is_current_version,
+                        "zipball" => $i->zipball,
+                        "name" => $i->name,
+                        "released_at" => $i->released_at
                     ]));
                 }
 

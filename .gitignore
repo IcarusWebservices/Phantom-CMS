@@ -1,2 +1,4 @@
 ph-config.php
 log.txt
+/releases/zip/*
+/releases/unpacked/*
