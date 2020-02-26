@@ -93,8 +93,9 @@ function admin_template($title, $menu, $content, $current_id = null, $current_su
                 <a href="#">Legal &amp; Privacy</a>
             </nav>
             <p>© Icarus Webservices, 2020</p>
-          </footer>
+        </footer>
     </nav>
+    
     <div class="actionbar">
         <div class="nav-left">
             <div class="nav-button"><span><a href="/<?= $site ?>" target="__blank">Open website</a></span></div>

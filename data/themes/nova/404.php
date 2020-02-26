@@ -8,7 +8,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="<?= uri_resolve('/data/themes/nova/css/error.css') ?>">
-    <title>This page was not found - <?= get_string('website_name') ?></title>
+    <title>This page was not found - <?= get_template_record('website_name') ?></title>
 </head>
 <body>
     <main>

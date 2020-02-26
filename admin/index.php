@@ -4,8 +4,10 @@ login_required();
 
 
 admin_template("Dashboard", $menu, function() {
-global $config, $site;
+global $config, $site, $session;
 ?>
+
+<h1>Welcome back, <?= $session->user->username ?>!</h1>
 
 <div style="display:block;width:100%;height:100%;background-color:white;">
     <?php

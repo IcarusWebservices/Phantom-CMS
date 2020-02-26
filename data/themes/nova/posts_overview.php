@@ -45,8 +45,12 @@ class Demo_PostsOverview_Template extends PH_Template {
     public function __construct()
     {
         global $theme_folder;
-        $this->requested_stylesheets = [request_stylesheet(uri_resolve('/data/themes/' . $theme_folder . '/css/umbra.css'))];
-        $this->requested_body_scripts = [request_script(ph_pattern('%THEME%/js/main.js'))];
+        $this->requested_stylesheets = [
+            request_stylesheet(uri_resolve('/data/themes/' . $theme_folder . '/css/nova.css'))
+        ];
+        $this->requested_body_scripts = [
+            request_script(ph_pattern('%THEME%/js/main.js'))
+        ];
     
     }
 

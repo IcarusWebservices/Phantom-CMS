@@ -10,7 +10,7 @@
 <nav class="navbar" role="navigation" aria-label="main navigation">
     <div class="navbar-brand">
         <a class="navbar-item" href="<?= uri_resolve('/') ?>">
-            <h1 style="font-size: 20px; font-weight: bold;"><?= get_string('website_name') ?></h1>
+            <h1 style="font-size: 20px; font-weight: bold;"><?= get_template_record('website_name') ?></h1>
         </a>
 
         <a id="hamburger-expand" role="button" class="navbar-burger burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">

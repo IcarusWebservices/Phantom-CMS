@@ -21,9 +21,11 @@ foreach ($menu as $item) {
                 $subs = $item->sub_items;
                 foreach ($subs as $sub) {
                     ?>
-                    <a class="navbar-item" href="<?= ph_pattern($sub->links_to) ?>">
-                        <?= $sub->display_text ?>
-                    </a>
+
+                    <div class="nav-btn">
+                        <a href="<?= ph_pattern($sub->links_to) ?>"><?= $sub->display_text ?></a>
+                    </div>
+
                     <?php
                 }
             ?>
