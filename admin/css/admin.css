@@ -1,6 +1,9 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto|Lato&display=swap');
+
 *, *::before, *::after {
-    margin: 0 auto;
-    padding: 0;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
 ul { list-style: none; margin: 0; padding: 0; }
@@ -9,388 +12,58 @@ a { text-decoration: none; color: inherit; }
 .title { font: bold 20px sans-serif; text-transform: uppercase; }
 .link { text-decoration: underline; color: var(--menu-color-active-dark); }
 
-.button {
-    display: inline-block;
-    padding: 10px 24px;
-    border: none;
-    border-radius: 35px;
-    background-color: var(--color-primary);
-    color: #fff;
-    cursor: pointer;
-    transition: 150ms ease-in-out;
-}
-.button:hover { background-color: var(--menu-color-active-dark); }
-
 html {
-    --color-primary-light: #29cc8d;
-    --color-primary: #24b37c;
-    --menu-width: 225px;
-    --navbar-height: 4rem;
-    --menu-color: #c9c9c9;
-    --menu-color-active: #29cc8d;
-    --menu-color-active-dark: #1f996a;
-    --menu-background-color: #2c2d30;
-    --menu-background-color-active: #32353a;
-    overflow-x: hidden;
+  --color-primary-light: #29cc8d;
+  --color-primary: #24b37c;
+  --menu-width: 225px;
+  --navbar-height: 4rem;
+  --menu-color: #c9c9c9;
+  --menu-color-active: #29cc8d;
+  --menu-color-active-dark: #1f996a;
+  --menu-background-color: #2c2d30;
+  --menu-background-color-active: #32353a;
+  overflow-x: hidden;
 }
 
 body {
-    font-family: sans-serif;
-    background-color: #eee;
-    color: #212121;
-    overflow-x: hidden;
-    height: 100%;
+  font-family: 'Roboto', sans-serif;
+  background-color: #eee;
+  color: #212121;
+  overflow-x: hidden;
+  height: 100%;
 }
 
-span.tag {
-    display: inline-block;
-    padding: 10px 1rem;
-    box-sizing: border-box;
-    font-size: 15px;
-    background-color: #888;
-    border-radius: 8px;
-    text-transform: capitalize;
-}
-span.tag.red { background-color: #D63924; color: #fff; }
-span.tag.green { background-color: #058C42; color: #fff; }
-span.tag.blue { background-color: #0078FF; color: #fff; }
-span.tag.yellow { background-color: #E3B23C; color: #fff; }
-span.tag.aqua { background-color: var(--color-primary); color: #fff; }
-
-
-/* ------------------------------
-Sidebar
------------------------------- */
-.menu {
-    position: fixed;
-    height: 100%;
-    width: var(--menu-width);
-    top: 0;
-    left: 0;
-    background-color: var(--menu-background-color);
-    color: #aaa;
-    overflow-x: hidden;
-    z-index: 1;
-    transition: 200ms ease;
-}
-
-/* Menu width logic */
-.menu.hidden { width: 0; }
-.menu.hidden ~ .content { margin-left: 0; }
-
-.menu-burger {
-    position: fixed;
-    display: inline-block;
-    margin: 8px 1rem;
-}
-
-.menu-burger::after { content: '\2A09'; font-size: 30px; }
-.menu.hidden .menu-burger::after { content: '\2630'; }
-.menu > ul { margin-top: var(--navbar-height); }
-
-.menu-item {
-    display: block;
-    padding: 15px 20px;
-    transition: 100ms ease;
-}
-
-.menu-item > i {
-    width: 16px;
-    margin-right: 8px;
-}
-
-.menu-item:hover,
-.accordion-title:hover {
-    background-color: rgba(255,255,255,.05);
-}
-
-.menu-item.active,
-.accordion-title.active {
-    padding-left: 16px;
-    border-left: 4px solid var(--menu-color-active);
-    background-color: var(--menu-background-color-active);
-    color: var(--menu-color-active);
-}
-
-/* Accordion */
-.accordion-title {
-    display: block;
-    padding: 15px 20px;
-    cursor: pointer;
-    transition: 100ms ease;
-}
-
-.accordion-title::after {
-    content: '\25BC';
-    float: right;
-    font-style: normal;
-}
-
-/* Accordion display logic */
-.accordion-title.clicked::after,
-.accordion-title.active::after { content: '\25B2'; }
-.accordion-title:not(.active) ~ ul { display: none; }
-.accordion-title.clicked ~ ul { display: block; }
-
-.accordion-item {
-    display: block;
-    padding: 10px 30px;
-    transition: 100ms ease;
-}
-
-.accordion-item:hover {
-    color: #fff;
-}
-
-.accordion-item.active {
-    color: #fff;
-    font-weight: bold;
-}
-
-
-.menu footer {
-  position: absolute;
-  left: 0;
-  bottom: 1rem;
-  width: 100%;
-  height: auto;
-  line-height: inherit;
-}
-
-.menu .sub-footer > p { text-align: center; }
-
-.menu .sub-sidebar {
-  color: white;
-  text-align: left;
-  padding: 1rem 0;
-}
-
-.menu .sub-sidebar a {
-  display: block;
-  margin-bottom: 0;
-  padding: 6px 20px;
-  transition: 100ms ease;
-  font-size: 15px;
-  text-align: left;
-}
-
-.menu .sub-sidebar a:hover { color: var(--menu-color-active-dark); }
-
-
-
-.logout-icon { width: 1rem; margin-right: 8px; }
-
-
-
-/* ------------------------------
-Actionbar
------------------------------- */
-.actionbar {
-    margin-left: var(--menu-width);
-    width: calc(100% - var(--menu-width));
-    height: var(--navbar-height);
-    line-height: var(--navbar-height);
-    padding: 0 2rem;
-    box-sizing: border-box;
-    transition: 150ms ease;
-}
-
-.actionbar.full {
-    margin-left: 0;
-    width: 100%;
-}
-
-.actionbar.full .nav-left {
-    margin-left: 2rem;
-}
-
-.actionbar .nav-button {
-  line-height: normal;
-  padding: 22.5px 0;
-  display: inline-block;
-  font-family: 'Montserrat', sans-serif;
-  font-weight: 600;
-  cursor: pointer;
-  transition: 150ms ease;
-}
-
-.actionbar .nav-button:hover { color: #666; }
-.actionbar .nav-left { float: left; }
-.actionbar .nav-right { float: right; }
-.actionbar .username { color: var(--menu-color-active-dark); }
-
-.actionbar .nav-right a { margin-left: 8px; }
 
 /* ------------------------------
 Content
 ------------------------------ */
 .content {
-    margin-left: var(--menu-width);
-    padding: 0 2rem 2rem 2rem;
-    box-sizing: border-box;
-    transition: 200ms ease;
-    height: 100%;
+  margin-left: var(--menu-width);
+  padding: 0 2rem 2rem 2rem;
+  transition: 200ms ease;
+  height: 100%;
 }
 
 .content h1 {
-    margin-block-start: 0.67em;
-    margin-block-end: 0.67em;
+  margin-block-start: 0.67em;
+  margin-block-end: 0.67em;
 }
 
-table {
-    position: relative;
-    width: 100%;
-    margin: 0;
-    margin-top: 8px;
-    border-collapse: collapse;
-    text-align: left;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-}
-
-thead { background-color: #ddd; }
-tbody { background-color: #f6f6f6; }
-
-th:first-child, td:first-child {
-    width: 10px;
-}
-
-td,th {
-    padding: 15px;
-    border-bottom: 1px solid #aaa;
-}
-
-.action-overlay {
-    position: absolute;
-    display: none;
-    width: 100%;
-    left: 0;
-    top: 0;
-    background-color: var(--color-primary);
-    color: #fff;
-}
-
-.action-overlay > th:first-child {
-    min-width: 20px;
-}
-
-.table-actions {
-    height: 50px;
-    min-width: 75px;
-    width: auto;
-    padding: 0;
-}
-
-.table-actions > * {
-    display: inline-block;
-    /*padding: calc((50px - 20px) / 2) 0;*/
-    height: 20px;
-    margin: 0 8px;
-    cursor: pointer;
-}
-
-.items-selected {
-    width: 100%;
-}
-
-
-/* ------------------------------
-Radio Buttons
------------------------------- */
-.control {
-  display: block;
+section.container {
   position: relative;
-  padding-left: 30px;
-  cursor: pointer;
-}
-.control input {
-  position: absolute;
-  z-index: -1;
-  opacity: 0;
-}
-.control-indicator {
-  position: absolute;
-  top: 2px;
-  left: 0;
-  height: 20px;
-  width: 20px;
-  background: #bbb;
-}
-.control-radio .control-indicator { border-radius: 50%;}
-.control:hover input ~ .control-indicator { background: #aaa;}
-.control input:checked ~ .control-indicator { background: var(--color-primary);}
-.control input:disabled ~ .control-indicator { background: #e6e6e6; opacity: 0.6; pointer-events: none;}
-.control-indicator:after {content: ''; position: absolute; display: none;}
-.control input:checked ~ .control-indicator:after { display: block;}
-.control-checkbox .control-indicator:after {
-  left: 7.5px;
-  top: 4px;
-  width: 3px;
-  height: 8px;
-  border: solid #fff;
-  border-width: 0 2px 2px 0;
-  transform: rotate(45deg);
-}
-.control-checkbox input:disabled ~ .control-indicator:after { border-color: #7b7b7b;}
-.control-radio .control-indicator:after {
-  left: 7px;
-  top: 7px;
-  height: 6px;
-  width: 6px;
-  border-radius: 50%;
-  background: #fff;
-}
-.control-radio input:disabled ~ .control-indicator:after { background: #7b7b7b;}
-
-/* Control exceptions */
-#records-table .control { display: initial; padding-left: 0;}
-#records-table .control-indicator { position: static;}
-
-
-/* ----------
-Theme cards
----------- */
-.card-grid {
-    width: 100%;
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(14rem, 1fr));
-    grid-gap: 1rem;
-    padding: 1rem 0;
+  display: inline-block;
+  vertical-align: top;
+  max-width: 370px;
+  padding: 2rem;
+  margin-right: 1rem;
+  margin-bottom: 1rem;
+  background-color: #fff;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  transition: transform 200ms ease;
 }
 
-.card {
-    position: relative;
-    text-align: center;
-    border-radius: 6px;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-    transition: transform 200ms ease;
-}
-
-.card, .card-top, .card-bottom {
-    width: 100%;
-}
-
-.card-top {
-    height: 8rem;
-    background: #36D1DC;
-    background: -webkit-linear-gradient(120deg, #5B86E5, #36D1DC);
-    background: linear-gradient(120deg, #5B86E5, #36D1DC);
-}
-
-.card-bottom {
-    display: flex;
-    padding: 1rem;
-    background-color: #fff;
-    box-sizing: border-box;
-}
-
-.card-content {
-    min-width: 0;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-}
-
-
+section.container p { line-height: 1.5; }
+section.container h2 { margin-bottom: 12px; }
 
 phantom-data { display: none; }
 
@@ -399,84 +72,83 @@ phantom-data { display: none; }
 MQ #3 - 768px [Phone]
 ---------------------------------------- */
 @media only screen and (max-width: 768px) {
-    .card-grid {
-        grid-template-columns: repeat(2, 1fr);
-    }
+  .card-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
 
-    /* Menu styling only when the page has just been loaded and the menu button has not yet been pressed.*/
-    /*.menu { width: 0; }
-    .content { margin-left: 0; }*/
+  /* Menu styling only when the page has just been loaded and the menu button has not yet been pressed.*/
+  /*.menu { width: 0; }
+  .content { margin-left: 0; }*/
     
-    /* The same menu width logic as above, put here for reference */
-    /*.menu.hidden { width: 0; }
-    .menu.hidden ~ .content { margin-left: 0; }*/
+  /* The same menu width logic as above, put here for reference */
+  /*.menu.hidden { width: 0; }
+  .menu.hidden ~ .content { margin-left: 0; }*/
     
-    /* Menu styling when the menu button has been pressed */
-    /*.menu { width: var(--menu-width); }
-    .content { margin-left: var(--menu-width); }*/
+  /* Menu styling when the menu button has been pressed */
+  /*.menu { width: var(--menu-width); }
+  .content { margin-left: var(--menu-width); }*/
     
-    .content {
-        width: 100vw;
-    }
+  .content {
+    width: 100vw;
+  }
 
-    .nav-left {
-        display: none;
-    }
+  .nav-left {
+    display: none;
+  }
 }
 
 @media only screen and (max-width: 600px) {
-    .card-grid {
-        grid-template-columns: 1fr;
-        grid-template-rows: auto;
-    }
+  .card-grid {
+    grid-template-columns: 1fr;
+    grid-template-rows: auto;
+  }
 }
 
 /* The snackbar - position it at the bottom and in the middle of the screen */
 #snackbar-saved {
-    visibility: hidden; /* Hidden by default. Visible on click */
-    min-width: 250px; /* Set a default minimum width */
-    margin-left: -125px; /* Divide value of min-width by 2 */
-    background-color: #333; /* Black background color */
-    color: #fff; /* White text color */
-    text-align: center; /* Centered text */
-    border-radius: 2px; /* Rounded borders */
-    padding: 16px; /* Padding */
-    position: fixed; /* Sit on top of the screen */
-    z-index: 1; /* Add a z-index if needed */
-    left: 50%; /* Center the snackbar */
-    bottom: 30px; /* 30px from the bottom */
-  }
+  visibility: hidden; /* Hidden by default. Visible on click */
+  min-width: 250px; /* Set a default minimum width */
+  margin-left: -125px; /* Divide value of min-width by 2 */
+  background-color: #333; /* Black background color */
+  color: #fff; /* White text color */
+  text-align: center; /* Centered text */
+  border-radius: 2px; /* Rounded borders */
+  padding: 16px; /* Padding */
+  position: fixed; /* Sit on top of the screen */
+  z-index: 1; /* Add a z-index if needed */
+  left: 50%; /* Center the snackbar */
+  bottom: 30px; /* 30px from the bottom */
+}
   
-  /* Show the snackbar when clicking on a button (class added with JavaScript) */
-  #snackbar-saved.show {
-    visibility: visible; /* Show the snackbar */
-    /* Add animation: Take 0.5 seconds to fade in and out the snackbar.
-    However, delay the fade out process for 2.5 seconds */
-    -webkit-animation: fadein 0.5s, fadeout 0.5s 2.5s;
-    animation: fadein 0.5s, fadeout 0.5s 2.5s;
-  }
+/* Show the snackbar when clicking on a button (class added with JavaScript) */
+#snackbar-saved.show {
+  visibility: visible; /* Show the snackbar */
+  /* Add animation: Take 0.5 seconds to fade in and out the snackbar.
+  However, delay the fade out process for 2.5 seconds */
+  -webkit-animation: fadein 0.5s, fadeout 0.5s 2.5s;
+  animation: fadein 0.5s, fadeout 0.5s 2.5s;
+}
   
-  /* Animations to fade the snackbar in and out */
-  @-webkit-keyframes fadein {
-    from {bottom: 0; opacity: 0;}
-    to {bottom: 30px; opacity: 1;}
-  }
-  
-  @keyframes fadein {
-    from {bottom: 0; opacity: 0;}
-    to {bottom: 30px; opacity: 1;}
-  }
-  
-  @-webkit-keyframes fadeout {
-    from {bottom: 30px; opacity: 1;}
-    to {bottom: 0; opacity: 0;}
-  }
-  
-  @keyframes fadeout {
-    from {bottom: 30px; opacity: 1;}
-    to {bottom: 0; opacity: 0;}
-  }
+/* Animations to fade the snackbar in and out */
+@-webkit-keyframes fadein {
+  from {bottom: 0; opacity: 0;}
+  to {bottom: 30px; opacity: 1;}
+}
 
+@keyframes fadein {
+  from {bottom: 0; opacity: 0;}
+  to {bottom: 30px; opacity: 1;}
+}
+
+@-webkit-keyframes fadeout {
+  from {bottom: 30px; opacity: 1;}
+  to {bottom: 0; opacity: 0;}
+}
+
+@keyframes fadeout {
+  from {bottom: 30px; opacity: 1;}
+  to {bottom: 0; opacity: 0;}
+}
 
 /* The Modal (background) */
 .modal {
@@ -541,11 +213,11 @@ MQ #3 - 768px [Phone]
 }
 
 .modal-body {
-    padding: 20px 16px;
+  padding: 20px 16px;
 }
 
 .modal-body > p {
-    margin: 20px;
+  margin: 20px;
 }
 
 .modal-footer {
