@@ -11,17 +11,13 @@
 class PH_Loader {
 
     /**
-     * Loads a logic pack from /data/logic-packs
+     * Loads a logic pack from /data/logic-packs or from /data/projects/-name-/logic-packs
      * 
-     * @param string $logic_pack_name The folder name of the logic pack.
+     * @param string $path The path to the logic pack
      * 
      * @static
      */
-    public static function loadLogicPack($logic_pack_name) {
-
-        if(!var_check(TYPE_STRING, $logic_pack_name)) var_dump($logic_pack_name);
-
-        $path = DATA . 'logic-packs/' . $logic_pack_name . '/';
+    public static function loadLogicPack($path) {
         // echo $path;
         if( is_dir($path) ) {
             // Try to get the logic-pack.json file
@@ -83,10 +79,10 @@ class PH_Loader {
      * 
      * @since 2.0.0
      */
-    public static function loadTheme($theme_name) {
-        $path = DATA . 'themes/' . $theme_name . '/';
+    public static function loadTheme($path) {
 
         if( is_dir($path) ) {
+            
             // Try to get the logic-pack.json file
             if(file_exists($path . 'theme.json')) {
 

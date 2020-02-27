@@ -110,7 +110,7 @@ class PH_Registry {
         if(isset($this->registry[$category])) {
             return $this->registry[$category];
         } else {
-            return null;
+            return [];
         }
     }
 

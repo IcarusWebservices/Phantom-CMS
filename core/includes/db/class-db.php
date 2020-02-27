@@ -221,7 +221,7 @@ class PH_DB {
                             $iii = 0;
                             // var_dump($val);
                             foreach ($val as $vl) {
-                                $qs .= $this->getWhereComparisonString($var);
+                                $qs .= $this->getWhereComparisonString($var, $vl);
                                 array_push($where_vals, $vl);
                                 if($iii < count($val) - 1) {
                                     $qs .= ' OR ';
@@ -242,7 +242,7 @@ class PH_DB {
                 break;
 
                 default:
-                    $qs .= $this->getWhereComparisonString($key);
+                    $qs .= $this->getWhereComparisonString($key, $value);
 
                     array_push($where_vals, $value);
                 break;
@@ -271,7 +271,7 @@ class PH_DB {
      * 
      * @since 2.0.0
      */
-    protected function getWhereComparisonString($column_name) {
+    protected function getWhereComparisonString($column_name, $value = "ignore") {
 
         $first_char = substr($column_name, 0, 2);
         $cname = substr($column_name, 2);
@@ -281,7 +281,15 @@ class PH_DB {
         switch($first_char) {
             
             case "==":
-                $comp_str = "=";
+                if($value != "ignore") {
+                    if(is_null($value)) {
+                        $comp_str = "IS";
+                    } else {
+                        $comp_str = "=";
+                    }
+                } else {
+                    $comp_str = "=";
+                }
             break;
 
             case ">>":

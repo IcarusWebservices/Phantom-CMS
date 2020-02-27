@@ -79,47 +79,6 @@ $site = null;
  */
 $is_in_customizer_mode = false;
 
-
-// ======== Load the logic-packs ========
-$packs = PH_Query::logic_packs([
-    "==enabled" => 1
-]);
-
-$loaded_packs = [];
-$routes = [];
-
-read_and_register(CORE . 'native/editor-fields/', CAT_EDITOR_FIELDS);
-read_and_register(CORE . 'native/template-record-types/', CAT_TEMPLATE_RECORD_TYPES);
-
-foreach ($packs as $pack) {
-    // var_dump($pack);
-    $json = PH_Loader::loadLogicPack($pack->folder_name);
-
-    if($json) {
-
-        if(isset($json->routes)) {
-            foreach ($json->routes as $pattern => $proporties) {
-                $routes[$pattern] = $proporties;
-            }
-        }
-
-        if(isset($json->editors)) {
-            $e = $json->editors;
-            if(isset($e->record_types)) {
-                foreach ($e->record_types as $type => $fields) {
-                    if($fields) {
-                        foreach ($fields as $field_name => $field) {
-                            registry()->register('editors', 'record-types/' . $type . '/' . $field_name, $field);
-                        }
-                    }
-                }
-            }
-        }
-        
-        array_push($loaded_packs, $json);
-    }
-}
-
 /**
  * The main request
  * 
@@ -132,31 +91,8 @@ if($config->router_baseuri) {
     $request->applyBaseURI($config->router_baseuri);
 }
 
-if($config->is_multisite) {
-    $uri = $request->request_uri;
-    $try = explode('/', $uri);
-
-    if(isset($try[0])) {
-        $site_try = $try[0];
-    } else $site_try = $try;
-
-    $avsites = PH_Query::sites([]);
-
-    $found = false;
-
-    foreach ($avsites as $st) {
-        if($site_try == $st->slug) {
-            $found = true;
-        }
-    }
-
-    if($found) {
-        $request->applyBaseURI($site_try);
-        $site = $site_try;
-    } else {
-        $site = null;
-    }
-}
+read_and_register(CORE . 'native/editor-fields/', CAT_EDITOR_FIELDS);
+read_and_register(CORE . 'native/template-record-types/', CAT_TEMPLATE_RECORD_TYPES);
 
 /**
  * Whether a valid theme has been selected
@@ -194,23 +130,7 @@ $language_code = 'nl';
 $session = new PH_Session;
 
 // Try to get the theme
-$t_q = PH_Query::settings([
-    "==setting_key" => "appearance_theme"
-]);
 
-if(count($t_q) > 0) {
-    $theme_folder = $t_q[0]->value;
-
-    $loaded = PH_Loader::loadTheme($theme_folder);
-
-    if($loaded) {
-        $theme_data = $loaded;
-    } else {
-        $theme_valid = false;
-    }
-} else {
-    $theme_valid = false;
-}
 
 
 // var_dump($registry);

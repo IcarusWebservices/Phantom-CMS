@@ -47,16 +47,66 @@ if($config->is_multisite) {
 
     if($site) {
         $st = PH_Query::sites(["==site_slug" => $site]);
-        if(count($st)>0) $site_id = $st[0]->id;
-        else $site_id = null;
-    } else $site_id = null;
+        if(count($st)>0) {
+            $site_id = $st[0]->id;
+            $q_site = $st[0];
+
+            
+        } else {
+            $site_id = null;
+            $q_site = null;
+        }
+    } else {
+        $site_id = null;
+        $q_site = null;
+    }
 
 }
 
+$______where = ["==enabled" => 1];
 
+if($q_site) {
+    $______where["==site"] = $q_site->id;
+} else $______where["NLsite"] = null;
+
+$packs = PH_Query::logic_packs($______where);
+
+$loaded_packs = [];
+$routes = [];
+
+foreach ($packs as $pack) {
+    // var_dump($pack);
+    $json = PH_Loader::loadLogicPack($pack->folder_name);
+
+    if($json) {
+
+        if(isset($json->routes)) {
+            foreach ($json->routes as $pattern => $proporties) {
+                $routes[$pattern] = $proporties;
+            }
+        }
+
+        if(isset($json->editors)) {
+            $e = $json->editors;
+            if(isset($e->record_types)) {
+                foreach ($e->record_types as $type => $fields) {
+                    if($fields) {
+                        foreach ($fields as $field_name => $field) {
+                            registry()->register('editors', 'record-types/' . $type . '/' . $field_name, $field);
+                        }
+                    }
+                }
+            }
+        }
+        
+        array_push($loaded_packs, $json);
+    }
+}
 
 
 $record_types = registry()->getCategory(CAT_RECORD_TYPES);
+
+// var_dump($record_types);
 
 /**
  * Requested stylesheets for the admin pages
@@ -107,46 +157,55 @@ foreach ($record_types as $name => $export) {
     
 }
 
-$menu = [
-    "item:dashboard" => [
-        "display" => "Dashboard",
-        "url_to" => "index"
-    ],
-    "collection:recordtypes" => [
+$menu = [];
+$menu["item:dashboard"] = [
+    "display" => "Dashboard",
+    "url_to" => "index"
+];
+
+if(count($record_types_items) > 0) {
+    $menu["collection:recordtypes"] = [
         "display" => "Records",
         "items" => $record_types_items
-    ],
-    "collection:taxonomy" => [
+    ];
+}
+
+if(count($taxonomy_items) > 0) {
+    $menu["collection:taxonomy"] = [
         "display" => "Taxonomy",
         "items" => $taxonomy_items
-    ],
-    "collection:appearance" => [
-        "display" => "Appearance",
-        "items" => [
-            "theme" => [
-                "display" => "Theme",
-                "url_to" => "set-theme"
-            ],
-            "customizer" => [
-                "display" => "Customizer",
-                "url_to" => "customizer"
-            ]
+    ];
+}
+
+$menu["collection:appearance"] = [
+    "display" => "Appearance",
+    "items" => [
+        "theme" => [
+            "display" => "Theme",
+            "url_to" => "set-theme"
+        ],
+        "customizer" => [
+            "display" => "Customizer",
+            "url_to" => "customizer"
         ]
-    ],
-    "collection:settings" => [
-        "display" => "Settings",
-        "items" => [
-            "users" => [
-                "display" => "Users",
-                "url_to" => "users"
-            ],
-            "releases" => [
-                "display" => "Releases",
-                "url_to" => "releases"
-            ]
+    ]
+];
+$menu["collection:settings"] = [
+    "display" => "Settings",
+    "items" => [
+        "site-settings" => [
+            "display" => "Site",
+            "url_to" => "site-settings"
+        ],
+        "users" => [
+            "display" => "Users",
+            "url_to" => "users"
+        ],
+        "releases" => [
+            "display" => "Releases",
+            "url_to" => "releases"
         ]
-    ],
-    
+    ]
 ];
 
 if($config->is_multisite) {
