@@ -20,7 +20,7 @@ class Demo_PostsOverview_Template extends PH_Template {
 
         ?>
         <div class="container">
-            <h1 style="font-size: 2rem; font-weight: bold;"><?= get_string('STRING_POSTS', 'Posts') ?></h1>
+            <h1 style="font-size: 2rem; font-weight: bold;"><?= get_template_record('STRING_POSTS', 'Posts') ?></h1>
         <?php
 
         foreach($records as $record) {

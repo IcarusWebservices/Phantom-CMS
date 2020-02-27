@@ -163,7 +163,7 @@ class Nova_Homepage extends PH_Template {
             request_script('https://kit.fontawesome.com/9d8cef91c5.js')
         ];
         $this->requested_body_scripts = [request_script(ph_pattern('%THEME%/js/main.js'))];
-        $this->requested_title = "Wim Steenbakker - " . get_string("website_name");
+        $this->requested_title = "Home - " . get_template_record('website_name');
         $this->active_id = 'index';
     }
 

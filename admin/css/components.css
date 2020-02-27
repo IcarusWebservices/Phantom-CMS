@@ -1,0 +1,264 @@
+/* ------------------------------------------------------------
+# Macro components:
+Main standalone UI Components.
+
+Examples include tables and card grids.
+------------------------------------------------------------ */
+/* ------------------------------
+1. Tables
+------------------------------ */
+table {
+    position: relative;
+    width: 100%;
+    margin: 0;
+    margin-top: 8px;
+    border-collapse: collapse;
+    text-align: left;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+thead { background-color: #ddd; }
+tbody { background-color: #f6f6f6; }
+
+th:first-child, td:first-child {
+    width: 10px;
+}
+
+td,th {
+    padding: 15px;
+    border-bottom: 1px solid #aaa;
+}
+
+.action-overlay {
+    position: absolute;
+    display: none;
+    width: 100%;
+    left: 0;
+    top: 0;
+    background-color: var(--color-primary);
+    color: #fff;
+}
+
+.action-overlay > th:first-child {
+    min-width: 20px;
+}
+
+.table-actions {
+    height: 50px;
+    min-width: 75px;
+    width: auto;
+    padding: 0;
+}
+
+.table-actions > * {
+    display: inline-block;
+    /*padding: calc((50px - 20px) / 2) 0;*/
+    height: 20px;
+    margin: 0 8px;
+    cursor: pointer;
+}
+
+.items-selected {
+    width: 100%;
+}
+
+
+/* ------------------------------
+2. Theme selection cards
+------------------------------ */
+.card-grid {
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(14rem, 1fr));
+    grid-gap: 1rem;
+    padding: 1rem 0;
+}
+
+.card {
+    position: relative;
+    text-align: center;
+    border-radius: 6px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    transition: transform 200ms ease;
+}
+
+.card, .card-top, .card-bottom {
+    width: 100%;
+}
+
+.card-top {
+    height: 8rem;
+    background: #36D1DC;
+    background: -webkit-linear-gradient(120deg, #5B86E5, #36D1DC);
+    background: linear-gradient(120deg, #5B86E5, #36D1DC);
+}
+
+.card-bottom {
+    padding: 1rem;
+    background-color: #fff;
+}
+
+.card-content {
+    min-width: 0;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+
+/* ------------------------------
+3. General containers
+------------------------------ */
+.container {
+  position: relative;
+  display: inline-block;
+  padding: 2rem;
+  margin: 1rem 0;
+  background-color: #fff;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.container p { line-height: 1.5; }
+.container h1, .container h2, .container h3 { margin: 0 0 12px 0; }
+
+
+/* ------------------------------------------------------------
+# Micro components:
+Small standalone UI components.
+
+Examples include buttons, form elements and tags
+------------------------------------------------------------*/
+/* ------------------------------
+1. Tags
+------------------------------ */
+span.tag {
+    display: inline-block;
+    padding: 6px 1rem;
+    font-size: 15px;
+    background-color: #888;
+    border-radius: 80px;
+    text-transform: capitalize;
+}
+span.tag.red { background-color: #D04947; color: #fff; }
+span.tag.green { background-color: /*#058C42*/#24b37c; color: #fff; }
+span.tag.blue { background-color: #0078FF; color: #fff; }
+span.tag.yellow { background-color: #E3B23C; color: #fff; }
+
+
+/* ------------------------------
+2. Attention bubbles/badges
+------------------------------ */
+.badge {
+  position: relative;
+}
+
+.badge[data-count]:after {
+  position: absolute;
+  right: -10%;
+  top: -30%;
+  content: attr(data-count);
+  font-family: sans-serif;
+  font-size: 40%;
+  padding: 0.6em;
+  border-radius: 999px;
+  line-height: 0.75em;
+  color: #fff;
+  background: var(--color-primary);
+  text-align: center;
+  min-width: 2em;
+  font-weight: bold;
+}
+
+
+/* ------------------------------
+3. Buttons
+
+Example:
+<a class="button small round purple" href="#">Button</a>
+TEMP:
+border-radius: 35px;
+------------------------------ */
+.button {
+  display: inline-block;
+  padding: .7em 1.5em;
+  border: none;
+  color: #fff;
+  background-color: var(--color-primary);
+  font-size: 15px;
+  cursor: pointer;
+  transition: background-color 150ms ease-in-out;
+}
+.button:hover { background-color: var(--menu-color-active-dark); }
+
+/* Shapes */
+.button.round { border-radius: 35px; }
+.button.semi-round { border-radius: 6px; }
+
+/* States */
+.button.disabled { background-color: #bbb !important; cursor: default; }
+
+/* Sizes */
+.button.small { font-size: 14px; }
+
+/* Colors */
+.button.red { background-color: #D04947; }
+.button.red:hover { background-color: #AB3C3B; }
+.button.orange { background-color: #FF7144; }
+.button.orange:hover { background-color: #B55836; }
+.button.blue { background-color: #7196e4; }
+.button.blue:hover { background-color: #5176c4; }
+.button.purple { background-color: #725AC1; }
+.button.purple:hover { background-color: #5E4A9E; }
+
+
+/* ------------------------------
+4. Radio buttons
+------------------------------ */
+.control {
+  display: block;
+  position: relative;
+  padding-left: 30px;
+  cursor: pointer;
+}
+.control input {
+  position: absolute;
+  z-index: -1;
+  opacity: 0;
+}
+.control-indicator {
+  position: absolute;
+  top: 2px;
+  left: 0;
+  height: 20px;
+  width: 20px;
+  background: #bbb;
+}
+.control-radio .control-indicator { border-radius: 50%;}
+.control:hover input ~ .control-indicator { background: #aaa;}
+.control input:checked ~ .control-indicator { background: var(--color-primary);}
+.control input:disabled ~ .control-indicator { background: #e6e6e6; opacity: 0.6; pointer-events: none;}
+.control-indicator:after {content: ''; position: absolute; display: none;}
+.control input:checked ~ .control-indicator:after { display: block;}
+.control-checkbox .control-indicator:after {
+  left: 7.5px;
+  top: 4px;
+  width: 3px;
+  height: 8px;
+  border: solid #fff;
+  border-width: 0 2px 2px 0;
+  transform: rotate(45deg);
+}
+.control-checkbox input:disabled ~ .control-indicator:after { border-color: #7b7b7b;}
+.control-radio .control-indicator:after {
+  left: 7px;
+  top: 7px;
+  height: 6px;
+  width: 6px;
+  border-radius: 50%;
+  background: #fff;
+}
+.control-radio input:disabled ~ .control-indicator:after { background: #7b7b7b;}
+
+/* Control exceptions */
+#records-table .control { display: initial; padding-left: 0;}
+#records-table .control-indicator { position: static;}

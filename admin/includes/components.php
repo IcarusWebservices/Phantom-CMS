@@ -23,6 +23,7 @@ function admin_template($title, $menu, $content, $current_id = null, $current_su
         }
     ?>
     <link rel="stylesheet" href="css/admin.css">
+    <link rel="stylesheet" href="css/components.css">
     <link rel="stylesheet" href="css/forms.css">
     <title><?= $title ?> • Phantom CMS</title>
 </head>
@@ -93,8 +94,9 @@ function admin_template($title, $menu, $content, $current_id = null, $current_su
                 <a href="#">Legal &amp; Privacy</a>
             </nav>
             <p>© Icarus Webservices, 2020</p>
-          </footer>
+        </footer>
     </nav>
+    
     <div class="actionbar">
         <div class="nav-left">
             <div class="nav-button"><span><a href="/<?= $site ?>" target="__blank">Open website</a></span></div>
@@ -127,8 +129,46 @@ function admin_template($title, $menu, $content, $current_id = null, $current_su
             
         </div>
         <div class="nav-right">
-            <span>Logged in as <span class="username"><?= $session->user->username ?></span></span>
-            <div class="nav-button"><span><a href="logout.php">Logout</a></span></div>
+            <div class="nav-button dropdown-button notification-ddb"><i class="far fa-bell badge" data-count="3"></i></div>
+            <ul class="notification-dropdown dropdown">
+                <h2 style="margin: 4px 0 4px 18px;">Notifications</h2>
+                <?php
+                if($config->is_multisite) {
+                    ?>
+                    <li class="new">
+                        <a href="#">
+                            <span>Multisite network enabled!</span>
+                            <span class="date-time">now</span>
+                        </a>
+                    </li>
+                    <?php
+                }
+                ?>
+                <li class="new">
+                    <a href="#">
+                        <span>New buttons added</span>
+                        <span class="date-time">1 hour ago</span>
+                    </a>
+                </li>
+                <li class="new">
+                    <a href="#">
+                        <span>Notification area added</span>
+                        <span class="date-time">7 hours ago</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <span>New Phantom update available</span>
+                        <span class="date-time">2 days ago</span>
+                    </a>
+                </li>
+            </ul>
+            <div class="nav-button dropdown-button action-ddb"><i class="fas fa-ellipsis-v"></i></div>
+            <ul class="action-dropdown dropdown">
+                <li><a href="#"><i class="fas fa-user"></i>Account</a></li>
+                <li><a href="logout.php"><i class="fas fa-power-off"></i>Logout</a></li>
+            </ul>
+
         </div>
     </div>
     <div class="content">
@@ -150,63 +190,8 @@ function admin_template($title, $menu, $content, $current_id = null, $current_su
         $site_uri = $uri . '?';
     }
     ?>
-    <script>
-        console.log('%c Phantom – Javascript initiated!', 'color: #29cc8d; font-weight: bold;');
-
-        const actionbar = document.querySelector('.actionbar');
-        const sidebar = document.querySelector('.menu');
-        const sidebarBurger = document.querySelector('.menu-burger');
-        const accordionTitles = document.querySelectorAll('.accordion-title');
-	    var menuState = 1; // 1 = visible, 0 = hidden
-	    
-	function menuStateWidth() {
-		if (window.innerWidth <= 768) {
-            actionbar.classList.add('full');
-			sidebar.classList.add('hidden');
-			menuState = 0;
-		} else {
-            actionbar.classList.remove('full');
-			sidebar.classList.remove('hidden');
-			menuState = 1;
-		}
-	}
-	    
-	menuStateWidth();
-        
-    sidebarBurger.onclick = () => {
-        if (menuState == 1) {
-            actionbar.classList.add('full');
-            sidebar.classList.add('hidden');
-            menuState = 0;
-            console.log('%c New menuState = ' + menuState, 'color: red;');
-        } else {
-            actionbar.classList.remove('full');
-            sidebar.classList.remove('hidden');
-            menuState = 1;
-            console.log('%c New menuState = ' + menuState, 'color: green;');
-        }
-    }
-
-    accordionTitles.forEach(acc => {
-        acc.addEventListener('click', (e) => {
-            if (!event.target.classList.contains('active')) {
-                event.target.classList.toggle('clicked');
-            }
-        })
-    });
-
-    let select = document.getElementById("siteselect");
-    if(select) {
-        select.addEventListener('change', (e) => {
-            let lang = select.options[select.selectedIndex].value;
-            window.open('<?= $site_uri ?>site=' + lang, '_self');
-        })
-    }
-
-
-	
-	window.onresize = menuStateWidth();
-    </script>
+    <script src="/admin/js/front.js"></script>
+    <script src="https://kit.fontawesome.com/9d8cef91c5.js"></script>
 </body>
 </html>
     <?php

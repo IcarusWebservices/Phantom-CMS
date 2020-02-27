@@ -98,17 +98,6 @@ input[type=text]:hover {
     background-color: rgba(0,0,0,.15);
 }
 
-#side .button#delete {
-    display: inline-block;
-    padding: 10px 24px;
-    border: none;
-    border-radius: 6px;
-    background-color: red;
-    color: #fff;
-    cursor: pointer;
-    transition: 150ms ease-in-out;
-}
-
 @media only screen and (max-width: 1000px) {
     #editors {
         grid-template-columns: 1fr;

@@ -8,7 +8,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="<?= uri_resolve('/core/pages/css/landing.css') ?>">
-    <title>This page was not found on this server - <?= get_string('website_name') ?></title>
+    <title>This page was not found - <?= get_template_record('website_name') ?></title>
 </head>
 <body>
     <div id="container">
