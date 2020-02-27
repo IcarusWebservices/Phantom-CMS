@@ -106,6 +106,22 @@ td,th {
 }
 
 
+/* ------------------------------
+3. General containers
+------------------------------ */
+.container {
+  position: relative;
+  display: inline-block;
+  padding: 2rem;
+  margin: 1rem 0;
+  background-color: #fff;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.container p { line-height: 1.5; }
+.container h1, .container h2, .container h3 { margin: 0 0 12px 0; }
+
+
 /* ------------------------------------------------------------
 # Micro components:
 Small standalone UI components.
@@ -170,7 +186,7 @@ border-radius: 35px;
   background-color: var(--color-primary);
   font-size: 15px;
   cursor: pointer;
-  transition: 150ms ease-in-out;
+  transition: background-color 150ms ease-in-out;
 }
 .button:hover { background-color: var(--menu-color-active-dark); }
 
