@@ -13,6 +13,11 @@ $random = rand(0,count($dashboard_welcome_text) - 1);
 
 <h1>Welcome back, <span style="color: #1f996a;"><?= $session->user->username ?></span>!</h1>
 
+<section class="container full">
+    <h2>Look! It's a container!</h2>
+    <p>This dashboard will be container-based, to help the user distinguish between the different areas of the dashboard.</p>
+</section>
+
 <section class="container">
     <h2>New UI elements</h2>
     <p><i>New buttons for use in Phantom&trade; CMS</i></p>
@@ -20,36 +25,35 @@ $random = rand(0,count($dashboard_welcome_text) - 1);
     <p>These buttons use classes to change their appearance. You can control the size, shape, color and state of the button. The top left button is default.</p>
     <br>
     <p><strong>Syntax example:</strong></p>
-    <p>&lt;a class="button round small purple disabled"&gt;Button&lt;/a&gt;</p>
+    <p>&lt;a class="button rounded small purple outline"&gt;Button&lt;/a&gt;</p>
     <br><br>
     <a href="#" style="margin-right: 8px" class="button">Button</a>
-    <a href="#" style="margin-right: 8px" class="button semi-round">Button</a>
-    <a href="#" style="margin-right: 8px" class="button round">Button</a>
+    <a href="#" style="margin-right: 8px" class="button semi-rounded">Button</a>
+    <a href="#" style="margin-right: 8px" class="button rounded">Button</a>
     <br><br>
     <a href="#" style="margin-right: 8px" class="button red">Button</a>
-    <a href="#" style="margin-right: 8px" class="button red semi-round">Button</a>
-    <a href="#" style="margin-right: 8px" class="button red round">Button</a>
+    <a href="#" style="margin-right: 8px" class="button red semi-rounded">Button</a>
+    <a href="#" style="margin-right: 8px" class="button red rounded">Button</a>
     <br><br>
     <a href="#" style="margin-right: 8px" class="button orange">Button</a>
-    <a href="#" style="margin-right: 8px" class="button orange semi-round">Button</a>
-    <a href="#" style="margin-right: 8px" class="button orange round">Button</a>
+    <a href="#" style="margin-right: 8px" class="button orange semi-rounded">Button</a>
+    <a href="#" style="margin-right: 8px" class="button orange rounded">Button</a>
     <br><br>
     <a href="#" style="margin-right: 8px" class="button blue">Button</a>
-    <a href="#" style="margin-right: 8px" class="button blue semi-round">Button</a>
-    <a href="#" style="margin-right: 8px" class="button blue round">Button</a>
+    <a href="#" style="margin-right: 8px" class="button blue semi-rounded">Button</a>
+    <a href="#" style="margin-right: 8px" class="button blue rounded">Button</a>
     <br><br>
     <a href="#" style="margin-right: 8px" class="button purple">Button</a>
-    <a href="#" style="margin-right: 8px" class="button purple semi-round">Button</a>
-    <a href="#" style="margin-right: 8px" class="button purple round">Button</a>
+    <a href="#" style="margin-right: 8px" class="button purple semi-rounded">Button</a>
+    <a href="#" style="margin-right: 8px" class="button purple rounded">Button</a>
+    <br><br>
+    <a href="#" style="margin-right: 8px" class="button purple outline">Button</a>
+    <a href="#" style="margin-right: 8px" class="button purple outline semi-rounded">Button</a>
+    <a href="#" style="margin-right: 8px" class="button purple outline rounded">Button</a>
     <br><br>
     <a href="#" style="margin-right: 8px" class="button disabled">Button</a>
-    <a href="#" style="margin-right: 8px" class="button semi-round disabled">Button</a>
-    <a href="#" style="margin-right: 8px" class="button round disabled">Button</a>
-</section>
-
-<section class="container">
-    <h2>Another container!</h2>
-    <p>This dashboard will be container-based, to help the user distinguish between the different areas of the dashboard.</p>
+    <a href="#" style="margin-right: 8px" class="button semi-rounded disabled">Button</a>
+    <a href="#" style="margin-right: 8px" class="button rounded disabled">Button</a>
 </section>
 
 <?php

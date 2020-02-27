@@ -40,7 +40,7 @@ admin_template("Taxonomy", $menu, function() {
 
     ?>
     <h1>Taxonomy for "<?= $record->title ?>"</h1>
-    <div class="types" style="margin: 20px;" id="types">
+    <div class="types" id="types">
         <?php
             foreach ($terms as $type => $values) {
                 ?>
@@ -68,20 +68,19 @@ admin_template("Taxonomy", $menu, function() {
                             ?>
                             <tr>
                                 <th>Add</th>
-                                <th><input type="text" id="<?= $type ?>:term" style="height: 20px"></th>
+                                <th><input type="text" id="<?= $type ?>:term"></th>
                                 <th><a href="#" class="link addterm" data-record="<?= $record->id ?>" data-for-type="<?= $type ?>">Add term</a></th>
                             </tr>
                         </tbody>
                     </table>
                 </div>
+                <br><br>
                 <?php
             }
         ?>
-        
     </div>
-    <hr><br><br><br>
-    <h2>Add new type</h2>
-    <table style="margin: 20px;">
+    <h2 style="margin-bottom: 1rem;">Add new type</h2>
+    <table>
         <thead>
             <tr>
                 <th></th>
@@ -93,8 +92,8 @@ admin_template("Taxonomy", $menu, function() {
         <tbody>
             <tr>
                 <th></th>
-                <th><input type="text" id="typeaddname" style="height: 20px"></th>
-                <th><input type="text" id="typeaddfirst" style="height: 20px"></th>
+                <th><input type="text" id="typeaddname"></th>
+                <th><input type="text" id="typeaddfirst"></th>
                 <th><a href="#" class="link" id="addtype" data-record="<?= $record->id ?>">Add Type</a></th>
             </tr>
         </tbody>

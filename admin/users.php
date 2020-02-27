@@ -7,26 +7,37 @@ admin_template("Users", $menu, function() {
     $users = PH_Query::admin_users([]);
 ?>
 <div id="user-creation" class="modal">
-
-<!-- Modal content -->
-<div class="modal-content">
-  <div class="modal-header">
-    <span class="close">&times;</span>
-    <h2>Add user</h2>
-  </div>
-  <div class="modal-body">
-    <form id="newuserform">
-        <p>Username: <input type="text" id="username" name="username" autocomplete="nope"></p>
-        <p>Email: <input type="email" id="email" name="email"></p>
-        <p>Password: <input type="password" id="password" autocomplete="new-password" name="password"></p>
-    </form>
-  </div>
-  <div class="modal-footer">
-    <h3><a href="#" id="createuser">Create</a></h3>
-  </div>
+    <div class="modal-content">
+        <div class="modal-header">
+            <span class="close-modal">&times;</span>
+            <i class="fas fa-users circle-icon"></i>
+        </div>
+        <div class="modal-body">
+            <h3>Add user</h3>
+            <form id="newuserform" class="form flat">
+                <div class="field">
+                    <input type="text" id="username" name="username" placeholder=" " autocomplete="off">
+                    <label for="username"><span>Username</span></label>
+                </div>
+                <div class="field">
+                    <input type="email" id="email" name="email" placeholder=" " autocomplete="off">
+                    <label for="email"><span>Email</span></label>
+                </div>
+                <div class="field">
+                    <input type="password" id="password" name="password" placeholder=" " autocomplete="new-password">
+                    <label for="password"><span>Password</span></label>
+                </div>
+            </form>
+        </div>
+        <div class="modal-footer">
+            <div class="action">
+                <a class="button semi-rounded outline cancel">Cancel</a>
+                <a class="button semi-rounded" id="createuser">Create</a>
+            </div>
+        </div>
+    </div>
 </div>
 
-</div>
 <h1>Users</h1>
 <a href="#" class="button" id="newuseropen">New user</a>
 <table id="records-table">

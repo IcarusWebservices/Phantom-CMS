@@ -111,6 +111,10 @@ actionDropdown.onclick = (e) => {
     e.stopPropagation();
 }
 
+notificationDropdown.onclick = (e) => {
+    e.stopPropagation();
+}
+
 
 // Site Selector
 let select = document.getElementById("siteselect");
