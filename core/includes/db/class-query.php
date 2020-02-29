@@ -202,7 +202,8 @@ class PH_Query {
                         "email" => $i->admin_user_email,
                         "first_name" => $i->admin_user_first_name,
                         "last_name" => $i->admin_user_last_name,
-                        "permissions_int" => $i->admin_user_permissions_int
+                        "permissions_int" => $i->admin_user_permissions_int,
+                        "data" => $i->admin_user_data
                     ]));
                 }
 

@@ -143,6 +143,35 @@ class PH_Loader {
             }
         }
 
+        // Get the project themes
+        foreach (glob(DATA . 'projects/*') as $f) {
+            $project = substr($f, strlen(DATA . 'projects/'));
+            foreach (glob($f . '/themes/*') as $fo) {
+                if(is_dir($fo)) {
+                    $dir = $fo . '/';
+                    // Try to get the logic-pack.json file
+                    if(file_exists($dir . 'theme.json')) {
+    
+                        $json = get_json_file($dir . 'theme.json');
+    
+                        if($json) {
+                            
+                            $theme_id = $project . ':' . substr($dir, strlen(DATA . 'projects/' . $project . '/themes/'));
+                            $theme_id = substr($theme_id, 0, strlen($theme_id) - 1);
+                            $theme_name = isset($json->themeName) ? $json->themeName : null;
+    
+                            $themes[$theme_id] = [
+                                "themeName" => $theme_name
+                            ];
+    
+                        }
+    
+                    } 
+                }
+                
+            }
+        }
+
         return $themes;
     }
 

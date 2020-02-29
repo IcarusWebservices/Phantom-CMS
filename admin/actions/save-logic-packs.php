@@ -24,3 +24,5 @@ if(count($packs) > 0) {
     }
 
 }
+
+redirect(uri_resolve('/admin/logic-packs'));

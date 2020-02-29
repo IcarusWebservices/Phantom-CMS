@@ -75,8 +75,24 @@ $loaded_packs = [];
 $routes = [];
 
 foreach ($packs as $pack) {
-    // var_dump($pack);
-    $json = PH_Loader::loadLogicPack($pack->folder_name);
+    
+    $folder = $pack->folder_name;
+
+    // Try to split it for projects
+    $s = explode(':', $folder);
+
+    // var_dump($s);
+
+    if(count($s) > 1) {
+        $project = $s[0];
+        $logic_pack = $s[1];
+
+        $path = DATA . 'projects/' . $project . '/logic-packs/' . $logic_pack . '/';
+    } else {
+        $path = DATA . 'logic-packs/' . $s[0] . '/';
+    }
+
+    $json = PH_Loader::loadLogicPack($path);
 
     if($json) {
 

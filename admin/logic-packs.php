@@ -78,6 +78,43 @@ if($config->is_multisite) {
             }
         }
 
+        foreach (glob(DATA . 'projects/*') as $f) {
+            $project = substr($f, strlen(DATA . 'projects/'));
+            foreach (glob($f . '/logic-packs/*') as $fo) {
+                if(is_dir($fo)) {
+                    if(file_exists($fo . '/logic-pack.json')) {
+                        $json_raw = file_get_contents($fo . '/logic-pack.json');
+        
+                        $en = json_decode($json_raw);
+        
+                        if($en) {
+                            if(isset($en->logicPackName)) {
+        
+                                $folder_name = substr($fo, strlen(DATA . 'projects/' . $project . '/logic-packs/'));
+        
+                                ?>
+                                <tr>
+                                    <td><input type="checkbox" name="enabled[]" value="<?= $project . ':' . $folder_name ?>" <?php
+                                        foreach ($loaded_packs as $pck) {
+                                            if($pck->folder_name == $project . ':' . $folder_name) {
+                                                echo "checked";
+                                            }
+                                        }
+                                    ?>></td>
+                                    <td><?= $en->logicPackName ?></td>
+                                    <td><?= $folder_name ?></td>
+                                </tr>
+                                <?php
+                            }
+        
+                        }
+        
+                    }
+                }
+                
+            }
+        }
+
         ?>
     </tbody>
 </table>

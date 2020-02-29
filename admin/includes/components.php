@@ -192,6 +192,16 @@ function admin_template($title, $menu, $content, $current_id = null, $current_su
     ?>
     <script src="/admin/js/front.js"></script>
     <script src="https://kit.fontawesome.com/9d8cef91c5.js"></script>
+    <script>
+        // Site Selector
+        let select = document.getElementById("siteselect");
+        if (select) {
+            select.addEventListener('change', (e) => {
+                let lang = select.options[select.selectedIndex].value;
+                window.open('<?= $site_uri ?>site=' + lang, '_self');
+            })
+        }
+    </script>
 </body>
 </html>
     <?php

@@ -14,6 +14,7 @@ class PH_Admin_User extends PH_Model_Base {
     public $email = null;
     public $password_hash = null;
     public $password = null;
+    public $data = null;
 
     public function __construct($data)
     {

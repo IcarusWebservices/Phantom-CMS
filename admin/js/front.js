@@ -112,11 +112,3 @@ actionDropdown.onclick = (e) => {
 }
 
 
-// Site Selector
-let select = document.getElementById("siteselect");
-if (select) {
-    select.addEventListener('change', (e) => {
-        let lang = select.options[select.selectedIndex].value;
-        window.open('<?= $site_uri ?>site=' + lang, '_self');
-    })
-}

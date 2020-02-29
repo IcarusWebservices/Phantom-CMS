@@ -89,6 +89,26 @@ function uri_resolve( $uri ) {
 }
 
 /**
+ * Resolves a uri to include both the URI and the Base path
+ * 
+ * @param string $uri The uri te resolve
+ * 
+ * @since 2.0.0
+ * 
+ * @return string
+ */
+function site_uri_resolve( $uri ) {
+    global $q_site;
+
+    $r = uri_resolve($uri);
+
+    if($q_site) {
+        return '/' . $q_site->slug . $r;
+    } return $r;
+
+}
+
+/**
  * Checks if all variables provided are true.
  * This is useful for checking query parameters or function arguments
  * 
