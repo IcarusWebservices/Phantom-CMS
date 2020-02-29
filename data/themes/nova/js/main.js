@@ -1,10 +1,17 @@
-const nav = document.querySelector('.js-navbar');
+const nav = document.querySelector('.navbar');
 const searchButton = document.querySelector('#search-button');
 const searchInput = document.querySelector('#search-input');
+const parallaxImg = document.querySelectorAll('.img-parallax');
 
 window.onscroll = () => {
     this.scrollY <= 10 ? nav.classList.remove('scroll') : nav.classList.add('scroll');
 };
+
+document.addEventListener("DOMContentLoaded", function () {
+    if (this.scrollY <= 10) {
+        nav.classList.add('scroll');
+    }
+});
 
 searchButton.onclick = function () {
     searchInput.focus();
@@ -15,28 +22,21 @@ searchButton.onclick = function () {
 // ------------------------------
 // Parallax scrolling!
 // ------------------------------
-
 $('.img-parallax').each(function () {
     var img = $(this);
     var imgParent = $(this).parent();
-    function parallaxImg() {
+    function parallaxTranslate() {
         var speed = img.data('speed');
         var imgY = imgParent.offset().top;
         var winY = $(this).scrollTop();
         var winH = $(this).height();
         var parentH = imgParent.innerHeight();
 
-
-        // The next pixel to show on screen      
         var winBottom = winY + winH;
 
-        // If block is shown on screen
         if (winBottom > imgY && winY < imgY + parentH) {
-            // Number of pixels shown after block appear
             var imgBottom = ((winBottom - imgY) * speed);
-            // Max number of pixels until block disappear
             var imgTop = winH + parentH;
-            // Percentage between start showing until disappearing
             var imgPercent = ((imgBottom / imgTop) * 100) + (50 - (speed * 50));
 
 
@@ -48,16 +48,14 @@ $('.img-parallax').each(function () {
 
     }
     $(document).ready(function () {
-        parallaxImg();
+        parallaxTranslate();
     });
     $(document).on({
         scroll: function () {
-            parallaxImg();
+            parallaxTranslate();
         }
     });
 });
-
-// Code inspiration for parallax scrolling by Renan Breno
 
 
 
@@ -92,11 +90,12 @@ var sArea = $('#apSeekArea'),
     muteIcon = $('#mute > i'),
     autoplay = true,
     isMuted = false,
-
+    
     songArtist = $('#apSongArtist'),
     songTitle = $('#apSongTitle'),
     fillBar = $('#apFill'),
     currentIndex = 0,
+    song,
     seekT,
     seekLoc,
     seekBarPos,

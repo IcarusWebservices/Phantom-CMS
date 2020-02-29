@@ -2,7 +2,7 @@
 # Macro components:
 Main standalone UI Components.
 
-Examples include tables and card grids.
+Examples include tables and modals.
 ------------------------------------------------------------ */
 /* ------------------------------
 1. Tables
@@ -130,7 +130,7 @@ Modals
 - The background      .modal
 -   The modal itself  .modal-content
 -     Close button    .close-modal
--     Modal header    .modal-head
+-     Modal header    .modal-header
 -     Modal body      .modal-body
 -     Modal footer    .modal-footer
 
@@ -141,7 +141,7 @@ HTML Example:
   
   <div class="modal">
     <div class="modal-content">
-      <div class="modal-head">
+      <div class="modal-header">
         <i class="fas fa-times close-modal"></i>
         <i class="fas fa-users circle-icon"></i>
       </div>
@@ -234,7 +234,7 @@ Examples include buttons, form elements and tags
 /* ------------------------------
 1. Tags
 ------------------------------ */
-span.tag {
+.tag {
     display: inline-block;
     padding: 6px 1rem;
     font-size: 15px;
@@ -242,10 +242,10 @@ span.tag {
     border-radius: 80px;
     text-transform: capitalize;
 }
-span.tag.red { background-color: #D04947; color: #fff; }
-span.tag.green { background-color: /*#058C42*/#24b37c; color: #fff; }
-span.tag.blue { background-color: #0078FF; color: #fff; }
-span.tag.yellow { background-color: #E3B23C; color: #fff; }
+.tag.red { background-color: #D04947; color: #fff; }
+.tag.green { background-color: /*#058C42*/#24b37c; color: #fff; }
+.tag.blue { background-color: #0078FF; color: #fff; }
+.tag.yellow { background-color: #E3B23C; color: #fff; }
 
 
 /* ------------------------------
@@ -359,11 +359,11 @@ Example:
 
 + All current styles: [.rounded], [.flat]
 
-+ Note that the use of [.form-item] is only required for the following style(s): [.flat]
++ Note that the use of [.field] is only required for the following style(s): [.flat]
 
 HTML Example:
   <form class="form rounded">
-    <div class="form-item">
+    <div class="field">
       <input type="text" name="username" autocomplete="off">
       <label for="username">Username</label>
     </div>

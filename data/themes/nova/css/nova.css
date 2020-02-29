@@ -161,7 +161,7 @@ h1.title { font-size: 2em; }
 
 /* -------------------- Navbar -------------------- */
 /* To reset to normal, comment out .js-navbar.scroll styles and set position to absolute */
-.js-navbar {
+.navbar {
   position: fixed;
   top: 0;
   left: 0;
@@ -177,10 +177,10 @@ h1.title { font-size: 2em; }
   z-index: 10;
 }
 
-.js-navbar a { text-decoration: none; color: inherit; }
+.navbar a { text-decoration: none; color: inherit; }
 
-.js-navbar.scroll,
-#no-banner.js-navbar {
+.navbar.scroll,
+#no-banner.navbar {
   background-color: #fff;
   color: #212121;
   box-shadow: 0 0 10px 0 rgba(0,0,0,.2);
@@ -193,11 +193,14 @@ h1.title { font-size: 2em; }
 }
 
 .nav-buttons {
+  display: inline-block;
+  height: var(--navbar-height);
   line-height: var(--navbar-height);
+  vertical-align: middle;
 }
 
 .nav-btn {
-  display: inline;
+  display: inline-block;
   padding: 8px 1.5em;
   font: 400 13px "Rubik", sans-serif;
   text-transform: uppercase;
@@ -211,15 +214,14 @@ h1.title { font-size: 2em; }
   border-radius: 28px;
 }
 
-.js-navbar.scroll .nav-btn.active {
+.navbar.scroll .nav-btn.active {
   border: 1px solid #212121;
   color: #212121;
 }
 
-.nav-btn:hover,
-.nav-search:hover {color: #fff;}
-.js-navbar.scroll .nav-btn:hover, #no-banner.js-navbar .nav-btn:hover,
-.js-navbar.scroll .nav-search:hover, #no-banner.js-navbar .nav-search:hover{color: #666;}
+.nav-btn:hover, .nav-search:hover {color: #fff;}
+.navbar.scroll .nav-btn:hover, #no-banner.navbar .nav-btn:hover,
+.navbar.scroll .nav-search:hover, #no-banner.navbar .nav-search:hover{color: #666;}
 
 .nav-dropdown-btn {
   position: relative;
@@ -243,12 +245,12 @@ h1.title { font-size: 2em; }
   box-shadow: 0 0 10px 0 rgba(0,0,0,.2);
 }
 
-.js-navbar.scroll .nav-dropdown,
-#no-banner.js-navbar .nav-dropdown {
+.navbar.scroll .nav-dropdown,
+#no-banner.navbar .nav-dropdown {
   top: 3.5em;
 }
 
-#no-banner.js-navbar ~ .navbar-spacer {
+#no-banner.navbar ~ .navbar-spacer {
   height: var(--navbar-height);
 }
 
@@ -285,7 +287,7 @@ h1.title { font-size: 2em; }
   cursor: pointer;
 }
 
-.js-navbar.scroll .nav-search input[type=text] {
+.navbar.scroll .nav-search input[type=text] {
   color: #212121;
   border-bottom: 2px solid #212121;
 }

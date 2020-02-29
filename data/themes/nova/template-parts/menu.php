@@ -34,9 +34,9 @@ foreach ($menu as $item) {
         <?php
     } else {
         ?>
-        <a class="navbar-item" href="<?= ph_pattern($item->links_to) ?>">
-        <?= $item->display_text ?>
-        </a>
+        <div class="nav-btn">
+            <a href="<?= ph_pattern($item->links_to) ?>"><?= $item->display_text ?></a>
+        </div>
         <?php
     }
 

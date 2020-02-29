@@ -160,6 +160,7 @@ class Nova_Homepage extends PH_Template {
             request_stylesheet(uri_resolve('/data/themes/'. $theme_folder .'/css/musicplayer.css'))
         ];
         $this->requested_header_scripts = [
+            request_script('https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js'),
             request_script('https://kit.fontawesome.com/9d8cef91c5.js')
         ];
         $this->requested_body_scripts = [request_script(ph_pattern('%THEME%/js/main.js'))];

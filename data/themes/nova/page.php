@@ -23,7 +23,7 @@ class Nova_SinglePage_Template extends PH_Template {
             ?>
 
             <header class="banner low">
-                <img src="https://jezz.tech/sites/wim/assets/img/kerstconcert.jpg" data-speed="-0.75" class="img-parallax" style="top: 33.9283%; transform: translate(-50%, -33.9283%);">
+                <img src="https://jezz.tech/sites/wim/assets/img/kerstconcert.jpg" data-speed="-0.75" class="img-parallax">
                 <div class="banner-text abs-centered">
                     <h1 class="title"><?= ucfirst($input->slug) ?></h1>
                 </div>
@@ -50,7 +50,8 @@ class Nova_SinglePage_Template extends PH_Template {
             request_stylesheet(uri_resolve('/data/themes/'. $theme_folder .'/css/musicplayer.css'))
         ];
         $this->requested_header_scripts = [
-            request_script('https://kit.fontawesome.com/9d8cef91c5.js')
+            request_script('https://kit.fontawesome.com/9d8cef91c5.js'),
+            request_script('https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js')
         ];
         $this->requested_body_scripts = [request_script(ph_pattern('%THEME%/js/main.js'))];
     
