@@ -138,7 +138,7 @@ admin_template("Edit", $menu, function() {
             ?>
         </div>
         <div id="side">
-            <div class="side-inner">
+            <div class="form rounded side-inner">
                 <div class="field">
                     <label for="system:status">Status:</label>
                     

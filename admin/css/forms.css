@@ -11,6 +11,7 @@
     font-size: 40px;
     background-color: transparent;
     border: none;
+    border-radius: 0;
     border-bottom: 2px solid #888;
     transition: 150ms ease;
 }
@@ -40,7 +41,7 @@
 }
 
 .field {
-    margin-bottom: 1rem;
+    margin-bottom: 8px;
 }
 
 .field label {
@@ -54,49 +55,13 @@ input[type=submit] {
     padding: 10px 24px;
     border: none;
     border-radius: 35px;
-    background-color: #2fefa6;
+    background-color: var(--color-primary);
     color: #fff;
     cursor: pointer;
     transition: 150ms ease-in-out;
 }
-input[type=submit]:hover { background-color: #29cc8d; }
+input[type=submit]:hover { background-color: var(--color-primary-dark); }
 input[type=submit]:focus { outline: none; }
-
-#side input[type=text] {
-    display: block;
-    width: 100%;
-    border: none;
-    border-radius: 35px;
-    background-color: rgba(0,0,0,.1);
-    color: #333;
-    padding: 10px 20px;
-    box-sizing: border-box;
-    transition: 200ms ease-in-out;
-}
-
-input[type=text] {
-    display: block;
-    width: 100%;
-    border: none;
-    border-radius: 35px;
-    background-color: rgba(0,0,0,.1);
-    color: #333;
-    padding: 10px 20px;
-    box-sizing: border-box;
-    transition: 200ms ease-in-out;
-}
-
-input[type=text]:focus,
-input[type=text]:hover {
-    outline: none;
-    background-color: rgba(0,0,0,.15);
-}
-
-#side input[type=text]:focus,
-#side input[type=text]:hover {
-    outline: none;
-    background-color: rgba(0,0,0,.15);
-}
 
 @media only screen and (max-width: 1000px) {
     #editors {

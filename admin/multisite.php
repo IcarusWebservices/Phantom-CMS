@@ -27,7 +27,7 @@ admin_template("Multisite", $menu, function() {
                     <td><?= $st->id ?></td>
                     <td><?= $st->slug ?></td>
                     <td><?= $st->name ?></td>
-                    <td><a href="<?= uri_resolve('/admin/multisite-site?id=' . $st->id) ?>" class="button small semi-round">Edit</a> <a href="<?= uri_resolve('/admin/actions/multisite?mode=delete&id=' . $st->id) ?>" data-id="<?= $st->id ?>" class="button small semi-round red">Delete</a></td>
+                    <td><a href="<?= uri_resolve('/admin/multisite-site?id=' . $st->id) ?>" class="button small semi-rounded">Edit</a> <a href="<?= uri_resolve('/admin/actions/multisite?mode=delete&id=' . $st->id) ?>" data-id="<?= $st->id ?>" class="button small semi-rounded red">Delete</a></td>
                 </tr>
                 <?php
             }

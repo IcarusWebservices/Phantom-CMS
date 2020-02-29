@@ -1,14 +1,23 @@
-let modal = document.getElementById("user-creation");
+const createUserModal = document.getElementById("user-creation");
+const createUserModalCloseBtn = document.querySelector("#user-creation .close-modal");
+const createUserModalCancelBtn = document.querySelector("#user-creation .button.cancel");
 
-document.getElementById('newuseropen').addEventListener('click', (e) => {
-    modal.style.display = 'block';
-})
-
-window.onclick = function(event) {
-    if (event.target == modal) {
-        modal.style.display = "none";
+window.onclick = (e) => {
+    if (e.target == createUserModal) {
+        createUserModal.style.display = "none";
     }
 }
+createUserModalCloseBtn.onclick = (e) => {
+    createUserModal.style.display = "none";
+}
+createUserModalCancelBtn.onclick = (e) => {
+    createUserModal.style.display = "none";
+}
+
+
+document.getElementById('newuseropen').addEventListener('click', (e) => {
+    createUserModal.style.display = 'block';
+});
 
 document.getElementById('createuser').addEventListener('click', (e) => {
     let form = document.getElementById('newuserform');

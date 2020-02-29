@@ -111,4 +111,8 @@ actionDropdown.onclick = (e) => {
     e.stopPropagation();
 }
 
+notificationDropdown.onclick = (e) => {
+    e.stopPropagation();
+}
+
 
