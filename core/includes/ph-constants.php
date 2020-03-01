@@ -33,3 +33,6 @@ define("PUBLISHED", 'published');
 define("AWAITING_REVIEW", 'awaiting_preview');
 define("PRIVATE_RECORD", 'private');
 define("DRAFT", 'draft');
+
+// ========= RESOURCE CONSTANTS =========
+define("RES_THEME", 0);

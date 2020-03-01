@@ -18,7 +18,7 @@ class Demo_Post_Record_Type extends PH_Record_Type {
         if($previousRecord) {
             $content = isset($rawEditorData["content:textfield"]) ? $rawEditorData["content:textfield"] : "Geen content";
             $previousRecord->content = $content;
-            // $previousRecord->title = $rawEditorData["system:title"];
+            $previousRecord->title = $rawEditorData["system:title"];
 
             return $previousRecord;
         } else {

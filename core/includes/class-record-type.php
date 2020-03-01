@@ -37,4 +37,15 @@ abstract class PH_Record_Type {
      */
     abstract public function saveRecord($rawEditorData, $previousRecord = null);
 
+    /**
+     * Provides the editor with data. Only called when editing a record.
+     * 
+     * @param string $content   The content delivered by the database
+     * 
+     * @return array $content   The data to be delivered to the editor fields
+     * 
+     * @since 2.0.0
+     */
+    abstract public function provideEditordata($content);
+
 }

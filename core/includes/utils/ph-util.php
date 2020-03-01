@@ -264,3 +264,47 @@ function uri_self() {
 
     return substr($uri, strlen($base_path));
 }
+
+/**
+ * Resolves a uri to a resource
+ * 
+ * Types include all the constants with the prefix RES_
+ * 
+ * @param int $resource_type    The type of resource
+ * @param string $value         The value of the resource to resolve a uri to
+ * @param string $add           The uri to append to the end of the resource location
+ * 
+ * @since 2.0.0
+ * 
+ * @return string
+ */
+function resource_resolve($resource_type, $value, $add = null) {
+
+    switch($resource_type) {
+
+        case RES_THEME:
+
+            $spl = explode(':', $value);
+
+            if(count($spl)>1) {
+
+                $project = $spl[0];
+                $theme = $spl[1];
+
+                $uri = uri_resolve('/data/projects/' . $project . '/themes/' . $theme);
+
+            } else {
+                
+                $theme = $value;
+
+                $uri = uri_resolve('/data/themes/' . $theme);
+
+            }
+
+            return $uri . $add;
+
+        break;
+
+    }
+
+}
