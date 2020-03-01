@@ -23,7 +23,7 @@ admin_template($title, $menu, function() {
     <h1><?= $title ?></h1>
     <a href="<?= uri_resolve('/admin/record?mode=new&type=' . $type) ?>" class="button">New <?= strtolower(rtrim($title, "s")) ?></a>
     
-    <table id="records-table">
+    <table id="records-table" class="selectable">
         <thead>
             <tr class="action-overlay">
                 <th></th>

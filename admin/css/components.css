@@ -527,5 +527,5 @@ input:focus {
 .control-radio input:disabled ~ .control-indicator:after { background: #7b7b7b;}
 
 /* Control exceptions */
-#records-table .control { display: initial; padding-left: 0;}
-#records-table .control-indicator { position: static;}
+table.selectable .control { display: initial; padding-left: 0;}
+table.selectable .control-indicator { position: static;}

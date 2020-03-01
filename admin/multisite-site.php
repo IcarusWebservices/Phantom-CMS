@@ -20,18 +20,20 @@ admin_template("Multisite", $menu, function() {
     } else redirect('/admin/multisite');
 
 ?>
-<h1>Site "<?= $site->name ?>"</h1>
-<form action="<?= uri_resolve('/admin/actions/multisite?mode=edit') ?>" method="post" class="form flat placeholders narrow">
-    <input type="hidden" name="id" value="<?= $site->id ?>">
-    <div class="field">
-        <input type="text" name="name" placeholder="The display name of the website" autocomplete="off" value="<?= $site->name ?>">
-        <label for="name"><span>Website name</span></label>
-    </div>
-    <div class="field">
-        <input type="text" name="slug" placeholder="Used within the url. May not contain spaces or special characters" autocomplete="off" value="<?= $site->slug ?>">
-        <label for="slug"><span>Website slug</span></label>
-    </div>
-    <input type="submit" value="Save">
-</form>
+<div class="container">
+    <h1>Site "<?= $site->name ?>"</h1>
+    <form action="<?= uri_resolve('/admin/actions/multisite?mode=edit') ?>" method="post" class="form flat placeholders narrow">
+        <input type="hidden" name="id" value="<?= $site->id ?>">
+        <div class="field">
+            <input type="text" name="name" placeholder="The display name of the website" autocomplete="off" value="<?= $site->name ?>">
+            <label for="name"><span>Website name</span></label>
+        </div>
+        <div class="field">
+            <input type="text" name="slug" placeholder="Used within the url. May not contain spaces or special characters" autocomplete="off" value="<?= $site->slug ?>">
+            <label for="slug"><span>Website slug</span></label>
+        </div>
+        <input type="submit" value="Save">
+    </form>
+</div>
 <?php
 }, 'collection:settings', 'multisite');

@@ -23,7 +23,7 @@ if($config->is_multisite) {
 }
 ?>
 <form action="<?= uri_resolve('/admin/actions/save-logic-packs') ?>" method="post">
-<table>
+<table class="selectable">
     <thead>
         <tr>
             <th>Enabled</th>
@@ -60,13 +60,18 @@ if($config->is_multisite) {
 
                         ?>
                         <tr>
-                            <td><input type="checkbox" name="enabled[]" value="<?= $folder_name ?>" <?php
-                                foreach ($loaded_packs as $pck) {
-                                    if($pck->folder_name == $folder_name) {
-                                        echo "checked";
+                            <td>
+                                <label class="control control-checkbox">
+                                    <input type="checkbox" name="enabled[]" value="<?= $folder_name ?>" <?php
+                                    foreach ($loaded_packs as $pck) {
+                                        if($pck->folder_name == $folder_name) {
+                                            echo "checked";
+                                        }
                                     }
-                                }
-                            ?>></td>
+                                    ?>>
+                                    <div class="control-indicator"></div>
+                                </label>
+                            </td>
                             <td><?= $en->logicPackName ?></td>
                             <td><?= $folder_name ?></td>
                         </tr>
@@ -94,13 +99,18 @@ if($config->is_multisite) {
         
                                 ?>
                                 <tr>
-                                    <td><input type="checkbox" name="enabled[]" value="<?= $project . ':' . $folder_name ?>" <?php
-                                        foreach ($loaded_packs as $pck) {
-                                            if($pck->folder_name == $project . ':' . $folder_name) {
-                                                echo "checked";
+                                    <td>
+                                        <label class="control control-checkbox">
+                                            <input type="checkbox" name="enabled[]" value="<?= $project . ':' . $folder_name ?>" <?php
+                                            foreach ($loaded_packs as $pck) {
+                                                if($pck->folder_name == $project . ':' . $folder_name) {
+                                                    echo "checked";
+                                                }
                                             }
-                                        }
-                                    ?>></td>
+                                            ?>>
+                                            <div class="control-indicator"></div>
+                                        </label>
+                                    </td>
                                     <td><?= $en->logicPackName ?></td>
                                     <td><?= $folder_name ?></td>
                                 </tr>
@@ -118,6 +128,7 @@ if($config->is_multisite) {
         ?>
     </tbody>
 </table>
+<br>
 <input type="submit" value="Save">
 </form>
 
