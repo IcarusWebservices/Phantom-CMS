@@ -13,9 +13,11 @@
  * @since 2.0.0
  */
 function get_menu($menu_name) {
+    global $q_site;
     $result = PH_Query::menu_items([
         "==item_menu_name" => $menu_name,
-        "NLitem_parent" => null
+        "NLitem_parent" => null,
+        "==site" => isset($q_site) ? $q_site->id : null
     ]);
     return $result;
 }
