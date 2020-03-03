@@ -19,7 +19,7 @@ class PH_Front_End {
      * @since 2.0.0
      */
     public function render($mode = 0) {
-        global $loaded_packs, $routes, $request, $theme_valid;
+        global $loaded_packs, $routes, $request, $theme_valid, $is_in_customizer_mode;
 
         if(count($loaded_packs) < 1) {
             do_error_page('No logic packs enabled...', 'Go into Settings > Logic Packs to enable a pack');
@@ -127,7 +127,7 @@ class PH_Front_End {
 
                                             $template = $instance->$target_method( $router_parameters );
 
-                                            if(!$template) {
+                                            if(!$template || var_check(TYPE_INT, $template)) {
                                                 return $this->get404();
                                             } else {
                                                 return $template;

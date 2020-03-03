@@ -27,6 +27,7 @@ define("CAT_RECORD_TYPES", "record-types");
 define("CAT_CONTROLLERS", "controllers");
 define("CAT_EDITOR_FIELDS", "editor-fields");
 define("CAT_TEMPLATE_RECORD_TYPES", "template-record-types");
+define("CAT_RECORD_MESSAGES", "record-messages");
 
 // ========= DATABASE CONSTANTS =========
 define("PUBLISHED", 'published');

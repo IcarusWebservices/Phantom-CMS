@@ -47,6 +47,15 @@ class PH_Data {
     }
 
     /**
+     * Checks if a var has been set
+     * 
+     * @since 2.0.0
+     */
+    public function __has($var) {
+        return isset($this->location[$var]);
+    }
+
+    /**
      * Constructor
      * 
      * @since 2.0.0

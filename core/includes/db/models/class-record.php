@@ -40,9 +40,9 @@ class PH_Record extends PH_Model_Base {
      */
     public function applyRecordType() {
         $r_type = get_record_type($this->type);
-        
+
         if(is_object($r_type)) {
-            if(var_inherits($r_type, 'PH_Record_Type')) {
+            if(var_inherits($r_type, 'PH_Record_Type') || var_inherits($r_type, 'PH_Message_Record_Type')) {
                 $this->processed_content = $r_type->processContent( $this->content );
             } else {
                 $this->processed_content = $this->content;

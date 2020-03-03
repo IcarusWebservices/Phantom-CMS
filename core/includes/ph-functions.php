@@ -42,7 +42,34 @@ function get_record_type($slug) {
 
         }
     } else {
-        return false;
+        $data = registry()->get(CAT_RECORD_MESSAGES, $slug);
+        if(var_instanceof($data, 'PH_Export')) {
+
+            // Do validation
+            $is_valid = validate_record_type($data);
+
+            if($is_valid) {
+
+                $class = $data->getProperty('class');
+
+                if(class_exists($class)) {
+
+                    $instance = new $class;
+
+                    return $instance;
+
+                } else {
+                    return false;
+                }
+
+            } else {
+                return false;
+            }
+
+        } else {
+            return false;
+        }
+        
     }
 }
 

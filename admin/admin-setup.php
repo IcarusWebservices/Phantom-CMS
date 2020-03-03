@@ -122,6 +122,8 @@ foreach ($packs as $pack) {
 
 $record_types = registry()->getCategory(CAT_RECORD_TYPES);
 
+$message_types = registry()->getCategory(CAT_RECORD_MESSAGES);
+
 // var_dump($record_types);
 
 /**
@@ -173,6 +175,21 @@ foreach ($record_types as $name => $export) {
     
 }
 
+$message_types_items = [];
+
+foreach($message_types as $type => $export) {
+    $display = $export->name;
+
+    if($export->hasProperty('displayName')) {
+        $display = $export->getProperty('displayName');
+    }
+
+    $message_types_items[$export->name] = [
+        "display" => $display,
+        "url_to" => "messages?type=" . $export->name
+    ];
+}
+
 $menu = [];
 $menu["item:dashboard"] = [
     "display" => "Dashboard",
@@ -190,6 +207,13 @@ if(count($taxonomy_items) > 0) {
     $menu["collection:taxonomy"] = [
         "display" => "Taxonomy",
         "items" => $taxonomy_items
+    ];
+}
+
+if(count($message_types_items) > 0) {
+    $menu["collection:messages"] = [
+        "display" => "Messages",
+        "items" => $message_types_items
     ];
 }
 

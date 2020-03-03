@@ -29,9 +29,10 @@ class PH_Loader {
                     return null;
                 }
                 // Include the folders, if they exist
-                read_and_register($path . 'controllers/', 'controllers');
-                read_and_register($path . 'editor-fields/', 'editor-fields');
-                read_and_register($path . 'record-types/', 'record-types');
+                read_and_register($path . 'controllers/', CAT_CONTROLLERS);
+                read_and_register($path . 'editor-fields/', CAT_EDITOR_FIELDS);
+                read_and_register($path . 'record-types/', CAT_RECORD_TYPES);
+                read_and_register($path . 'message-record-types/', CAT_RECORD_MESSAGES);
 
                 return $get_json;
 

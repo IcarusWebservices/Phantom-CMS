@@ -10,6 +10,18 @@ class PH_String_TRT extends PH_Template_Record_Type {
         echo $data;
     }
 
+    public function editor($data) {
+        if($data) {
+            ?>
+            <textarea cols="30" rows="10"><?= $data ?></textarea>
+            <?php
+        } else {
+            ?>
+            <textarea cols="30" rows="10"></textarea>
+            <?php
+        }
+    }
+
 }
 
 return export('string', [

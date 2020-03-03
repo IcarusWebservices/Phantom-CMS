@@ -13,9 +13,7 @@
  * @return void
  */
 function get_template_record($slug, $new_type = null, $new_def_data = null) {
-    global $language, $site_id;
-    // var_dump($site_id);
-
+    global $language, $site_id, $is_in_customizer_mode;
     $where = [
         "==template_record_slug" => $slug,
         "__OR" => [
@@ -51,7 +49,36 @@ function get_template_record($slug, $new_type = null, $new_def_data = null) {
                     $instance = new $class;
 
                     if(var_inherits($instance, 'PH_Template_Record_Type')) {
-                        $instance->render($record->data, $record->slug);
+                        ?>
+                        <div class="__template_record">
+                        <?php
+                        if($is_in_customizer_mode) {
+                            ?>
+                            <div class="__c_modal" data-type="edit" data-slug="<?= $record->slug ?>">
+                                <div class="__c_modal-content">
+                                <div class="__c_modal-header">
+                                    <h2>Edit</h2>
+                                </div>
+                                <div class="__c_modal-body">
+                                    <p><?php $instance->editor($new_def_data); ?></p>
+                                </div>
+                                <div class="__c_modal-footer">
+                                    <div class="action">
+                                    <a href="#" class="__c_button green semi-rounded outline __customizer_editor_save">Cancel</a>
+                                    <a href="#" class="__c_button red button semi-rounded __customizer_editor_cancel">Action</a>
+                                    </div>
+                                </div>
+                                </div>
+                            </div>
+                            <?php $instance->render($record->data, $record->slug); ?>
+                            <a href="#" class="__c_button" data-slug="<?= $record->slug ?>">Edit</a>
+                            <?php
+                        } else {
+                            $instance->render($record->data, $record->slug);
+                        }
+                        ?>
+                        </div>
+                        <?php
                     }
                     
                 }
@@ -91,7 +118,36 @@ function get_template_record($slug, $new_type = null, $new_def_data = null) {
                         $instance = new $class;
 
                         if(var_inherits($instance, 'PH_Template_Record_Type')) {
-                            $instance->render($record->data, $record->slug);
+                            ?>
+                            <div class="__template_record">
+                            <?php
+                            if($is_in_customizer_mode) {
+                                ?>
+                            <div class="__c_modal" data-type="new" data-slug="<?= $record->slug ?>">
+                                <div class="__c_modal-content">
+                                <div class="__c_modal-header">
+                                    <h2>Edit</h2>
+                                </div>
+                                <div class="__c_modal-body">
+                                    <p><?php $instance->editor($record->data); ?></p>
+                                </div>
+                                <div class="__c_modal-footer">
+                                    <div class="action">
+                                    <a href="#" class="__c_button green semi-rounded outline __customizer_editor_save">Cancel</a>
+                                    <a href="#" class="__c_button red button semi-rounded __customizer_editor_cancel">Action</a>
+                                    </div>
+                                </div>
+                                </div>
+                            </div>
+                            <?php $instance->render($record->data, $record->slug); ?>
+                            <a href="#" class="__c_button" data-slug="<?= $record->slug ?>">Edit</a>
+                            <?php
+                            } else {
+                                $instance->render($record->data, $record->slug);
+                            }
+                            ?>
+                            </div>
+                            <?php
                         }
                         
                     }
@@ -114,7 +170,37 @@ function get_template_record($slug, $new_type = null, $new_def_data = null) {
                             $instance = new $class;
     
                             if(var_inherits($instance, 'PH_Template_Record_Type')) {
-                                $instance->render($new_def_data, $slug);
+                                ?>
+                                <div class="__template_record">
+                                <?php
+                                if($is_in_customizer_mode) {
+                                    ?>
+                            <div class="__c_modal" data-type="new" data-slug="<?= $slug ?>">
+                                <div class="__c_modal-content">
+                                <div class="__c_modal-header">
+                                    <h2>Edit</h2>
+                                </div>
+                                <div class="__c_modal-body">
+                                    <p><?php $instance->editor($new_def_data); ?></p>
+                                </div>
+                                <div class="__c_modal-footer">
+                                    <div class="action">
+                                    <a href="#" class="__c_button green semi-rounded outline __customizer_editor_save">Cancel</a>
+                                    <a href="#" class="__c_button red button semi-rounded __customizer_editor_cancel">Action</a>
+                                    </div>
+                                </div>
+                                </div>
+                            </div>
+                            <?php $instance->render($new_def_data, $slug); ?>
+                            <a href="#" class="__c_button blue __customizer_editor_open" data-slug="<?= $slug ?>">Edit</a>
+                            <?php
+                                    
+                                } else {
+                                    $instance->render($new_def_data, $slug);
+                                }
+                                ?>
+                                </div>
+                                <?php
                             }
                             
                         }

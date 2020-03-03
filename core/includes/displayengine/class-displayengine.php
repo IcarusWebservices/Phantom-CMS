@@ -20,9 +20,12 @@ class PH_DisplayEngine {
      * @return PH_DisplayEngine_Document|string (Depending on whether $return_buffer is set to true)
      */
     public static function generateHTML5($template, $return_buffer = false, $language_code = 'en') {
-        
+        global $is_in_customizer_mode;
+
         $data = $template->__get_data();
-        $rendered_content = $template->render($data);
+        ob_start();
+        $template->render($data);
+        $rendered_content = ob_get_clean();
         
         ob_start();
 
@@ -38,6 +41,10 @@ class PH_DisplayEngine {
                     if(var_instanceof($stylesheet, 'PH_Requested_Stylesheet')) {
                         $stylesheet->render();
                     }
+                }
+
+                if($is_in_customizer_mode) {
+                    ?><link rel="stylesheet" href="<?= uri_resolve('/core/css/customizerpage.css')?>"><?php
                 }
             ?>
             <?php
@@ -59,6 +66,10 @@ class PH_DisplayEngine {
                     if(var_instanceof($script, 'PH_Requested_Script')) {
                         $script->render();
                     }
+                }
+
+                if($is_in_customizer_mode) {
+                    ?><script src="<?= uri_resolve('/core/js/customizer.js') ?>"></script><?php
                 }
             ?>
         </body>

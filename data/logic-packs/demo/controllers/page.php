@@ -27,6 +27,7 @@ return export('demopagecontroller', [
     "class" => "Demo_Page_Controller",
     "checkerFunctions" => [
         "checkpage" => function($p) {
+            
             $slug = $p["slug"];
 
             $record = PH_Query::records([

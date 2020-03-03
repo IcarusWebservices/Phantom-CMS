@@ -25,7 +25,7 @@ define('VERSION', '2.0.0');
  * 
  * @since 2.0.0
  */
-define("RELEASE_VERSION", "v1.0-prebeta1");
+define("RELEASE_VERSION", "v1.0-prebeta2");
 // Now load the includes
 load_recursively(CORE . 'includes/');
 // Now set up the global variables
@@ -78,6 +78,11 @@ $site = null;
  * @since 2.0.0
  */
 $is_in_customizer_mode = false;
+
+if(isset($_GET['customizer'])) {
+    $is_in_customizer_mode = true;
+
+}
 
 /**
  * The main request

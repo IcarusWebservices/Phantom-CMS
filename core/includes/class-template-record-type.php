@@ -15,20 +15,7 @@ abstract class PH_Template_Record_Type {
      * @since 2.0.0
      */
     public function render($data, $slug) {
-        global $is_in_customizer_mode;
-
-        if($is_in_customizer_mode) {
-            ?>
-            <div class="__customizer_block" data-slug="<?= $slug ?>">
-                <span style="background-color:white;border:1px solid black;padding:5px;">Edit</span>
-                <?php
-                    $this->body($data);
-                ?>
-            </div>
-            <?php
-        } else {
-            $this->body($data);
-        }
+        $this->body($data);
     }
 
     /**
@@ -39,5 +26,14 @@ abstract class PH_Template_Record_Type {
      * @since 2.0.0
      */
     abstract protected function body( $data );
+
+    /**
+     * Renders an editor
+     * 
+     * @param mixed $data The data to be displayed
+     * 
+     * @since 2.0.0
+     */
+    abstract public function editor( $data );
 
 }
