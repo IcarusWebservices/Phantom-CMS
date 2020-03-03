@@ -181,7 +181,7 @@ admin_template("Edit", $menu, function() {
                 
             </div>
         </div>
-    </div><br>
+    </div>
     
     <input type="submit" value="Save">
 </form>

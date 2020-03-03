@@ -26,15 +26,15 @@ admin_template("Theme", $menu, function() {
     // var_dump($themes);
     ?>
     <h1>Set Theme</h1>
-    <div class="card-grid">
+    <div class="polaroid-grid">
         <?php
             foreach ($themes as $id => $values) {
                 
                 ?>
-                <div class="card">
-                    <div class="card-top"></div>
-                    <div class="card-bottom">
-                        <div class="card-content">
+                <div class="polaroid">
+                    <div class="polaroid-top"></div>
+                    <div class="polaroid-bottom">
+                        <div class="polaroid-content">
                             <h3><?= $values["themeName"] ?></h3>
                             <?php
                             // echo $id . ' ' . $theme_folder;

@@ -13,12 +13,12 @@ $random = rand(0,count($dashboard_welcome_text) - 1);
 
 <h1>Welcome back, <span style="color: #1f996a;"><?= $session->user->username ?></span>!</h1>
 
-<section class="container full">
+<section class="card full">
     <h2>Look! It's a container!</h2>
     <p>This dashboard will be container-based, to help the user distinguish between the different areas of the dashboard.</p>
 </section>
 
-<section class="container">
+<section class="card">
     <h2>New UI elements</h2>
     <p><i>New buttons for use in Phantom&trade; CMS</i></p>
     <br>

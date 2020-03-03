@@ -64,9 +64,9 @@ td,th {
 
 
 /* ------------------------------
-2. Theme selection cards
+2. Theme selection polaroids
 ------------------------------ */
-.card-grid {
+.polaroid-grid {
     width: 100%;
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(14rem, 1fr));
@@ -74,7 +74,7 @@ td,th {
     padding: 1rem 0;
 }
 
-.card {
+.polaroid {
     position: relative;
     text-align: center;
     border-radius: 6px;
@@ -82,23 +82,23 @@ td,th {
     transition: transform 200ms ease;
 }
 
-.card, .card-top, .card-bottom {
+.polaroid, .polaroid-top, .polaroid-bottom {
     width: 100%;
 }
 
-.card-top {
+.polaroid-top {
     height: 8rem;
     background: #36D1DC;
     background: -webkit-linear-gradient(120deg, #5B86E5, #36D1DC);
     background: linear-gradient(120deg, #5B86E5, #36D1DC);
 }
 
-.card-bottom {
+.polaroid-bottom {
     padding: 1rem;
     background-color: #fff;
 }
 
-.card-content {
+.polaroid-content {
     min-width: 0;
     white-space: nowrap;
     overflow: hidden;
@@ -110,6 +110,37 @@ td,th {
 3. General containers
 ------------------------------ */
 .container {
+  margin: 1rem auto;
+  padding-left: 15px;
+  padding-right: 15px;
+  /* Extra large */
+  max-width: 1140px;
+}
+
+/* Large */
+@media only screen and (max-width: 1200px) {
+  .container { max-width: 960px; }
+}
+
+/* Medium */
+@media only screen and (max-width: 992px) {
+  .container { max-width: 720px; }
+}
+
+/* Small */
+@media only screen and (max-width: 768px) {
+  .container { max-width: 540px; }
+}
+
+/* Extra small */
+@media only screen and (max-width: 576px) {
+  .container { max-width: 100%; }
+}
+
+/* ------------------------------
+4. General cards
+------------------------------ */
+.card {
   position: relative;
   display: inline-block;
   padding: 2rem;
@@ -118,13 +149,13 @@ td,th {
   box-shadow: 0 2px 4px rgba(0,0,0,0.1);
 }
 
-.container.full { display: block; }
-.container p { line-height: 1.5; }
-.container h1, .container h2, .container h3 { margin: 0 0 12px 0; }
+.card.full { display: block; }
+.card p { line-height: 1.5; }
+.card h1, .container h2, .container h3 { margin: 0 0 12px 0; }
 
 
 /* ------------------------------
-Modals
+5. Modals
 
 # Modals consist out of multiple layers:
 - The background      .modal
