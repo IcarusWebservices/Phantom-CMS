@@ -18,3 +18,38 @@ if(b) {
         }
     }))
 }
+
+let form = document.querySelector('#__customizer_form')
+
+if(form) {
+
+    form.addEventListener('submit', e => {
+        e.preventDefault();
+
+        let r = new XMLHttpRequest();
+
+        let bp = document.getElementById('__customizer_base_path');
+
+        let basepath;
+
+        if(bp) {
+            basepath = bp.innerHTML;
+        } else {
+            basepath = '/';
+        }
+
+        // console.log(basepath);
+
+        r.onreadystatechange = function(e) {
+            if(r.readyState == 4) {
+                window.location.reload();
+            }
+        }
+
+        let data = new FormData(form)
+
+        r.open('POST', basepath + 'admin/actions/save-customizer');
+        r.send(data);
+    })
+
+}

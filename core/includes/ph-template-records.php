@@ -13,21 +13,16 @@
  * @return void
  */
 function get_template_record($slug, $new_type = null, $new_def_data = null) {
-    global $language, $site_id, $is_in_customizer_mode;
+    global $language_code, $q_site, $is_in_customizer_mode;
     $where = [
         "==template_record_slug" => $slug,
         "__OR" => [
             [
-                "==template_record_language" => ["en", $language]
+                "==template_record_language" => ["en", $language_code]
             ]
-        ]
+        ],
+        "==site" => isset($q_site->id) ? $q_site->id : null
     ];
-
-    if(!$site_id) {
-        $where["NLsite"] = null;
-    } else {
-        $where["==site"] = $site_id;
-    }
 
     $r = PH_Query::template_record($where);
 
@@ -60,18 +55,18 @@ function get_template_record($slug, $new_type = null, $new_def_data = null) {
                                     <h2>Edit</h2>
                                 </div>
                                 <div class="__c_modal-body">
-                                    <p><?php $instance->editor($new_def_data); ?></p>
+                                    <p><?php $instance->editor($record->data, $record->slug, $record->type); ?></p>
                                 </div>
                                 <div class="__c_modal-footer">
                                     <div class="action">
                                     <a href="#" class="__c_button green semi-rounded outline __customizer_editor_save">Cancel</a>
-                                    <a href="#" class="__c_button red button semi-rounded __customizer_editor_cancel">Action</a>
+                                    <input class="__c_button red button semi-rounded __customizer_editor_cancel" type="submit" value="Save">
                                     </div>
                                 </div>
                                 </div>
                             </div>
                             <?php $instance->render($record->data, $record->slug); ?>
-                            <a href="#" class="__c_button" data-slug="<?= $record->slug ?>">Edit</a>
+                            <a href="#" class="__c_button blue __customizer_editor_open" data-slug="<?= $slug ?>">Edit</a>
                             <?php
                         } else {
                             $instance->render($record->data, $record->slug);
@@ -89,14 +84,10 @@ function get_template_record($slug, $new_type = null, $new_def_data = null) {
     } else {
         // First, try if there is any version of this string on the database
         $w = [
-            "==template_record_slug" => $slug
+            "==template_record_slug" => $slug,
+            "==site" => isset($q_site->id) ? $q_site->id : null
         ];
-    
-        if(!$site_id) {
-            $w["NLsite"] = null;
-        } else {
-            $w["==site"] = $site_id;
-        }
+
 
         $t = PH_Query::template_record($w);
 
@@ -129,18 +120,18 @@ function get_template_record($slug, $new_type = null, $new_def_data = null) {
                                     <h2>Edit</h2>
                                 </div>
                                 <div class="__c_modal-body">
-                                    <p><?php $instance->editor($record->data); ?></p>
+                                    <p><?php $instance->editor($record->data, $record->slug, $record->type); ?></p>
                                 </div>
                                 <div class="__c_modal-footer">
                                     <div class="action">
                                     <a href="#" class="__c_button green semi-rounded outline __customizer_editor_save">Cancel</a>
-                                    <a href="#" class="__c_button red button semi-rounded __customizer_editor_cancel">Action</a>
+                                    <input class="__c_button red button semi-rounded __customizer_editor_cancel" type="submit" value="Save">
                                     </div>
                                 </div>
                                 </div>
                             </div>
                             <?php $instance->render($record->data, $record->slug); ?>
-                            <a href="#" class="__c_button" data-slug="<?= $record->slug ?>">Edit</a>
+                            <a href="#" class="__c_button blue __customizer_editor_open" data-slug="<?= $slug ?>">Edit</a>
                             <?php
                             } else {
                                 $instance->render($record->data, $record->slug);
@@ -181,12 +172,12 @@ function get_template_record($slug, $new_type = null, $new_def_data = null) {
                                     <h2>Edit</h2>
                                 </div>
                                 <div class="__c_modal-body">
-                                    <p><?php $instance->editor($new_def_data); ?></p>
+                                    <p><?php $instance->editor($new_def_data, $slug, $new_type); ?></p>
                                 </div>
                                 <div class="__c_modal-footer">
                                     <div class="action">
                                     <a href="#" class="__c_button green semi-rounded outline __customizer_editor_save">Cancel</a>
-                                    <a href="#" class="__c_button red button semi-rounded __customizer_editor_cancel">Action</a>
+                                    <input class="__c_button red button semi-rounded __customizer_editor_cancel" type="submit" value="Save">
                                     </div>
                                 </div>
                                 </div>

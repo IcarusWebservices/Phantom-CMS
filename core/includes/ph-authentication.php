@@ -49,3 +49,25 @@ function login_required() {
         redirect(uri_resolve('/admin/login?redirect=' . '/' .$uri));
     }
 }
+
+/**
+ * If the user is not logged in, will automatically redirect to /admin/login
+ * 
+ * Site specific
+ * 
+ * @since 2.0.0
+ */
+function customizer_login_required() {
+    if(session()->issetVars("username", "password")) {
+        $u = authenticate_user(session()->getVar("username"), session()->getVar("password"));
+        if(!$u || !var_instanceof($u, 'PH_Admin_User')) {
+            $uri = site_uri_resolve('/?customizer');
+            redirect(uri_resolve('/admin/login?redirect=' .$uri));
+        } else {
+            session()->user = $u;
+        }
+    } else {
+        $uri = site_uri_resolve('/?customizer');
+        redirect(uri_resolve('/admin/login?redirect=' .$uri));
+    }
+}

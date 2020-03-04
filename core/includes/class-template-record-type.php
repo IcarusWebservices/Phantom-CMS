@@ -31,9 +31,20 @@ abstract class PH_Template_Record_Type {
      * Renders an editor
      * 
      * @param mixed $data The data to be displayed
+     * @param string $slug The slug.
+     * @param string $record_type The name of the record type
      * 
      * @since 2.0.0
      */
-    abstract public function editor( $data );
+    abstract public function editor( $data, $slug, $record_type );
+
+    /**
+     * Should save the template record
+     * 
+     * @param array $data The input data
+     * 
+     * @since 2.0.0
+     */
+    abstract public function save( $data );
 
 }

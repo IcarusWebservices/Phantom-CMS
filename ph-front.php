@@ -131,7 +131,9 @@ if(count($t_q) > 0) {
     $theme_valid = false;
 }
 
-// die;
+if($is_in_customizer_mode) {
+    customizer_login_required();
+}
 
 $front = new PH_Front_End;
 $result = $front->render( 0 );

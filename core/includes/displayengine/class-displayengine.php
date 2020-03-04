@@ -59,8 +59,14 @@ class PH_DisplayEngine {
         </head>
         <body>
             <?php
+                if($is_in_customizer_mode) {
+                    ?>
+                    <form method="post" id="__customizer_form">
+                        <span style="display:none !important;" id="__customizer_base_path"><?= uri_resolve('/') ?></span>
+                    <?php
+                }
                 echo $rendered_content;
-
+                
                 $bscripts = $template->requested_body_scripts;
                 foreach ($bscripts as $script) {
                     if(var_instanceof($script, 'PH_Requested_Script')) {
@@ -69,7 +75,8 @@ class PH_DisplayEngine {
                 }
 
                 if($is_in_customizer_mode) {
-                    ?><script src="<?= uri_resolve('/core/js/customizer.js') ?>"></script><?php
+                    ?><script src="<?= uri_resolve('/core/js/customizer.js') ?>"></script>
+                    <?php
                 }
             ?>
         </body>
