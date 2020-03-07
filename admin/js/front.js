@@ -13,6 +13,7 @@ const notificationDropdown = document.querySelector('.actionbar .notification-dr
 var menuState = 1; // 1 = visible, 0 = hidden
 var actionDropdownState = 0;
 var notificationDropdownState = 0;
+var lastClickedAcc;
 
 
 // Sidebar State
@@ -47,8 +48,16 @@ sidebarBurger.onclick = () => {
 
 accordionTitles.forEach(acc => {
     acc.addEventListener('click', (e) => {
-        if (!event.target.classList.contains('active')) {
-            event.target.classList.toggle('clicked');
+        if (!e.target.classList.contains('active')) {
+            // Auto close accordions on clicking another
+            /*
+            if (lastClickedAcc) {
+                console.log("Lastclickedacc is not null");
+                lastClickedAcc.classList.remove('clicked');
+            }
+            lastClickedAcc = e.target;
+            */
+            e.target.classList.toggle('clicked');
         }
     })
 });

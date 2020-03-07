@@ -1,0 +1,88 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto|Lato&display=swap');
+
+*, *::before, *::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+ul { list-style: none; margin: 0; padding: 0; }
+a { text-decoration: none; color: inherit; }
+
+html {
+    --c-sidebar-width: 250px;
+    --c-actionbar-height: 3.5rem;
+    --c-color-primary: #24b37c;
+    --c-color-primary-dark: #1f996a;
+    --c-color-primary-light: #29cc8d;
+    scroll-behavior: smooth;
+}
+
+
+body { font-family: 'Roboto', sans-serif; color: #ccc; }
+
+.actionbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: var(--c-actionbar-height);
+    padding: 0 1rem;
+    background-color: #4C5155;
+    box-shadow: 0px 0px 16px 0 rgba(0,0,0,.2);
+    z-index: 10;
+}
+
+.actionbar .return { color: #fff; transition: 100ms ease; }
+.actionbar .return:hover { color: var(--c-color-primary-light); }
+.actionbar .return i {
+    line-height: var(--c-actionbar-height);
+    cursor: pointer;
+    padding: 0 8px;
+}
+
+iframe {
+    position: fixed; 
+    top: var(--c-actionbar-height);
+    right: 0;
+    width: calc(100% - var(--c-sidebar-width));
+    height: calc(100% - var(--c-actionbar-height));
+    border: none;
+    overflow: hidden;
+}
+
+.side-nav {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: var(--c-sidebar-width);
+    height: calc(100% - var(--c-actionbar-height));
+    border: none;
+    overflow-x: hidden;
+    background-color: #2c2d30;
+}
+
+.side-nav .sub-heading {
+    padding: 1rem 0;
+    text-align: center;
+    color: #fff;
+    border-bottom: 1px solid #4C5155;
+    margin-bottom: 8px;
+}
+
+.side-nav .sub-heading:not(:first-child) {
+    margin-top: 2rem;
+    border-top: 1px solid #4C5155;
+}
+
+.side-nav .nav-item {
+    padding: 8px 1rem;
+    margin-bottom: 8px;
+}
+
+
+/* Custom side-nav scrollbar */
+.side-nav::-webkit-scrollbar { width: 10px; }
+.side-nav::-webkit-scrollbar-track { background-color: #2c2d30; }
+.side-nav::-webkit-scrollbar-thumb { background-color: #4C5155; }
+.side-nav::-webkit-scrollbar-thumb:hover { background-color: #565c61; }

@@ -1,3 +1,12 @@
+/* ------------------------------
+General variables
+------------------------------ */
+html {
+  --color-primary: #24b37c;
+  --color-primary-dark: #1f996a;
+  --color-primary-light: #29cc8d;
+}
+
 /* ------------------------------------------------------------
 # Macro components:
 Main standalone UI Components.
@@ -338,7 +347,7 @@ Example:
   padding: .7em 1.5em;
   border: none;
   color: #fff;
-  font-size: 15px;
+  font: 15px 'Roboto', sans-serif;
   cursor: pointer;
   transition: background-color 150ms ease-in-out;
   --color-red: #D04947;
@@ -350,7 +359,6 @@ Example:
   --color-purple: #725AC1;
   --color-purple-dark: #5E4A9E;
 }
-.button:hover { background-color: var(--menu-color-active-dark); }
 
 /* Shapes */
 .button.rounded { border-radius: 35px; }
@@ -358,20 +366,24 @@ Example:
 
 /* States */
 .button.disabled { background-color: #bbb !important;  border: 1px solid #bbb; cursor: default; }
+.button.disabled:hover { border-color: #bbb; }
 
 /* Sizes */
 .button.small { font-size: 12px; }
 
 /* Colors */
 .button { background-color: var(--color-primary); border: 1px solid var(--color-primary); }
+.button:hover { background-color: var(--color-primary-dark); border-color: var(--color-primary-dark); }
+.button.neutral { background-color: transparent; border: none; color: #212121; }
+.button.neutral:hover { color: #414141; }
 .button.red { background-color: var(--color-red); border: 1px solid var(--color-red); }
-.button.red:hover { background-color: var(--color-red-dark); border: 1px solid var(--color-red-dark); }
+.button.red:hover { background-color: var(--color-red-dark); border-color: var(--color-red-dark); }
 .button.orange { background-color: var(--color-orange); border: 1px solid var(--color-orange); }
-.button.orange:hover { background-color: var(--color-orange-dark); border: 1px solid var(--color-orange-dark); }
+.button.orange:hover { background-color: var(--color-orange-dark); border-color: var(--color-orange-dark); }
 .button.blue { background-color: var(--color-blue); border: 1px solid var(--color-blue); }
-.button.blue:hover { background-color: var(--color-blue-dark); border: 1px solid var(--color-blue-dark);}
+.button.blue:hover { background-color: var(--color-blue-dark); border-color: var(--color-blue-dark);}
 .button.purple { background-color: var(--color-purple); border: 1px solid var(--color-purple); }
-.button.purple:hover { background-color: var(--color-purple-dark); border: 1px solid var(--color-purple-dark); }
+.button.purple:hover { background-color: var(--color-purple-dark); border-color: var(--color-purple-dark); }
 
 /* Outline variants */
 .button.outline { color: var(--color-primary); background-color: #fff !important; }

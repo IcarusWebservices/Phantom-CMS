@@ -10,7 +10,7 @@ ul { list-style: none; margin: 0; padding: 0; }
 a { text-decoration: none; color: inherit; }
 
 .title { font: bold 20px sans-serif; text-transform: uppercase; }
-.link { text-decoration: underline; color: var(--menu-color-active-dark); }
+.link { text-decoration: underline; color: var(--color-primary-dark); }
 
 html {
   --color-primary: #24b37c;
@@ -18,11 +18,9 @@ html {
   --color-primary-light: #29cc8d;
   --menu-width: 225px;
   --navbar-height: 4rem;
-  --menu-color: #c9c9c9;
-  --menu-color-active: #29cc8d;
-  --menu-color-active-dark: #1f996a;
   --menu-background-color: #2c2d30;
   --menu-background-color-active: #32353a;
+  scroll-behavior: smooth;
   overflow-x: hidden;
 }
 
@@ -63,11 +61,22 @@ Sidebar
 
 .menu-burger::after { content: '\2A09'; font-size: 30px; }
 .menu.hidden .menu-burger::after { content: '\2630'; }
-.menu > ul { margin-top: var(--navbar-height); }
+
+.menu > ul {
+  margin-top: var(--navbar-height);
+  max-height: calc(100% - 264px);
+  overflow-y: auto;
+}
+
+/* Custom side-nav scrollbar */
+.menu > ul::-webkit-scrollbar { width: 10px; }
+.menu > ul::-webkit-scrollbar-track { background-color: #2c2d30; }
+.menu > ul::-webkit-scrollbar-thumb { background-color: #4C5155; }
+.menu > ul::-webkit-scrollbar-thumb:hover { background-color: #565c61; }
 
 .menu-item {
     display: block;
-    padding: 15px 20px;
+    padding: 12px 20px;
     transition: 100ms ease;
 }
 
@@ -84,9 +93,9 @@ Sidebar
 .menu-item.active,
 .accordion-title.active {
     padding-left: 16px;
-    border-left: 4px solid var(--menu-color-active);
+    border-left: 4px solid var(--color-primary-light);
     background-color: var(--menu-background-color-active);
-    color: var(--menu-color-active);
+    color: var(--color-primary-light);
 }
 
 /* Accordion */
@@ -115,8 +124,14 @@ Sidebar
 
 .accordion-item {
     display: block;
-    padding: 10px 30px;
+    padding: 8px 38px;
     transition: 100ms ease;
+}
+
+.accordion-item::before {
+  content: '\2022';
+  margin-right: 8px;
+
 }
 
 .accordion-item:hover {
@@ -154,7 +169,7 @@ Sidebar
   text-align: left;
 }
 
-.menu .sub-sidebar a:hover { color: var(--menu-color-active-dark); }
+.menu .sub-sidebar a:hover { color: var(--color-primary-dark); }
 
 
 /* ------------------------------

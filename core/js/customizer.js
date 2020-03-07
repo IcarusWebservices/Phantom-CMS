@@ -53,3 +53,26 @@ if(form) {
     })
 
 }
+
+
+// Front-end customizer logic
+let cmodal = document.querySelectorAll(".__c_modal");
+
+if (cmodal) {
+    cmodal.forEach((el) => {
+        let modalContent = el.querySelector('.__c_modal-content');
+        let modalCancelBtn = el.querySelector('.__customizer_editor_cancel');
+
+        el.addEventListener('click', () => {
+            el.style.display = "none";
+        });
+
+        modalContent.addEventListener('click', (e) => {
+            e.stopPropagation();
+        });
+
+        modalCancelBtn.addEventListener('click', () => {
+            el.style.display = "none";
+        });
+    });
+}

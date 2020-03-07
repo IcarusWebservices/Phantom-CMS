@@ -55,12 +55,12 @@ function get_template_record($slug, $new_type = null, $new_def_data = null) {
                                     <h2>Edit</h2>
                                 </div>
                                 <div class="__c_modal-body">
-                                    <p><?php $instance->editor($record->data, $record->slug, $record->type); ?></p>
+                                    <?php $instance->editor($record->data, $record->slug, $record->type); ?>
                                 </div>
                                 <div class="__c_modal-footer">
                                     <div class="action">
-                                    <a href="#" class="__c_button green semi-rounded outline __customizer_editor_save">Cancel</a>
-                                    <input class="__c_button red button semi-rounded __customizer_editor_cancel" type="submit" value="Save">
+                                    <a class="__c_button neutral semi-rounded __customizer_editor_cancel">Cancel</a>
+                                    <input class="__c_button button semi-rounded __customizer_editor_save" type="submit" value="Save">
                                     </div>
                                 </div>
                                 </div>
@@ -124,8 +124,8 @@ function get_template_record($slug, $new_type = null, $new_def_data = null) {
                                 </div>
                                 <div class="__c_modal-footer">
                                     <div class="action">
-                                    <a href="#" class="__c_button green semi-rounded outline __customizer_editor_save">Cancel</a>
-                                    <input class="__c_button red button semi-rounded __customizer_editor_cancel" type="submit" value="Save">
+                                    <a class="__c_button neutral semi-rounded __customizer_editor_cancel">Cancel</a>
+                                    <input class="__c_button button semi-rounded __customizer_editor_save" type="submit" value="Save">
                                     </div>
                                 </div>
                                 </div>
@@ -176,8 +176,8 @@ function get_template_record($slug, $new_type = null, $new_def_data = null) {
                                 </div>
                                 <div class="__c_modal-footer">
                                     <div class="action">
-                                    <a href="#" class="__c_button green semi-rounded outline __customizer_editor_save">Cancel</a>
-                                    <input class="__c_button red button semi-rounded __customizer_editor_cancel" type="submit" value="Save">
+                                    <a class="__c_button neutral semi-rounded __customizer_editor_cancel">Cancel</a>
+                                    <input class="__c_button button semi-rounded __customizer_editor_save" type="submit" value="Save">
                                     </div>
                                 </div>
                                 </div>
