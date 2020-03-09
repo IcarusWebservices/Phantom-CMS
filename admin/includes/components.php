@@ -57,7 +57,7 @@ function admin_template($title, $menu, $content, $current_id = null, $current_su
                     case "collection":
                         ?>
                         <li class="accordion"><span class="accordion-title <?= $a ?>"><?= $value["display"] ?></span>
-                        <ul>
+                        <ul class="accordion-dropdown collapse">
                     
                         <?php
                         foreach ($value["items"] as $id => $value2) {

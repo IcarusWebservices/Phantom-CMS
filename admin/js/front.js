@@ -16,6 +16,20 @@ var notificationDropdownState = 0;
 var lastClickedAcc;
 
 
+// Animation State
+document.addEventListener('animationstart', function (e) {
+    if (e.animationName === 'slide-down') {
+        e.target.classList.add('clicked');
+    }
+});
+
+document.addEventListener('animationend', function (e) {
+    if (e.animationName === 'slide-up') {
+        e.target.classList.remove('clicked');
+    }
+});
+
+
 // Sidebar State
 menuStateWidth();
 window.onresize = menuStateWidth();
@@ -46,21 +60,47 @@ sidebarBurger.onclick = () => {
     }
 }
 
+// Accordion Visibility States
 accordionTitles.forEach(acc => {
     acc.addEventListener('click', (e) => {
         if (!e.target.classList.contains('active')) {
             // Auto close accordions on clicking another
-            /*
-            if (lastClickedAcc) {
+            /*if (lastClickedAcc) {
                 console.log("Lastclickedacc is not null");
-                lastClickedAcc.classList.remove('clicked');
+                collapseElement(lastClickedAcc);
             }
             lastClickedAcc = e.target;
             */
-            e.target.classList.toggle('clicked');
+
+            if (e.target.nextElementSibling.classList.contains('clicked')) {
+                collapseElement(e.target);
+            } else {
+                openElement(e.target);
+            }
         }
     })
 });
+
+function collapseElement(element) {
+    element.classList.remove('clicked');
+    element.nextElementSibling.classList.remove('clicked');
+    element.nextElementSibling.classList.add('collapsing');
+    setTimeout(function () {
+        element.nextElementSibling.classList.remove('collapsing');
+        element.nextElementSibling.classList.add('collapse');
+    }, 200);
+}
+
+function openElement(element) {
+    element.classList.add('clicked');
+    element.nextElementSibling.classList.remove('collapse');
+    element.nextElementSibling.classList.add('opening');
+    setTimeout(function () {
+        element.nextElementSibling.classList.remove('opening');
+        element.nextElementSibling.classList.add('clicked');
+    }, 200);
+}
+
 
 // Actionbar Dropdowns State
 actionDropdownBtn.onclick = (e) => {

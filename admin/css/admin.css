@@ -114,13 +114,42 @@ Sidebar
   font-weight: 900;
   float: right;
   font-style: normal;
+  transition: transform 200ms ease;
 }
 
 /* Accordion display logic */
 .accordion-title.clicked::after,
-.accordion-title.active::after { content: "\f078"; }
-.accordion-title:not(.active) ~ ul { display: none; }
-.accordion-title.clicked ~ ul { display: block; }
+.accordion-title.active::after { transform: rotate(90deg); }
+.accordion-title:not(.clicked):not(.active)::after { transform: rotate(0deg); }
+
+.accordion-title ~ ul { transform-origin: top; }
+.accordion-title ~ ul.opening { animation: slide-down 200ms ease forwards; }
+.accordion-title ~ ul.collapsing { animation: slide-up 200ms ease forwards; }
+.accordion-title ~ ul.clicked { display: block; }
+.accordion-title:not(.active) ~ ul.collapse { display: none; height: 0; }
+
+@keyframes slide-down {
+  from {
+    /*height: 0;*/
+    transform: scaleY(0);
+  }
+  to {
+    /*height: 150px;*/
+    transform: scaleY(1);
+  }
+}
+
+@keyframes slide-up {
+  from {
+    transform: scaleY(1);
+    /*height: 150px;*/
+  }
+  to {
+    /*height: 0;*/
+    transform: scaleY(0);
+  }
+}
+
 
 .accordion-item {
     display: block;
@@ -129,7 +158,7 @@ Sidebar
 }
 
 .accordion-item::before {
-  content: '\2022';
+  /*content: '\2022';*/
   margin-right: 8px;
 
 }
