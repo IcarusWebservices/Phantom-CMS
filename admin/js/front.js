@@ -10,6 +10,9 @@ const actionDropdown = document.querySelector('.actionbar .action-dropdown');
 const notificationDropdownBtn = document.querySelector('.actionbar .notification-ddb');
 const notificationDropdown = document.querySelector('.actionbar .notification-dropdown');
 
+const galleryCheckboxes = document.querySelectorAll('.gallery-editor .photo-grid-item .select-photo input');
+const galleryActionButtons = document.querySelector('.gallery-editor .photos-section-header .action-buttons')
+
 var menuState = 1; // 1 = visible, 0 = hidden
 var actionDropdownState = 0;
 var notificationDropdownState = 0;
@@ -164,4 +167,33 @@ notificationDropdown.onclick = (e) => {
     e.stopPropagation();
 }
 
+
+// Gallery Editor
+
+//  If any checkbox is clicked
+//      Loop through all checkboxes
+//      If all checkboxes are unchecked:
+//          Add .disabled
+//      Else:
+//          Remove .disabled
+
+// Add event listener to all galery checkboxes
+if (galleryCheckboxes) {
+    galleryCheckboxes.forEach((el) => {
+        el.addEventListener('click', () => {
+            checkAllCheckboxes();
+        });
+    });
+}
+
+function checkAllCheckboxes() {
+    var nChecked = 0;
+    galleryCheckboxes.forEach((el) => {
+        if (el.checked) {
+            nChecked++;
+        }
+    });
+
+    nChecked == 0 ? galleryActionButtons.classList.add('disabled') : galleryActionButtons.classList.remove('disabled');
+}
 

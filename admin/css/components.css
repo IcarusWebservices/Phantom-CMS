@@ -7,6 +7,13 @@ html {
   --color-primary-light: #29cc8d;
 }
 
+.ph-icon {
+  display: inline-block;
+  height: 20px;
+  margin: 0 8px;
+  cursor: pointer;
+}
+
 /* ------------------------------------------------------------
 # Macro components:
 Main standalone UI Components.
@@ -265,6 +272,61 @@ HTML Example:
 }
 
 
+/* ------------------------------
+6. Gallery Editor
+------------------------------ */
+.gallery-editor { width: 100%; }
+
+/* Header bar */
+.gallery-editor .photos-section-header {
+  border-top: 1px solid #ccc;
+  height: 3rem;
+  line-height: 3rem;
+}
+
+.gallery-editor .action-buttons { float: right; margin-right: 6px; }
+.gallery-editor .action-buttons .tab {
+  padding: 6px;
+  font-size: 20px;
+  cursor: pointer;
+  color: #999;
+  transition: 200ms ease;
+}
+.gallery-editor .action-buttons .tab:hover { color: #888; }
+.gallery-editor .action-buttons .tab.active { color: var(--color-primary); }
+.gallery-editor .action-buttons.disabled .tab { color: #ccc !important; cursor: not-allowed; }
+
+/* Photos */
+.gallery-editor .photo-grid-container {
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  grid-auto-rows: 250px;
+  grid-gap: 1rem;
+}
+
+.gallery-editor .photo-grid-item {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+.gallery-editor .photo-grid-item .select-photo { position: absolute; left: 8px; top: 8px; z-index: 10; }
+.gallery-editor .photo-grid-item .select-photo .control-indicator { display: none; }
+.gallery-editor .photo-grid-item:hover .select-photo .control-indicator,
+.gallery-editor .photo-grid-item .select-photo input:checked ~ .control-indicator { display: block; }
+
+.gallery-editor .control-indicator {
+  background: #fff;
+  border: 1px solid #212121;
+}
+
+.gallery-editor .photo-grid-item > img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
 /* ------------------------------------------------------------
 # Micro components:
 Small standalone UI components.
@@ -345,6 +407,7 @@ Example:
 .button {
   display: inline-block;
   padding: .7em 1.5em;
+  margin: 8px 0;
   border: none;
   color: #fff;
   font: 15px 'Roboto', sans-serif;
