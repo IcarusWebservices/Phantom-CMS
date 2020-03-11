@@ -99,33 +99,53 @@ function admin_template($title, $menu, $content, $current_id = null, $current_su
     
     <div class="actionbar">
         <div class="nav-left">
-            <div class="nav-button"><span><a href="/<?= $site ?>" target="__blank">Open website</a></span></div>
+
             <?php if($config->is_multisite) {
                 $sites = PH_Query::sites([]);
                 $site_still_exists = false;
                 ?>
-                Currently editing: <select id="siteselect">
-                <option value="__def" <?php if(!$site) {echo 'selected'; $site_still_exists = true;} ?>>-- Main --</option>
-                <?php
-                    foreach ($sites as $st) {
-                        ?><option value="<?= $st->slug ?>" <?php
-                            if($st->slug == $site) {
-                                echo 'selected';
-                                $site_still_exists = true;
+
+                <div id="siteselect" class="ph-dropdown">
+                    <button id="dropdownSiteSelect" type="button" class="dropdown-toggle">
+                        <i class="fas fa-globe"></i><p><?php
+                            // Get name of current site
+                            foreach ($sites as $st) {
+                                if($st->slug == $site) {
+                                    echo $st->name;
+                                }
                             }
-                        ?>><?= $st->name ?></option><?php
+                        ?></p>
+                    </button>
+                    <ul aria-labelledby="dropdownSiteSelect" class="dropdown-menu" x-placement="bottom-start">
+                        <li><a class="dropdown-item<?php if (!$site) { echo ' selected'; $site_still_exists = true; } ?>" data-value="__def" role="button">-- Main --</a></li>
+                        <?php
+                            foreach ($sites as $st) {
+                                ?>
+                                <li>
+                                    <a class="dropdown-item<?php
+                                        if($st->slug == $site) {
+                                            echo ' selected';
+                                            $site_still_exists = true;
+                                        }
+                                    ?>" data-value="<?= $st->slug ?>" role="button"><?= $st->name ?></a>
+                                </li>
+                                <?php
+                            }
+                        ?>
+                    </ul>
+                </div>
+                <a class="button semi-rounded" href="?site=<?php
+                    if($site_still_exists) {
+                        echo $site;
+                    } else {
+                        echo "__def";
                     }
-                ?>
-            </select> <a href="?site=<?php
-                if($site_still_exists) {
-                    echo $site;
-                } else {
-                    echo "__def";
-                }
-            ?>">↻</a>
+                ?>">↻</a>
                 <?php
             }
             ?>
+            
+            <div class="nav-button"><span><a href="/<?= $site ?>" target="__blank">Open website</a></span></div>
             
         </div>
         <div class="nav-right">
@@ -194,12 +214,15 @@ function admin_template($title, $menu, $content, $current_id = null, $current_su
     <script src="https://kit.fontawesome.com/9d8cef91c5.js"></script>
     <script>
         // Site Selector
-        let select = document.getElementById("siteselect");
-        if (select) {
-            select.addEventListener('change', (e) => {
-                let lang = select.options[select.selectedIndex].value;
-                window.open('<?= $site_uri ?>site=' + lang, '_self');
-            })
+        let siteOptions = document.querySelectorAll('#siteselect a.dropdown-item');
+
+        if (siteOptions) {
+            siteOptions.forEach((el) => {
+                el.addEventListener('click', () => {
+                    let lang = el.dataset.value;
+                    window.open('<?= $site_uri ?>site=' + lang, '_self');
+                });
+            });
         }
     </script>
 </body>

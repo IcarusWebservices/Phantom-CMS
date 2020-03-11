@@ -10,6 +10,8 @@ const actionDropdown = document.querySelector('.actionbar .action-dropdown');
 const notificationDropdownBtn = document.querySelector('.actionbar .notification-ddb');
 const notificationDropdown = document.querySelector('.actionbar .notification-dropdown');
 
+const phDropdowns = document.querySelectorAll('.ph-dropdown');
+
 const galleryCheckboxes = document.querySelectorAll('.gallery-editor .photo-grid-item .select-photo input');
 const galleryActionButtons = document.querySelector('.gallery-editor .photos-section-header .action-buttons')
 
@@ -17,6 +19,16 @@ var menuState = 1; // 1 = visible, 0 = hidden
 var actionDropdownState = 0;
 var notificationDropdownState = 0;
 var lastClickedAcc;
+
+
+// Dropdowns
+if (phDropdowns) {
+    phDropdowns.forEach((el) => {
+        el.addEventListener('click', () => {
+            el.querySelector('.dropdown-menu').classList.toggle('show');
+        });
+    });
+}
 
 
 // Animation State
