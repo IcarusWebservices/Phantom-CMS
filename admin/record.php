@@ -87,7 +87,7 @@ admin_template("Edit", $menu, function() {
     ?>
     <input type="hidden" name="system:mode" value="<?= $processed_mode ?>">
     <input type="hidden" name="system:recordtype" value="<?= $type ?>" id="system:recordtype">
-    <input type="text" id="title" name="system:title" class="editor-title" placeholder="Title" value="<?= isset($record) ? $record->title : null ?>" required>
+    <input type="text" id="title" name="system:title" class="editor-title" placeholder="Title" autocomplete="off" value="<?= isset($record) ? $record->title : null ?>" required>
     <div id="editors">
         <div id="primary">
             <?php
@@ -138,7 +138,7 @@ admin_template("Edit", $menu, function() {
             ?>
         </div>
         <div id="side">
-            <div class="form rounded side-inner">
+            <div class="form side-inner card full no-margin">
                 <div class="field">
                     <label for="system:status">Status:</label>
                     
@@ -168,6 +168,15 @@ admin_template("Edit", $menu, function() {
 
                     <input type="text" id="slug" name="system:slug" value="<?= isset($record) ? $record->slug : null ?>" required>
                 </div>
+                <br>
+                <div class="field">
+                    <p>Show in navigation [WIP]:</p>
+                    <label class="switch-flat">
+                        <input type="checkbox">
+                        <span class="slider"></span>
+                    </label>
+                </div>
+                <br>
                 <?php
                     if($processed_mode != 'save-new') {
 ?>

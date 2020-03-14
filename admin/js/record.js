@@ -49,27 +49,16 @@ form.addEventListener('submit', (e) => {
 
         // console.log(s);
 
-
-
         let parsed = JSON.parse(s);
 
         if(!parsed.error) {
 
-            // Do the stuff!
-
-            var x = document.getElementById("snackbar-saved");
-
-            // Add the "show" class to DIV
-            x.className = "show";
-
-            // After 3 seconds, remove the show class from DIV
+            // Show & hide snackbar
+            var snackbar = document.getElementById("snackbar-saved");
+            snackbar.className = "show";
             setTimeout(function(){ 
-                x.className = x.className.replace("show", ""); 
-
-                
+                snackbar.className = snackbar.className.replace("show", ""); 
             }, 2950);
-
-            
 
             console.log('%c Phantom – Success!', 'color: #29cc8d; font-weight: bold;');
 

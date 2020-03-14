@@ -19,7 +19,8 @@ html {
   --menu-width: 225px;
   --navbar-height: 4rem;
   --menu-background-color: #2c2d30;
-  --menu-background-color-active: #32353a;
+  --menu-background-color-active-old: #32353a;
+  --menu-background-color-active: rgba(255,255,255,.05);
   scroll-behavior: smooth;
   overflow-x: hidden;
 }
@@ -37,16 +38,16 @@ body {
 Sidebar
 ------------------------------ */
 .menu {
-    position: fixed;
-    height: 100%;
-    width: var(--menu-width);
-    top: 0;
-    left: 0;
-    background-color: var(--menu-background-color);
-    color: #aaa;
-    overflow-x: hidden;
-    z-index: 1;
-    transition: 200ms ease;
+  position: fixed;
+  height: 100%;
+  width: var(--menu-width);
+  top: 0;
+  left: 0;
+  background-color: var(--menu-background-color);
+  color: #aaa;
+  overflow-x: hidden;
+  z-index: 1;
+  transition: 200ms ease;
 }
 
 /* Menu width logic */
@@ -54,9 +55,9 @@ Sidebar
 .menu.hidden ~ .content { margin-left: 0; }
 
 .menu-burger {
-    position: fixed;
-    display: inline-block;
-    margin: 8px 1rem;
+  position: fixed;
+  display: inline-block;
+  margin: 8px 1rem;
 }
 
 .menu-burger::after { content: '\2A09'; font-size: 30px; }
@@ -74,36 +75,45 @@ Sidebar
 .menu > ul::-webkit-scrollbar-thumb { background-color: #4C5155; }
 .menu > ul::-webkit-scrollbar-thumb:hover { background-color: #565c61; }
 
-.menu-item {
-    display: block;
-    padding: 12px 20px;
-    transition: 100ms ease;
+.menu-item,
+.accordion-title {
+  display: block;
+  padding: 14px 14px;
+  margin: 6px 6px;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: 120ms ease;
+}
+
+.accordion-title.clicked {
+  background-color: var(--menu-background-color-active);
 }
 
 .menu-item > i {
-    width: 16px;
-    margin-right: 8px;
+  width: 16px;
+  margin-right: 8px;
 }
 
 .menu-item:hover,
 .accordion-title:hover {
-    background-color: rgba(255,255,255,.05);
+  background-color: rgba(255,255,255,.05);
 }
 
 .menu-item.active,
 .accordion-title.active {
-    padding-left: 16px;
-    border-left: 4px solid var(--color-primary-light);
-    background-color: var(--menu-background-color-active);
-    color: var(--color-primary-light);
+  padding-left: 16px;
+  margin-left: 0;
+  border-radius: 0 6px 6px 0;
+  border-left: 4px solid var(--color-primary-light);
+  background-color: var(--menu-background-color-active);
+  color: var(--color-primary-light);
 }
 
 /* Accordion */
 .accordion-title {
-    display: block;
-    padding: 15px 20px;
-    cursor: pointer;
-    transition: 100ms ease;
+  display: block;
+  cursor: pointer;
+  transition: 120ms ease;
 }
 
 .accordion-title::after {
@@ -152,24 +162,23 @@ Sidebar
 
 
 .accordion-item {
-    display: block;
-    padding: 8px 38px;
-    transition: 100ms ease;
+  display: block;
+  padding: 8px 38px;
+  transition: 100ms ease;
 }
 
 .accordion-item::before {
   /*content: '\2022';*/
   margin-right: 8px;
-
 }
 
 .accordion-item:hover {
-    color: #fff;
+  color: #fff;
 }
 
 .accordion-item.active {
-    color: #fff;
-    font-weight: bold;
+  color: #fff;
+  font-weight: bold;
 }
 
 .menu footer {
@@ -205,22 +214,22 @@ Sidebar
 Actionbar
 ------------------------------ */
 .actionbar {
-    margin-left: var(--menu-width);
-    width: calc(100% - var(--menu-width));
-    height: var(--navbar-height);
-    padding: 0 2rem;
-    background-color: #fff;
-    box-shadow: 0 0 8px 0 rgba(0,0,0,.1);
-    transition: 150ms ease;
+  margin-left: var(--menu-width);
+  width: calc(100% - var(--menu-width));
+  height: var(--navbar-height);
+  padding: 0 2rem;
+  background-color: #fff;
+  box-shadow: 0 0 8px 0 rgba(0,0,0,.1);
+  transition: 150ms ease;
 }
 
 .actionbar.full {
-    margin-left: 0;
-    width: 100%;
+  margin-left: 0;
+  width: 100%;
 }
 
 .actionbar.full .nav-left {
-    margin-left: 2rem;
+  margin-left: 2rem;
 }
 
 .actionbar .nav-left > *,
@@ -363,6 +372,14 @@ section.container {
 
 section.container.full {
   max-width: initial;
+}
+
+#editors .form.flat .field {
+  max-width: 200px;
+}
+
+#editors .editor-thumbnail {
+  max-width: 100%;
 }
 
 phantom-data { display: none; }

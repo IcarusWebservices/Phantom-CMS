@@ -166,6 +166,7 @@ td,th {
 }
 
 .card.full { display: block; }
+.card.no-margin { margin: 0; }
 .card p { line-height: 1.5; }
 .card h1, .container h2, .container h3 { margin: 0 0 12px 0; }
 
@@ -469,7 +470,7 @@ Example:
 
 HTML Example:
   <form class="form rounded">
-    <div class="field">
+    <div class="field flat">
       <input type="text" name="username" autocomplete="off">
       <label for="username">Username</label>
     </div>
@@ -481,6 +482,22 @@ HTML Example:
     <label for="password" class="label-name"><span class="content-name">Password</span></label>
   </form>
 ------------------------------ */
+/* Input-based */
+input {
+    display: inline-block;
+    padding: 8px 12px;
+    outline: none;
+    border: 1px solid #aaa;;
+    border-radius: 6px;
+    color: #333;
+    transition: 200ms ease-in-out;
+}
+
+input:hover,
+input:focus {
+    border-color: var(--color-primary);
+}
+
 /* ---------- Rounded ---------- */
 .form.rounded input[type=text],
 .form.rounded input[type=password],
@@ -508,15 +525,17 @@ HTML Example:
 }
 
 /* ---------- Flat ---------- */
-.form.flat .field {
+.form .field.flat {
   position: relative;
   height: 50px;
   overflow: hidden;
 }
 
-.form.flat.narrow .field { max-width: 300px; }
+.form.narrow .field.flat { max-width: 300px; }
 
-.form.flat .field input {
+.form .field.flat input[type="text"],
+.form .field.flat input[type="password"],
+.form .field.flat input[type="email"] {
   padding: 18px 0 0 0;
   border-radius: 0;
   width: 100%;
@@ -529,7 +548,7 @@ HTML Example:
   outline: none;
 }
 
-.form.flat .field label {
+.form .field.flat label {
   position: absolute;
   bottom: 0;
   left: 0;
@@ -539,7 +558,7 @@ HTML Example:
   pointer-events: none;
 }
 
-.form.flat .field label::after {
+.form .field.flat label::after {
   content: '';
   position: absolute;
   left: 0;
@@ -551,37 +570,21 @@ HTML Example:
   transition: transform 300ms ease;
 }
 
-.form.flat .field label span {
+.form .field.flat label span {
   position: absolute;
   bottom: 5px;
   left: 0;
-  color: #333;
+  color: #999;
   transform-origin: top left;
   transition: all 300ms ease;
 }
 
 /* Styling when the form is active */
-.form.flat .field input:focus + label span { transform: translateY(-70%) scale(0.8); color: var(--color-primary); }
-.form.flat .field input:not(:placeholder-shown) + label span { transform: translateY(-70%) scale(0.8); }
-.form.flat .field input:focus + label::after { transform: translateX(0); }
+.form .field.flat input:focus + label span { transform: translateY(-70%) scale(0.8); color: var(--color-primary); }
+.form .field.flat input:not(:placeholder-shown):not(:focus) + label span { transform: translateY(-70%) scale(0.8); color: #333; }
+.form .field.flat input:focus + label::after { transform: translateX(0); }
 
-.form.flat.placeholders .field label span { transform: translateY(-70%) scale(0.8); }
-
-/* Input-based */
-input {
-    display: inline-block;
-    padding: 8px 12px;
-    outline: none;
-    border: 1px solid #aaa;;
-    border-radius: 6px;
-    color: #333;
-    transition: 200ms ease-in-out;
-}
-
-input:hover,
-input:focus {
-    border-color: var(--color-primary);
-}
+.form.placeholders .field.flat label span { transform: translateY(-70%) scale(0.8); }
 
 
 /* ------------------------------
@@ -635,6 +638,105 @@ input:focus {
 /* Control exceptions */
 table.selectable .control { display: initial; padding-left: 0;}
 table.selectable .control-indicator { position: static;}
+
+
+/* ----------------------------------------
+Checkbox - Switch Style #1
+
+HTML Example:
+  
+  <div class="switch">
+    <input type="checkbox" id="theme-1">
+    <label for="theme-1"></label>
+  </div>
+
+---------------------------------------- */
+.switch {
+  display: inline-block;
+}
+
+.switch input[type="checkbox"] {
+  display:none;
+}
+.switch label {
+  position:relative;
+  display:block;
+  width:40px;
+  height:18px;
+  background:#999;
+  border-radius:15px;
+  transition:all 250ms ease;
+  cursor:pointer;
+}
+.switch label:before {
+  content:"";
+  position:absolute;
+  width:22px;
+  height:22px;
+  background:#fff;
+  border-radius:50%;
+  box-shadow:2px 2px 15px #555;
+  top:-2px;
+  left:-4px;
+  transition:all 150ms ease;
+}
+.switch input[type="checkbox"]:checked + label:before {
+  left:25px;
+}
+.switch:checked + label {
+  background:#96b9f1;
+}
+.switch:checked + label:before {
+  background:#276dd8;
+}
+
+
+/* ----------------------------------------
+Checkbox - Switch Style #2
+
+HTML Example:
+  
+  <label class="switch-flat">
+    <input type="checkbox">
+    <span class="slider"></span>
+  </label>
+
+---------------------------------------- */
+.switch-flat {
+  position: relative;
+  display: inline-block;
+  width: 50px;
+  height: 26px;
+}
+
+.switch-flat .slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ccc;
+  transition: 150ms ease-in-out;
+  border-radius: 50px;
+}
+
+.switch-flat .slider::before {
+  position: absolute;
+  content: '';
+  height: 20px;
+  width: 20px;
+  left: 3px;
+  top: 3px;
+  background-color: #fff;
+  transition: 150ms ease-in-out;
+  border-radius: 50px;
+}
+
+.switch-flat input { display: none; }
+.switch-flat input:checked + .slider { background-color: var(--color-primary); }
+.switch-flat input:checked + .slider::before { transform: translatex(24px); }
+
 
 
 /* ------------------------------
