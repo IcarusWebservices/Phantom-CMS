@@ -80,6 +80,49 @@ iframe {
     margin-bottom: 8px;
 }
 
+.sidebar-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-gap: 1rem;
+  width: 100%;
+  height: min-content;
+  padding: 1rem;
+  box-sizing: border-box;
+}
+
+.sidebar-item {
+  position: relative;
+  width: 100%;
+  height: 5rem;
+  border: 1px solid #222;
+  border-radius: 4px;
+  text-align: center;
+  color: #c3c3d3;
+  background-color: #4C5155;
+  cursor: pointer;
+  transition: 100ms ease;
+}
+
+.sidebar-item > div {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.sidebar-item:hover {
+  transform: scale(1.05);
+}
+
+.sidebar-item i {
+  font-size: 22px;
+  margin-bottom: 8px;
+}
+
+.sidebar-item p {
+  font-size: 14px;
+}
+
 
 /* Custom side-nav scrollbar */
 .side-nav::-webkit-scrollbar { width: 10px; }

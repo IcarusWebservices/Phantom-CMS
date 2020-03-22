@@ -192,6 +192,10 @@ function admin_template($title, $menu, $content, $current_id = null, $current_su
         </div>
     </div>
     <div class="content">
+    
+        <div id="app">
+            <p>{{ message }}</p>
+        </div>
     <?php
     echo $c;
     ?>
@@ -212,6 +216,10 @@ function admin_template($title, $menu, $content, $current_id = null, $current_su
     ?>
     <script src="/admin/js/front.js"></script>
     <script src="https://kit.fontawesome.com/9d8cef91c5.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+    <script src="/admin/js/vue/core/vue.js"></script>
+    <script src="/admin/js/vue/core/vue-router.js"></script>
+    <script src="/admin/js/vue/vue.js"></script>
     <script>
         // Site Selector
         let siteOptions = document.querySelectorAll('#siteselect a.dropdown-item');

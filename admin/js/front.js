@@ -209,3 +209,11 @@ function checkAllCheckboxes() {
     nChecked == 0 ? galleryActionButtons.classList.add('disabled') : galleryActionButtons.classList.remove('disabled');
 }
 
+/* Prototype functions for use in other scripts */
+Element.prototype.appendBefore = function (element) {
+    element.parentNode.insertBefore(this, element);
+}, false;
+
+Element.prototype.appendAfter = function (element) {
+    element.parentNode.insertBefore(this, element.nextSibling);
+}, false;

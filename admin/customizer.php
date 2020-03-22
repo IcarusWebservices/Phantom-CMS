@@ -18,33 +18,36 @@ login_required();
     </div>
     <div class="side-nav">
         <p class="sub-heading">Global settings</p>
-        <p class="nav-item">Wat zijn WP globals?</p>
-        <p class="nav-item">Ik weet het niet eens</p>
-        <p class="nav-item">Dus geen idee wat ik hier moet ontwerpen</p>
-        <p class="nav-item">Maargoed, nu kan je een navigatie maken!</p>
-        <p class="nav-item">Of een settings menu</p>
-        <p class="nav-item">Of whatever je wilt</p>
+        <div class="sidebar-grid">
+            <div class="sidebar-item" draggable="true" data-type="text">
+                <div>
+                    <i class="fas fa-paragraph"></i>
+                    <p>Tekst</p>
+                </div>
+            </div>
+            
+            <div class="sidebar-item" draggable="true" data-type="image">
+                <div>
+                    <i class="fas fa-image"></i>
+                    <p>Foto</p>
+                </div>
+            </div>
+            
+            <div class="sidebar-item" draggable="true" data-type="video">
+                <div>
+                    <i class="fas fa-video"></i>
+                    <p>Video</p>
+                </div>
+            </div>
+            
+        </div>
         <p class="sub-heading">Een ander kopje</p>
-        <p class="nav-item">Overflow testing!</p>
-        <p class="nav-item">Overflow testing!</p>
-        <p class="nav-item">Overflow testing!</p>
-        <p class="nav-item">Overflow testing!</p>
-        <p class="nav-item">Overflow testing!</p>
-        <p class="nav-item">Overflow testing!</p>
-        <p class="nav-item">Overflow testing!</p>
-        <p class="nav-item">Overflow testing!</p>
-        <p class="nav-item">Overflow testing!</p>
-        <p class="nav-item">Overflow testing!</p>
-        <p class="nav-item">Overflow testing!</p>
-        <p class="nav-item">Overflow testing!</p>
-        <p class="nav-item">Overflow testing!</p>
-        <p class="nav-item">Overflow testing!</p>
-        <p class="nav-item">Overflow testing!</p>
         <p class="nav-item">Overflow testing!</p>
         <p class="nav-item">Overflow testing!</p>
     </div>
     <iframe src="<?= site_uri_resolve('/?customizer=true') ?>" frameborder="0"></iframe>
 
     <script src="<?= uri_resolve('/admin/js/components.js') ?>"></script>
+    <script src="<?= uri_resolve('/admin/js/customizer-drag.js') ?>"></script>
 </body>
 </html>
